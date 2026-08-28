@@ -1,4 +1,3 @@
-// Master Data Store
 const HMS_DATA = {
     departments: ["All Departments", "Cardiology", "Neurology", "Orthopedics", "Pediatrics", "Gynecology", "ICU & Critical Care"],
     
@@ -42,7 +41,6 @@ let activeRole = "admin";
 let isDoctorCheckedIn = false;
 let isNurseCheckedIn = false;
 
-// Role Configuration
 const ROLE_CONFIGS = {
     admin: {
         userName: "Md. Emtiaz Hossain",
@@ -122,7 +120,6 @@ const ROLE_CONFIGS = {
     }
 };
 
-// Switch Stakeholder Session
 function switchStakeholderSession(roleKey) {
     activeRole = roleKey;
     const config = ROLE_CONFIGS[roleKey];
@@ -146,7 +143,6 @@ function switchStakeholderSession(roleKey) {
     switchView(config.viewId);
 }
 
-// Switch View
 function switchView(viewId, clickedEl = null) {
     document.querySelectorAll(".view-panel").forEach(p => p.classList.remove("active"));
     const target = document.getElementById(viewId);
@@ -160,7 +156,6 @@ function switchView(viewId, clickedEl = null) {
     closeSidebar();
 }
 
-// Responsive Sidebar Toggle
 function toggleSidebar() {
     document.getElementById("sidebarNav").classList.toggle("open");
     document.getElementById("sidebarOverlay").classList.toggle("open");
@@ -171,7 +166,6 @@ function closeSidebar() {
     document.getElementById("sidebarOverlay").classList.remove("open");
 }
 
-// Render Main Department Directory
 function renderDepartmentDirectory() {
     const tabsContainer = document.getElementById("departmentTabs");
     tabsContainer.innerHTML = "";
@@ -222,7 +216,6 @@ function renderDepartmentDirectory() {
     });
 }
 
-// Render Patient Portal Doctors Directory Specifically
 function renderPatientDoctors() {
     const tabsContainer = document.getElementById("patientDeptTabs");
     if (!tabsContainer) return;
@@ -271,7 +264,6 @@ function createDoctorCardHTML(d) {
     `;
 }
 
-// Render Cabins
 function renderCabins() {
     const adminGrid = document.getElementById("adminCabinGrid");
     const patientGrid = document.getElementById("patientCabinGrid");
@@ -319,7 +311,6 @@ function bookCabinDirect(idx) {
     alert(`Successfully Reserved ${HMS_DATA.cabins[idx].code}!`);
 }
 
-// Render Staff Leaves
 function renderLeaves() {
     const tbody = document.getElementById("adminLeaveTable");
     tbody.innerHTML = "";
@@ -349,7 +340,6 @@ function approveLeave(idx) {
     alert("Leave Request Approved!");
 }
 
-// Attendance Handlers
 function toggleDoctorAttendance() {
     isDoctorCheckedIn = !isDoctorCheckedIn;
     const btn = document.getElementById("docCheckInBtn");
@@ -364,7 +354,6 @@ function toggleNurseAttendance() {
     btn.className = isNurseCheckedIn ? "btn btn-primary" : "btn btn-outline";
 }
 
-// Render Tables
 function renderTables() {
     const accTbody = document.getElementById("accountsInvoiceTable");
     const patTbody = document.getElementById("patientInvoiceTable");
@@ -412,7 +401,6 @@ function renderTables() {
     });
 }
 
-// Print Actions
 function printInvoice(invId) {
     const inv = HMS_DATA.invoices.find(i => i.id === invId);
     if (!inv) return;
@@ -467,8 +455,6 @@ function printLabReport(repId) {
 }
 
 function triggerPrint() { window.print(); }
-
-// Modal Controllers
 function openModal(modalId) { document.getElementById(modalId).classList.add("open"); }
 function closeModal(modalId) { document.getElementById(modalId).classList.remove("open"); }
 
@@ -477,7 +463,6 @@ function openBookModalForDoc(docName) {
     document.getElementById("appDoctorSelect").value = docName;
 }
 
-// Form Handlers
 function handleAddDoctor(e) {
     e.preventDefault();
     const newDoc = {
@@ -568,7 +553,6 @@ function populateDoctorSelectOptions() {
     });
 }
 
-// Initialization
 document.addEventListener("DOMContentLoaded", () => {
     populateDoctorSelectOptions();
     renderDepartmentDirectory();
