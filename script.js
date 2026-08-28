@@ -25,71 +25,369 @@ const DB = {
     { id: "pharma@hospital.com", alias: "pharma", pass: "pharma123", name: "Mahmudur Rahman", role: "pharmacist", roleTitle: "Lead Pharmacist", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop&q=80" }
   ],
 
- const doctors = [
-    { id: "DOC-101", name: "Prof. Dr. Syed Shamsul Huda", dept: "Cardiology", degrees: "MBBS, FCPS, FACC (USA)", fee: 1800, photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-102", name: "Dr. Farhana Yasmin", dept: "Neurology", degrees: "MBBS, MD (Neurology)", fee: 1500, photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-103", name: "Dr. Anisur Rahman", dept: "Orthopedics", degrees: "MBBS, MS (Ortho)", fee: 1500, photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-104", name: "Dr. Nusrat Chowdury", dept: "Gynaecology", degrees: "MBBS, FCPS (OBGYN)", fee: 1600, photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-105", name: "Dr. Tanvir Mahmud", dept: "Pediatrics", degrees: "MBBS, DCH, FCPS (Pediatrics)", fee: 1200, photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-106", name: "Dr. Sharmin Akter", dept: "Dermatology", degrees: "MBBS, DDV, FCPS (Skin)", fee: 1400, photo: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-107", name: "Prof. Dr. Kamrul Hasan", dept: "Gastroenterology", degrees: "MBBS, MD (Gastroenterology)", fee: 1800, photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-108", name: "Dr. Sabina Yeasmin", dept: "Ophthalmology", degrees: "MBBS, FCPS (Eye)", fee: 1200, photo: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-109", name: "Dr. Ariful Islam", dept: "Urology", degrees: "MBBS, MS (Urology)", fee: 1500, photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-110", name: "Dr. Rehana Parveen", dept: "Endocrinology", degrees: "MBBS, MD (Endocrinology)", fee: 1500, photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-111", name: "Dr. Mahbub Alam", dept: "ENT", degrees: "MBBS, MS (ENT)", fee: 1300, photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-112", name: "Dr. Tariqul Islam", dept: "Nephrology", degrees: "MBBS, MD (Nephrology)", fee: 1600, photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-113", name: "Dr. Sajjad Hossain", dept: "Psychiatry", degrees: "MBBS, FCPS (Psychiatry)", fee: 1400, photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-114", name: "Dr. Nahid Sultana", dept: "Oncology", degrees: "MBBS, FCPS (Oncology)", fee: 1700, photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-115", name: "Dr. Imran Khan", dept: "Pulmonology", degrees: "MBBS, MD (Chest)", fee: 1500, photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-116", name: "Dr. Ayesha Siddiqua", dept: "Rheumatology", degrees: "MBBS, MD (Rheumatology)", fee: 1600, photo: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-117", name: "Dr. Kazi Ashraful Alam", dept: "General Surgery", degrees: "MBBS, FCPS (Surgery)", fee: 1500, photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-118", name: "Dr. Mehzabin Ahmed", dept: "Dentistry", degrees: "BDS, FCPS (Dental)", fee: 1000, photo: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-119", name: "Prof. Dr. M. A. Rashid", dept: "Internal Medicine", degrees: "MBBS, FCPS (Medicine)", fee: 2000, photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" },
-    { id: "DOC-120", name: "Dr. Bilkis Jahan", dept: "Hematology", degrees: "MBBS, MD (Hematology)", fee: 1600, photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" }
+const doctors = [
+    { 
+        id: "DOC-101", 
+        name: "Prof. Dr. Kazi Ashraful Alam", 
+        dept: "General & Laparoscopic Surgery", 
+        degrees: "MBBS, FCPS (Surgery), MS", 
+        fee: 1500, 
+        photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-102", 
+        name: "Dr. Ariful Islam", 
+        dept: "Urology", 
+        degrees: "MBBS, MS (Urology)", 
+        fee: 1500, 
+        photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-103", 
+        name: "Dr. Nusrat Chowdury", 
+        dept: "Obstetrics & Gynecology", 
+        degrees: "MBBS, FCPS (OBGYN)", 
+        fee: 1600, 
+        photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-104", 
+        name: "Prof. Dr. Mahbubur Rahman", 
+        dept: "Cardiac Surgery", 
+        degrees: "MBBS, MS (Cardiothoracic Surgery)", 
+        fee: 2000, 
+        photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-105", 
+        name: "Dr. Shahriar Nabi", 
+        dept: "Vascular Surgery", 
+        degrees: "MBBS, MS (Vascular Surgery)", 
+        fee: 1500, 
+        photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-106", 
+        name: "Dr. Imran Khan", 
+        dept: "Respiratory Medicine", 
+        degrees: "MBBS, MD (Chest Medicine)", 
+        fee: 1500, 
+        photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-107", 
+        name: "Dr. Tariqul Islam", 
+        dept: "Colorectal Surgery", 
+        degrees: "MBBS, FCPS (Surgery), MS (Colorectal)", 
+        fee: 1600, 
+        photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-108", 
+        name: "Dr. Mehzabin Ahmed", 
+        dept: "Dental and Maxillofacial Surgery", 
+        degrees: "BDS, FCPS (Oral & Maxillofacial)", 
+        fee: 1200, 
+        photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-109", 
+        name: "Dt. Rashida Parveen", 
+        dept: "Nutrition & Dietetic Department", 
+        degrees: "BSc & MSc in Food & Nutrition", 
+        fee: 1000, 
+        photo: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-110", 
+        name: "Dr. Ayesha Siddiqua", 
+        dept: "Rheumatology", 
+        degrees: "MBBS, MD (Rheumatology)", 
+        fee: 1600, 
+        photo: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-111", 
+        name: "Dr. Rafiqul Hassan", 
+        dept: "Anaesthesia", 
+        degrees: "MBBS, DA, FCPS (Anaesthesiology)", 
+        fee: 1200, 
+        photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-112", 
+        name: "Prof. Dr. Syed Shamsul Huda", 
+        dept: "Cardiology", 
+        degrees: "MBBS, FCPS, FACC (USA)", 
+        fee: 1800, 
+        photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-113", 
+        name: "Dr. Tanvir Mahmud", 
+        dept: "Pediatric & Neonatology", 
+        degrees: "MBBS, DCH, FCPS (Pediatrics)", 
+        fee: 1300, 
+        photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-114", 
+        name: "Dr. Mahbub Alam", 
+        dept: "ENT, Head & Neck Surgery", 
+        degrees: "MBBS, MS (ENT)", 
+        fee: 1400, 
+        photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-115", 
+        name: "Dr. Anisur Rahman", 
+        dept: "Orthopedics, Arthroscopy & Joint Replacement", 
+        degrees: "MBBS, MS (Ortho)", 
+        fee: 1500, 
+        photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-116", 
+        name: "Dr. Bilkis Jahan", 
+        dept: "Clinical Hematology", 
+        degrees: "MBBS, MD (Hematology)", 
+        fee: 1600, 
+        photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-117", 
+        name: "Dr. Kamrul Islam", 
+        dept: "Surgical Oncology", 
+        degrees: "MBBS, MS (Surgical Oncology)", 
+        fee: 1800, 
+        photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-118", 
+        name: "Dr. Moniruzzaman", 
+        dept: "Physical Medicine", 
+        degrees: "MBBS, FCPS (Physical Medicine)", 
+        fee: 1300, 
+        photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-119", 
+        name: "Dr. Sharmin Akter", 
+        dept: "Plastic & Aesthetic Surgery", 
+        degrees: "MBBS, FCPS (Plastic Surgery)", 
+        fee: 1700, 
+        photo: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-120", 
+        name: "Prof. Dr. Kamrul Hasan", 
+        dept: "Gastroenterology & Hepatology", 
+        degrees: "MBBS, MD (Gastroenterology)", 
+        fee: 1800, 
+        photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-121", 
+        name: "Dr. Sabina Yeasmin", 
+        dept: "Dermatology", 
+        degrees: "MBBS, DDV, FCPS (Skin & VD)", 
+        fee: 1400, 
+        photo: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-122", 
+        name: "Dr. Shamsul Alam", 
+        dept: "Neurosurgery", 
+        degrees: "MBBS, MS (Neurosurgery)", 
+        fee: 1800, 
+        photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-123", 
+        name: "Dr. Asaduzzaman", 
+        dept: "Thoracic Surgery", 
+        degrees: "MBBS, MS (Thoracic Surgery)", 
+        fee: 1700, 
+        photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-124", 
+        name: "Dr. Mahmudul Haq", 
+        dept: "ICU", 
+        degrees: "MBBS, MD (Critical Care Medicine)", 
+        fee: 1500, 
+        photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-125", 
+        name: "Dr. Nargis Sultana", 
+        dept: "Laboratory Medicine", 
+        degrees: "MBBS, MD (Pathology)", 
+        fee: 1200, 
+        photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-126", 
+        name: "Dr. Faisal Ahmed", 
+        dept: "Pediatric Surgery", 
+        degrees: "MBBS, MS (Pediatric Surgery)", 
+        fee: 1500, 
+        photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-127", 
+        name: "Prof. Dr. Zahirul Islam", 
+        dept: "Hepatobiliary & Pancreatic Surgery", 
+        degrees: "MBBS, FCPS, MS (HBP Surgery)", 
+        fee: 2000, 
+        photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-128", 
+        name: "Dr. Sadia Chowdhury", 
+        dept: "Pediatric Cardiology", 
+        degrees: "MBBS, MD (Pediatric Cardiology)", 
+        fee: 1600, 
+        photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-129", 
+        name: "Dr. Nahid Sultana", 
+        dept: "Oncology", 
+        degrees: "MBBS, FCPS (Oncology)", 
+        fee: 1700, 
+        photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-130", 
+        name: "Dr. Tariqul Islam", 
+        dept: "Nephrology", 
+        degrees: "MBBS, MD (Nephrology)", 
+        fee: 1600, 
+        photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-131", 
+        name: "Dr. Rehana Parveen", 
+        dept: "Diabetes & Endocrinology", 
+        degrees: "MBBS, MD (Endocrinology)", 
+        fee: 1500, 
+        photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-132", 
+        name: "Dr. Farhana Yasmin", 
+        dept: "Neurology", 
+        degrees: "MBBS, MD (Neurology)", 
+        fee: 1500, 
+        photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-133", 
+        name: "Prof. Dr. M. A. Rashid", 
+        dept: "Internal Medicine", 
+        degrees: "MBBS, FCPS (Medicine)", 
+        fee: 2000, 
+        photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-134", 
+        name: "Dr. Khairul Bashar", 
+        dept: "Radiology & Imaging", 
+        degrees: "MBBS, MD (Radiology)", 
+        fee: 1300, 
+        photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-135", 
+        name: "Dr. Sajjad Hossain", 
+        dept: "Psychiatry", 
+        degrees: "MBBS, FCPS (Psychiatry)", 
+        fee: 1400, 
+        photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" 
+    },
+    { 
+        id: "DOC-136", 
+        name: "Dr. Farzana Parveen", 
+        dept: "Breast, Colorectal & Laparoscopic Surgery", 
+        degrees: "MBBS, FCPS (Surgery), MS", 
+        fee: 1600, 
+        photo: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&auto=format&fit=crop&q=80" 
+    }
 ];
-
-  patients: [
+ 
+patients: [
     { mrn: "BD-2026-9901", name: "Tariqul Islam", contact: "01711223344", age: 45, gender: "Male", history: "Hypertension, BP: 130/85, Temp: 98.6°F", allergies: "Penicillin" },
     { mrn: "BD-2026-9902", name: "Selina Begum", contact: "01819887766", age: 38, gender: "Female", history: "Asthma, BP: 120/80, Temp: 99.1°F", allergies: "Dust, Sulfa Drugs" },
-    { mrn: "BD-2026-9903", name: "Abdur Rahim", contact: "01912345678", age: 62, gender: "Male", history: "IHD, Post-PCI, BP: 140/90, Temp: 98.4°F", allergies: "None" }
+    { mrn: "BD-2026-9903", name: "Abdur Rahim", contact: "01912345678", age: 62, gender: "Male", history: "IHD, Post-PCI, BP: 140/90, Temp: 98.4°F", allergies: "None" },
+    { mrn: "BD-2026-9904", name: "Nasreen Sultana", contact: "01733445566", age: 29, gender: "Female", history: "Pregnancy 2nd Trimester, BP: 110/70", allergies: "None" },
+    { mrn: "BD-2026-9905", name: "Kamrul Hassan", contact: "01555667788", age: 50, gender: "Male", history: "Type-2 Diabetes, BP: 135/88", allergies: "Aspirin" },
+    { mrn: "BD-2026-9906", name: "Aayan Rahman", contact: "01611224455", age: 6, gender: "Male", history: "Acute Tonsillitis, Temp: 101.2°F", allergies: "None" },
+    { mrn: "BD-2026-9907", name: "Farida Yasmin", contact: "01822334455", age: 55, gender: "Female", history: "Osteoarthritis, BP: 125/80", allergies: "NSAIDs" },
+    { mrn: "BD-2026-9908", name: "Rafiqul Islam", contact: "01988776655", age: 41, gender: "Male", history: "CKD Stage 3, BP: 145/95", allergies: "Codeine" }
   ],
 
   appointments: [
     { id: "APT-801", patientName: "Tariqul Islam", doctorName: "Prof. Dr. Syed Shamsul Huda", dept: "Cardiology", dateTime: "2026-08-29 10:30 AM", status: "Scheduled" },
     { id: "APT-802", patientName: "Selina Begum", doctorName: "Dr. Farhana Yasmin", dept: "Neurology", dateTime: "2026-08-29 11:15 AM", status: "Completed" },
-    { id: "APT-803", patientName: "Abdur Rahim", doctorName: "Prof. Dr. Syed Shamsul Huda", dept: "Cardiology", dateTime: "2026-08-29 12:00 PM", status: "Scheduled" }
+    { id: "APT-803", patientName: "Abdur Rahim", doctorName: "Prof. Dr. Syed Shamsul Huda", dept: "Cardiology", dateTime: "2026-08-29 12:00 PM", status: "Scheduled" },
+    { id: "APT-804", patientName: "Nasreen Sultana", doctorName: "Dr. Nusrat Chowdury", dept: "Obstetrics & Gynecology", dateTime: "2026-08-29 02:00 PM", status: "Scheduled" },
+    { id: "APT-805", patientName: "Kamrul Hassan", doctorName: "Dr. Rehana Parveen", dept: "Diabetes & Endocrinology", dateTime: "2026-08-29 03:30 PM", status: "Scheduled" },
+    { id: "APT-806", patientName: "Aayan Rahman", doctorName: "Dr. Tanvir Mahmud", dept: "Pediatric & Neonatology", dateTime: "2026-08-29 04:15 PM", status: "Scheduled" },
+    { id: "APT-807", patientName: "Farida Yasmin", doctorName: "Dr. Anisur Rahman", dept: "Orthopedics, Arthroscopy & Joint Replacement", dateTime: "2026-08-30 10:00 AM", status: "Scheduled" },
+    { id: "APT-808", patientName: "Rafiqul Islam", doctorName: "Dr. Tariqul Islam", dept: "Nephrology", dateTime: "2026-08-30 11:30 AM", status: "Scheduled" }
   ],
 
   prescriptions: [
-    { rxId: "RX-501", patientName: "Selina Begum", doctorName: "Dr. Farhana Yasmin", diagnosis: "Migraine with Aura", meds: "Tab. Napex 500mg (1+0+1)\nCap. Omeprazole 20mg (1+0+0) Before Meal" }
+    { rxId: "RX-501", patientName: "Selina Begum", doctorName: "Dr. Farhana Yasmin", diagnosis: "Migraine with Aura", meds: "Tab. Napex 500mg (1+0+1)\nCap. Omeprazole 20mg (1+0+0) Before Meal" },
+    { rxId: "RX-502", patientName: "Tariqul Islam", doctorName: "Prof. Dr. Syed Shamsul Huda", diagnosis: "Essential Hypertension", meds: "Tab. Bisoprolol 5mg (1+0+0)\nTab. Amlodipine 5mg (0+0+1)" },
+    { rxId: "RX-503", patientName: "Nasreen Sultana", doctorName: "Dr. Nusrat Chowdury", diagnosis: "Routine ANC Visit", meds: "Cap. Iron + Folic Acid (0+1+0)\nTab. Calcium 500mg (1+0+1)" },
+    { rxId: "RX-504", patientName: "Kamrul Hassan", doctorName: "Dr. Rehana Parveen", diagnosis: "Uncontrolled Type-2 DM", meds: "Tab. Metformin 850mg (1+0+1)\nTab. Sitagliptin 50mg (1+0+0)" }
   ],
 
   labTests: [
     { id: "LAB-301", patientName: "Tariqul Islam", test: "Lipid Profile + HbA1c", date: "2026-08-29", status: "Pending" },
-    { id: "LAB-302", patientName: "Abdur Rahim", test: "ECG & Echocardiogram", date: "2026-08-29", status: "Completed" }
+    { id: "LAB-302", patientName: "Abdur Rahim", test: "ECG & Echocardiogram", date: "2026-08-29", status: "Completed" },
+    { id: "LAB-303", patientName: "Nasreen Sultana", test: "USG of Pregnancy Profile", date: "2026-08-29", status: "Completed" },
+    { id: "LAB-304", patientName: "Kamrul Hassan", test: "Fasting Blood Sugar & Serum Creatinine", date: "2026-08-29", status: "Pending" },
+    { id: "LAB-305", patientName: "Rafiqul Islam", test: "24 Hours Urinary Protein", date: "2026-08-30", status: "Pending" }
   ],
 
   pharmacy: [
     { name: "Napa Extra 500mg", category: "Analgesic", stock: 450, price: 2.5, exp: "2028-05" },
     { name: "Seclo 20mg Capsule", category: "PPI", stock: 22, price: 7.0, exp: "2027-11" },
     { name: "Sergel 40mg Injection", category: "Injectable", stock: 12, price: 85.0, exp: "2027-02" },
-    { name: "Azithrocin 500mg", category: "Antibiotic", stock: 120, price: 35.0, exp: "2028-01" }
+    { name: "Azithrocin 500mg", category: "Antibiotic", stock: 120, price: 35.0, exp: "2028-01" },
+    { name: "Monas 10mg Tablet", category: "Antiasthmatic", stock: 300, price: 16.0, exp: "2027-09" },
+    { name: "Bizoran 5/20 Tablet", category: "Antihypertensive", stock: 180, price: 12.0, exp: "2028-03" },
+    { name: "Compathic 500mg", category: "Antibiotic", stock: 15, price: 40.0, exp: "2026-12" },
+    { name: "Ceevit 250mg Chewable", category: "Vitamin", stock: 500, price: 2.0, exp: "2028-06" }
   ],
 
   cabins: [
     { number: "Cabin 401 (VIP)", type: "Single Deluxe", status: "Occupied", patient: "Abdur Rahim", rate: 8000 },
     { number: "Cabin 402", type: "Single Standard", status: "Available", patient: "-", rate: 5000 },
+    { number: "Cabin 403", type: "Single Deluxe", status: "Occupied", patient: "Farida Yasmin", rate: 7500 },
+    { number: "Cabin 404", type: "Double Bed", status: "Available", patient: "-", rate: 3500 },
+    { number: "ICU Bed 01", type: "Critical Care", status: "Available", patient: "-", rate: 15000 },
     { number: "ICU Bed 03", type: "Critical Care", status: "Occupied", patient: "Emergency Ref", rate: 15000 },
-    { number: "CCU Bed 01", type: "Cardiac Care", status: "Available", patient: "-", rate: 12000 }
+    { number: "CCU Bed 01", type: "Cardiac Care", status: "Available", patient: "-", rate: 12000 },
+    { number: "NICU Bed 02", type: "Neonatal ICU", status: "Occupied", patient: "Baby of Nasreen", rate: 10000 }
   ],
 
   invoices: [
     { id: "INV-9001", mrn: "BD-2026-9902", patientName: "Selina Begum", service: "Neurology OPD Consultation", amount: 1500, status: "Paid" },
-    { id: "INV-9002", mrn: "BD-2026-9903", patientName: "Abdur Rahim", service: "ECG & Echocardiogram Tests", amount: 3500, status: "Paid" }
+    { id: "INV-9002", mrn: "BD-2026-9903", patientName: "Abdur Rahim", service: "ECG & Echocardiogram Tests", amount: 3500, status: "Paid" },
+    { id: "INV-9003", mrn: "BD-2026-9904", patientName: "Nasreen Sultana", service: "USG & Gynee OPD Consultation", amount: 3100, status: "Paid" },
+    { id: "INV-9004", mrn: "BD-2026-9905", patientName: "Kamrul Hassan", service: "Endocrinology Consultation", amount: 1500, status: "Unpaid" },
+    { id: "INV-9005", mrn: "BD-2026-9907", patientName: "Farida Yasmin", service: "Cabin Booking & Admission Fee", amount: 10000, status: "Unpaid" }
   ],
 
   notifications: [
-    { text: "System Boot: CarePulse HMS Engine running.", time: "08:00 AM" }
+    { text: "System Boot: CarePulse HMS Engine running.", time: "08:00 AM" },
+    { text: "Emergency Admission: ICU Bed 03 occupied.", time: "09:15 AM" },
+    { text: "Lab Result Updated: ECG for Abdur Rahim.", time: "11:00 AM" },
+    { text: "Pharmacy Alert: Low stock for Sergel Injection.", time: "11:45 AM" }
   ]
 };
 
