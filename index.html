@@ -26,28 +26,62 @@
                     <select id="loginRoleSelect" onchange="autoFillCredentials(this.value)" required>
                         <option value="admin">👨‍💼 System Administrator</option>
                         <option value="doctor">👨‍⚕️ Specialist Doctor</option>
+                        <option value="nurse">🩺 Nurse Station (Ward)</option>
                         <option value="patient">👤 Patient Self-Service</option>
                         <option value="receptionist">📋 Front Desk Receptionist</option>
-                        <option value="nurse">🩺 Nurse Station (Ward)</option>
-                        <option value="labtech">🧪 Lab Technician</option>
                         <option value="pharmacist">💊 Pharmacist</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label><i class="fa-solid fa-id-badge"></i> User ID</label>
-                    <input type="text" id="loginUserId" value="admin" required>
+                    <label><i class="fa-solid fa-id-badge"></i> User ID / Email</label>
+                    <input type="text" id="loginUserId" value="admin@hospital.com" required>
                 </div>
                 <div class="form-group">
                     <label><i class="fa-solid fa-key"></i> Password</label>
-                    <input type="password" id="loginPassword" value="1234" required>
+                    <input type="password" id="loginPassword" value="admin123" required>
                 </div>
-                <div id="loginErrorMsg" class="error-alert">Invalid ID or Password!</div>
+                
+                <div class="forgot-pass-wrapper">
+                    <a href="javascript:void(0)" onclick="openModal('forgotPasswordModal')"><i class="fa-solid fa-circle-question"></i> Forgot Password / Patient ID?</a>
+                </div>
+
+                <div id="loginErrorMsg" class="error-alert">Invalid ID/Email or Password!</div>
                 <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-right-to-bracket"></i> Login to Portal</button>
             </form>
+
             <div class="login-footer-hint">
                 <p><strong>Demo Credentials:</strong></p>
-                <span id="credentialHint">User ID: <b>admin</b> | Password: <b>1234</b></span>
+                <span id="credentialHint">ID: <b>admin@hospital.com</b> | Pass: <b>admin123</b></span>
             </div>
+        </div>
+    </div>
+
+    <!-- Patient Forgot Password Modal -->
+    <div class="modal-overlay" id="forgotPasswordModal">
+        <div class="modal">
+            <h3><i class="fa-solid fa-user-lock"></i> Recover Patient Account</h3>
+            <p class="modal-subtext">আপনার নিবন্ধিত নাম ও মোবাইল নম্বর দিয়ে পাসওয়ার্ড রিকভার করুন</p>
+            <form onsubmit="handlePatientPasswordRecovery(event)">
+                <div class="form-group">
+                    <label>Patient Full Name</label>
+                    <input type="text" id="recPatientName" placeholder="e.g. Tariqul Islam" required>
+                </div>
+                <div class="form-group">
+                    <label>Registered Phone Number</label>
+                    <input type="text" id="recPatientPhone" placeholder="e.g. 01711223344" required>
+                </div>
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" id="recNewPassword" placeholder="Enter new password" required>
+                </div>
+
+                <div id="recoveryStatus" class="info-alert" style="display:none;"></div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('forgotPasswordModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Reset Password</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -146,7 +180,7 @@
 
                 <div class="table-card mt-20">
                     <div class="table-header">
-                        <h4><i class="fa-solid fa-list-check"></i> Today's OPD Appointment Queue</h4>
+                        <h4><i class="fa-solid fa-list-check"></i> OPD Appointment Queue</h4>
                         <button class="btn btn-primary btn-sm" onclick="openModal('bookAppointmentModal')"><i class="fa-solid fa-plus"></i> New Appointment</button>
                     </div>
                     <div class="table-responsive">
@@ -171,7 +205,7 @@
             <section id="view-appointments" class="view-panel">
                 <div class="table-card">
                     <div class="table-header">
-                        <h4><i class="fa-solid fa-calendar-days"></i> Appointment Scheduling Center</h4>
+                        <h4 id="appointmentTableHeading"><i class="fa-solid fa-calendar-days"></i> Appointment Scheduling Center</h4>
                         <button class="btn btn-primary" onclick="openModal('bookAppointmentModal')"><i class="fa-solid fa-calendar-plus"></i> Book Appointment</button>
                     </div>
                     <div class="table-responsive">
@@ -196,7 +230,7 @@
             <section id="view-patients" class="view-panel">
                 <div class="table-card">
                     <div class="table-header">
-                        <h4><i class="fa-solid fa-address-card"></i> Patient Electronic Medical Records (EMR)</h4>
+                        <h4 id="patientTableHeading"><i class="fa-solid fa-address-card"></i> Patient Electronic Medical Records (EMR)</h4>
                         <button class="btn btn-primary" onclick="openModal('addPatientModal')"><i class="fa-solid fa-user-plus"></i> Register Patient</button>
                     </div>
                     <div class="table-responsive">
@@ -229,17 +263,17 @@
                 <div class="cards-grid" id="doctorsGrid"></div>
             </section>
 
-            <!-- 5. CONSULTATION & PRESCRIPTION WORKSPACE -->
+            <!-- 5. CONSULTATION & PRESCRIPTION WORKSPACE (DOCTOR SPECIFIC DESK) -->
             <section id="view-consultation" class="view-panel">
                 <div class="grid-2col">
                     <div class="card">
                         <div class="card-header-flex">
-                            <h4><i class="fa-solid fa-users-viewfinder"></i> OPD Patient Desk</h4>
+                            <h4 id="doctorDeskTitle"><i class="fa-solid fa-users-viewfinder"></i> Doctor Desk</h4>
                             <button class="btn btn-outline btn-sm" id="docCheckInBtn" onclick="toggleDoctorAttendance()">Duty Check-In</button>
                         </div>
                         <hr class="divider">
                         <div class="form-group">
-                            <label>Select Patient from Waiting Queue</label>
+                            <label>Select Assigned Patient from Queue</label>
                             <select id="consultPatientSelect" onchange="loadConsultationPatient(this.value)"></select>
                         </div>
                         <div id="consultPatientDetails" class="patient-emr-box">
@@ -365,7 +399,7 @@
             <section id="view-beds" class="view-panel">
                 <div class="table-card mb-20">
                     <div class="table-header">
-                        <h4><i class="fa-solid fa-bed"></i> Cabin & Intensive Care (ICU/CCU) Allocation</h4>
+                        <h4><i class="fa-solid fa-bed"></i> Cabin & Ward Bed Allocation</h4>
                     </div>
                 </div>
                 <div class="cards-grid" id="cabinGrid"></div>
@@ -466,8 +500,8 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Contact Number</label>
-                    <input type="text" id="patContact" value="+88017" required>
+                    <label>Contact Number (Mobile)</label>
+                    <input type="text" id="patContact" value="01711223344" required>
                 </div>
                 <div class="form-group">
                     <label>Medical History</label>
@@ -542,9 +576,7 @@
     <!-- Printable Official Document Modal -->
     <div class="modal-overlay" id="printDocumentModal">
         <div class="modal" style="width: 580px;">
-            <div id="printableArea">
-                <!-- Injected via JS -->
-            </div>
+            <div id="printableArea"></div>
             <div class="modal-actions mt-20">
                 <button type="button" class="btn btn-outline" onclick="closeModal('printDocumentModal')">Close</button>
                 <button type="button" class="btn btn-primary" onclick="triggerPrint()"><i class="fa-solid fa-print"></i> Print Document</button>
