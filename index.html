@@ -3,359 +3,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarePulse Hosspital</title>
+    <title>CarePulse Specialized Hospital & Diagnostic Center</title>
+    <!-- FontAwesome Icons & Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Sidebar Navigation -->
+    <!-- Authentication Login Modal -->
+    <div class="login-modal-overlay" id="loginModal">
+        <div class="login-card">
+            <div class="brand-header">
+                <i class="fa-solid fa-hospital-user brand-icon"></i>
+                <h2>CarePulse HMS</h2>
+                <p>Enterprise Hospital Management Portal</p>
+            </div>
+            
+            <form onsubmit="handleUserLogin(event)">
+                <div class="form-group">
+                    <label><i class="fa-solid fa-user-shield"></i> Select Role</label>
+                    <select id="loginRoleSelect" onchange="autoFillCredentials(this.value)" required>
+                        <option value="admin">👨‍💼 System Administrator</option>
+                        <option value="doctor">👨‍⚕️ Specialist Doctor</option>
+                        <option value="patient">👤 Patient Self-Service</option>
+                        <option value="receptionist">📋 Front Desk Receptionist</option>
+                        <option value="nurse">🩺 Nurse Station (Ward)</option>
+                        <option value="labtech">🧪 Lab Technician</option>
+                        <option value="pharmacist">💊 Pharmacist</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-id-badge"></i> User ID</label>
+                    <input type="text" id="loginUserId" value="admin" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fa-solid fa-key"></i> Password</label>
+                    <input type="password" id="loginPassword" value="1234" required>
+                </div>
+                <div id="loginErrorMsg" class="error-alert">Invalid ID or Password!</div>
+                <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-right-to-bracket"></i> Login to Portal</button>
+            </form>
+            <div class="login-footer-hint">
+                <p><strong>Demo Credentials:</strong></p>
+                <span id="credentialHint">User ID: <b>admin</b> | Password: <b>1234</b></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Sidebar Navigation -->
     <aside id="sidebarNav">
         <div class="brand">
-            <i class="fa-solid fa-hospital-user"></i> CarePulse HMS
+            <i class="fa-solid fa-heart-pulse"></i>
+            <div>
+                <h3>CarePulse</h3>
+                <small>Specialized Hospital</small>
+            </div>
         </div>
 
-        <div class="role-selector">
-            <label><i class="fa-solid fa-user-gear"></i> Active Role (Stakeholder)</label>
-            <select id="roleSelect" onchange="switchStakeholderSession(this.value)">
-                <option value="admin">👨‍💼 System Admin</option>
-                <option value="doctor">👨‍⚕️ Doctor</option>
-                <option value="patient">👤 Patient</option>
-                <option value="receptionist">📋 Receptionist</option>
-                <option value="nurse">🩺 Nurse Station</option>
-                <option value="labtech">🧪 Lab Technician</option>
-                <option value="pharmacist">💊 Pharmacist</option>
-            </select>
+        <div class="active-role-box">
+            <small>Active Session</small>
+            <div id="activeRoleDisplay" class="role-badge">Admin Mode</div>
         </div>
 
         <ul class="nav-links" id="sideMenu">
-            <!-- Dynamic Navigation Injected via JS -->
+            <!-- Dynamic Navigation Links Generated via JS -->
         </ul>
+        
+        <div class="sidebar-footer">
+            <button class="btn btn-logout btn-block" onclick="handleUserLogout()">
+                <i class="fa-solid fa-power-off"></i> Logout
+            </button>
+        </div>
     </aside>
 
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
-    <!-- Main Workspace -->
+    <!-- Main Content Workspace -->
     <main>
-        <!-- Top Bar -->
+        <!-- Top Navigation Header -->
         <header>
             <div class="header-left">
                 <button class="mobile-toggle" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
-                <h2 id="pageTitle">Operational Dashboard</h2>
+                <h3 id="pageTitle">Operations Dashboard</h3>
             </div>
-            <div class="user-profile">
-                <div class="notif-badge" onclick="navigateTo('view-notifications')">
+            
+            <div class="header-right">
+                <div class="notif-wrapper" onclick="switchView('view-notifications')">
                     <i class="fa-regular fa-bell"></i>
-                    <span class="count" id="notifCount">0</span>
+                    <span class="badge" id="notifCount">0</span>
                 </div>
-                <img src="" alt="Avatar" class="avatar" id="navUserAvatar">
-                <div>
-                    <div class="user-name" id="navUserName">User Name</div>
-                    <div class="user-role" id="navUserRole">Role Title</div>
+                <div class="user-profile">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="avatar" id="navUserAvatar">
+                    <div class="user-details">
+                        <span class="name" id="navUserName">Md. Emtiaz Hossain</span>
+                        <span class="role" id="navUserRole">System Administrator</span>
+                    </div>
                 </div>
             </div>
         </header>
 
-        <!-- Dynamic Context Banner -->
+        <!-- Role Context Banner -->
         <div class="context-banner" id="contextBannerText">
-            Welcome to CarePulse HMS Integrated Control Panel.
+            Welcome to CarePulse Integrated Operations Suite.
         </div>
 
-        <!-- Content Area -->
+        <!-- Workstation Panels -->
         <div class="content-area">
 
-            <!-- 1. ADMIN DASHBOARD -->
+            <!-- 1. ADMIN DASHBOARD PANEL -->
             <section id="view-admin" class="view-panel active">
                 <div class="stats-grid">
-                    <div class="card stat-card">
-                        <div>
+                    <div class="stat-card">
+                        <div class="stat-data">
                             <span>Total Registered Patients</span>
-                            <div class="num" id="statPatients">0</div>
+                            <h2 id="statPatients">0</h2>
                         </div>
-                        <i class="fa-solid fa-users icon blue"></i>
+                        <div class="stat-icon icon-blue"><i class="fa-solid fa-users"></i></div>
                     </div>
-                    <div class="card stat-card">
-                        <div>
+                    <div class="stat-card">
+                        <div class="stat-data">
                             <span>Specialist Doctors</span>
-                            <div class="num" id="statDoctors">0</div>
+                            <h2 id="statDoctors">0</h2>
                         </div>
-                        <i class="fa-solid fa-user-doctor icon green"></i>
+                        <div class="stat-icon icon-green"><i class="fa-solid fa-user-doctor"></i></div>
                     </div>
-                    <div class="card stat-card">
-                        <div>
+                    <div class="stat-card">
+                        <div class="stat-data">
                             <span>Bed Occupancy</span>
-                            <div class="num" id="statBeds">0 / 0</div>
+                            <h2 id="statBeds">0 / 0</h2>
                         </div>
-                        <i class="fa-solid fa-bed icon orange"></i>
+                        <div class="stat-icon icon-orange"><i class="fa-solid fa-bed"></i></div>
                     </div>
-                    <div class="card stat-card">
-                        <div>
-                            <span>Total Revenue</span>
-                            <div class="num" id="statRevenue">৳ 0</div>
+                    <div class="stat-card">
+                        <div class="stat-data">
+                            <span>Today's Revenue</span>
+                            <h2 id="statRevenue">৳ 0</h2>
                         </div>
-                        <i class="fa-solid fa-sack-dollar icon pink"></i>
+                        <div class="stat-icon icon-teal"><i class="fa-solid fa-sack-dollar"></i></div>
                     </div>
                 </div>
 
-                <div class="table-container">
+                <div class="table-card mt-20">
                     <div class="table-header">
-                        <h3>Hospital Operations Quick Action Queue</h3>
-                        <button class="btn btn-primary btn-sm" onclick="openModal('addDoctorModal')"><i class="fa-solid fa-user-plus"></i> Add Doctor</button>
+                        <h4><i class="fa-solid fa-list-check"></i> Today's OPD Appointment Queue</h4>
+                        <button class="btn btn-primary btn-sm" onclick="openModal('bookAppointmentModal')"><i class="fa-solid fa-plus"></i> New Appointment</button>
                     </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Patient ID</th>
-                                <th>Name</th>
-                                <th>Assigned Doctor</th>
-                                <th>Service/Dept</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="adminQuickQueueTable">
-                            <!-- Injected by JS -->
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Appt ID</th>
+                                    <th>Patient Name</th>
+                                    <th>Doctor</th>
+                                    <th>Department</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminQuickQueueTable"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
-            <!-- 2. APPOINTMENTS SYSTEM -->
+            <!-- 2. APPOINTMENT MANAGEMENT -->
             <section id="view-appointments" class="view-panel">
-                <div class="table-header">
-                    <h3>Appointment Management & Scheduling</h3>
-                    <button class="btn btn-primary" onclick="openModal('bookAppointmentModal')"><i class="fa-solid fa-calendar-plus"></i> Book Appointment</button>
-                </div>
-                <div class="table-container" style="margin-top: 15px;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Appt ID</th>
-                                <th>Patient Name</th>
-                                <th>Doctor</th>
-                                <th>Date & Time</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="appointmentTableBody">
-                            <!-- Injected by JS -->
-                        </tbody>
-                    </table>
+                <div class="table-card">
+                    <div class="table-header">
+                        <h4><i class="fa-solid fa-calendar-days"></i> Appointment Scheduling Center</h4>
+                        <button class="btn btn-primary" onclick="openModal('bookAppointmentModal')"><i class="fa-solid fa-calendar-plus"></i> Book Appointment</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Appt ID</th>
+                                    <th>Patient Name</th>
+                                    <th>Assigned Specialist</th>
+                                    <th>Date & Time</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="appointmentTableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
-            <!-- 3. PATIENTS EMR & DIRECTORY -->
+            <!-- 3. PATIENTS EMR DIRECTORY -->
             <section id="view-patients" class="view-panel">
-                <div class="table-header">
-                    <h3>Patient Electronic Medical Records (EMR)</h3>
-                    <button class="btn btn-primary" onclick="openModal('addPatientModal')"><i class="fa-solid fa-address-book"></i> Register Patient</button>
-                </div>
-                <div class="table-container" style="margin-top: 15px;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>MRN / ID</th>
-                                <th>Patient Name</th>
-                                <th>Age / Gender</th>
-                                <th>Contact</th>
-                                <th>Medical History</th>
-                                <th>Allergies</th>
-                            </tr>
-                        </thead>
-                        <tbody id="patientTableBody">
-                            <!-- Injected by JS -->
-                        </tbody>
-                    </table>
+                <div class="table-card">
+                    <div class="table-header">
+                        <h4><i class="fa-solid fa-address-card"></i> Patient Electronic Medical Records (EMR)</h4>
+                        <button class="btn btn-primary" onclick="openModal('addPatientModal')"><i class="fa-solid fa-user-plus"></i> Register Patient</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>MRN</th>
+                                    <th>Patient Name</th>
+                                    <th>Age / Gender</th>
+                                    <th>Contact</th>
+                                    <th>Medical History</th>
+                                    <th>Allergies</th>
+                                </tr>
+                            </thead>
+                            <tbody id="patientTableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
-            <!-- 4. DOCTORS DIRECTORY & MANAGEMENT -->
+            <!-- 4. DOCTORS DIRECTORY -->
             <section id="view-doctors" class="view-panel">
-                <div class="table-header">
-                    <h3>Specialist Doctors Directory</h3>
-                    <div id="departmentTabs" class="tab-group"></div>
+                <div class="table-card mb-20">
+                    <div class="table-header">
+                        <h4><i class="fa-solid fa-user-doctor"></i> Specialist Directory</h4>
+                        <button class="btn btn-primary btn-sm" onclick="openModal('addDoctorModal')"><i class="fa-solid fa-plus"></i> Add Specialist</button>
+                    </div>
+                    <div class="filter-tabs" id="departmentTabs"></div>
                 </div>
-                <div class="cards-grid" id="doctorsGrid">
-                    <!-- Injected by JS -->
-                </div>
+                <div class="cards-grid" id="doctorsGrid"></div>
             </section>
 
             <!-- 5. CONSULTATION & PRESCRIPTION WORKSPACE -->
             <section id="view-consultation" class="view-panel">
                 <div class="grid-2col">
                     <div class="card">
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <h4>Active Patient Queue</h4>
-                            <button class="btn btn-outline btn-sm" id="docCheckInBtn" onclick="toggleDoctorAttendance()">Check-In Duty</button>
+                        <div class="card-header-flex">
+                            <h4><i class="fa-solid fa-users-viewfinder"></i> OPD Patient Desk</h4>
+                            <button class="btn btn-outline btn-sm" id="docCheckInBtn" onclick="toggleDoctorAttendance()">Duty Check-In</button>
                         </div>
                         <hr class="divider">
                         <div class="form-group">
-                            <label>Select Patient from Queue</label>
+                            <label>Select Patient from Waiting Queue</label>
                             <select id="consultPatientSelect" onchange="loadConsultationPatient(this.value)"></select>
                         </div>
-                        <div id="consultPatientDetails" class="patient-info-box">
-                            <p><strong>Name:</strong> Select a patient</p>
+                        <div id="consultPatientDetails" class="patient-emr-box">
+                            <p>Select a patient to view EMR details.</p>
                         </div>
                     </div>
+                    
                     <div class="card">
-                        <h4><i class="fa-solid fa-prescription"></i> Create e-Prescription</h4>
+                        <h4><i class="fa-solid fa-file-prescription"></i> Create e-Prescription</h4>
                         <form onsubmit="handleSavePrescription(event)">
                             <div class="form-group">
-                                <label>Symptoms & Clinical Observations</label>
-                                <input type="text" id="rxSymptoms" placeholder="e.g. Fever, Chest pain" required>
+                                <label>Symptoms & Clinical Findings</label>
+                                <input type="text" id="rxSymptoms" placeholder="e.g. High fever, dry cough for 3 days" required>
                             </div>
                             <div class="form-group">
                                 <label>Diagnosis</label>
-                                <input type="text" id="rxDiagnosis" placeholder="e.g. Acute Bronchitis" required>
+                                <input type="text" id="rxDiagnosis" placeholder="e.g. Acute Viral Infection" required>
                             </div>
                             <div class="form-group">
-                                <label>Prescribed Medicines (Name - Dosage - Duration)</label>
-                                <textarea id="rxMedicines" rows="3" placeholder="e.g. Tab Napa 500mg (1+0+1) - 5 days" required></textarea>
+                                <label>Prescribed Medication (Name - Dosage - Frequency - Duration)</label>
+                                <textarea id="rxMedicines" rows="3" placeholder="e.g. Tab Napa Extra 500mg (1+0+1) - 5 Days&#10;Cap Seclo 20mg (1+0+1) Before Meal - 7 Days" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Advised Lab Tests</label>
-                                <input type="text" id="rxLabTests" placeholder="e.g. CBC, Chest X-Ray">
+                                <label>Advised Diagnostic Tests</label>
+                                <input type="text" id="rxLabTests" placeholder="e.g. Complete Blood Count (CBC), Dengue NS1">
                             </div>
-                            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-file-signature"></i> Save & Send Prescription</button>
+                            <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-paper-plane"></i> Save & Dispense Rx</button>
                         </form>
                     </div>
                 </div>
             </section>
 
-            <!-- 6. PRESCRIPTION LIST VIEW -->
+            <!-- 6. PRESCRIPTIONS DIRECTORY -->
             <section id="view-prescriptions" class="view-panel">
-                <h3>Issued Prescriptions</h3>
-                <div class="table-container" style="margin-top: 15px;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Rx ID</th>
-                                <th>Patient Name</th>
-                                <th>Doctor</th>
-                                <th>Diagnosis</th>
-                                <th>Medicines</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="prescriptionTableBody">
-                            <!-- Injected by JS -->
-                        </tbody>
-                    </table>
+                <div class="table-card">
+                    <div class="table-header">
+                        <h4><i class="fa-solid fa-prescription"></i> Issued Prescriptions Archive</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Rx ID</th>
+                                    <th>Patient Name</th>
+                                    <th>Prescribed By</th>
+                                    <th>Diagnosis</th>
+                                    <th>Medication Details</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="prescriptionTableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
             <!-- 7. LABORATORY MANAGEMENT -->
             <section id="view-laboratory" class="view-panel">
-                <div class="table-header">
-                    <h3>Laboratory Test Orders & Reports</h3>
-                </div>
-                <div class="table-container" style="margin-top: 15px;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Report ID</th>
-                                <th>Patient Name</th>
-                                <th>Test Requested</th>
-                                <th>Requested Date</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="labTableBody">
-                            <!-- Injected by JS -->
-                        </tbody>
-                    </table>
+                <div class="table-card">
+                    <div class="table-header">
+                        <h4><i class="fa-solid fa-microscope"></i> Laboratory Diagnostics & Orders</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Lab ID</th>
+                                    <th>Patient Name</th>
+                                    <th>Requested Test</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="labTableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
             <!-- 8. PHARMACY MANAGEMENT -->
             <section id="view-pharmacy" class="view-panel">
-                <h3>Pharmacy Inventory & Dispensing</h3>
-                <div class="stats-grid" style="margin-top: 15px;">
-                    <div class="card stat-card">
-                        <div>
-                            <span>Total Inventory Stock</span>
-                            <div class="num" id="statPharmacyItems">0 Box</div>
+                <div class="stats-grid mb-20">
+                    <div class="stat-card">
+                        <div class="stat-data">
+                            <span>Total Inventory</span>
+                            <h2 id="statPharmacyItems">0 Items</h2>
                         </div>
-                        <i class="fa-solid fa-capsules icon blue"></i>
+                        <div class="stat-icon icon-blue"><i class="fa-solid fa-capsules"></i></div>
                     </div>
-                    <div class="card stat-card">
-                        <div>
+                    <div class="stat-card">
+                        <div class="stat-data">
                             <span>Low Stock Alerts</span>
-                            <div class="num" id="statPharmacyLow" style="color:var(--danger)">0 Items</div>
+                            <h2 id="statPharmacyLow" style="color:var(--danger)">0 Items</h2>
                         </div>
-                        <i class="fa-solid fa-triangle-exclamation icon orange"></i>
+                        <div class="stat-icon icon-orange"><i class="fa-solid fa-triangle-exclamation"></i></div>
                     </div>
                 </div>
-                <div class="table-container" style="margin-top: 20px;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Medicine Name</th>
-                                <th>Category</th>
-                                <th>Stock Qty</th>
-                                <th>Price / Unit</th>
-                                <th>Expiry Date</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="pharmacyTableBody">
-                            <!-- Injected by JS -->
-                        </tbody>
-                    </table>
+
+                <div class="table-card">
+                    <div class="table-header">
+                        <h4><i class="fa-solid fa-pills"></i> Pharmacy Stock & Dispensing Ledger</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Medicine Name</th>
+                                    <th>Category</th>
+                                    <th>Stock Qty</th>
+                                    <th>Price / Unit</th>
+                                    <th>Expiry Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pharmacyTableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
             <!-- 9. ADMISSION & BED MANAGEMENT -->
             <section id="view-beds" class="view-panel">
-                <div class="table-header">
-                    <h3>Ward & Cabin Allocation Matrix</h3>
+                <div class="table-card mb-20">
+                    <div class="table-header">
+                        <h4><i class="fa-solid fa-bed"></i> Cabin & Intensive Care (ICU/CCU) Allocation</h4>
+                    </div>
                 </div>
-                <div class="cards-grid" id="cabinGrid" style="margin-top:15px;">
-                    <!-- Injected by JS -->
-                </div>
+                <div class="cards-grid" id="cabinGrid"></div>
             </section>
 
             <!-- 10. BILLING & ACCOUNTS -->
             <section id="view-accounts" class="view-panel">
-                <div class="table-header">
-                    <h3>Billing Transactions & Ledger</h3>
-                    <button class="btn btn-primary" onclick="openModal('generateBillModal')"><i class="fa-solid fa-receipt"></i> Generate Invoice</button>
-                </div>
-                <div class="table-container" style="margin-top: 15px;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Invoice ID</th>
-                                <th>Patient MRN</th>
-                                <th>Patient Name</th>
-                                <th>Service Rendered</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Print</th>
-                            </tr>
-                        </thead>
-                        <tbody id="accountsTableBody">
-                            <!-- Injected by JS -->
-                        </tbody>
-                    </table>
+                <div class="table-card">
+                    <div class="table-header">
+                        <h4><i class="fa-solid fa-file-invoice-dollar"></i> Billing Invoices & Ledger</h4>
+                        <button class="btn btn-primary" onclick="openModal('generateBillModal')"><i class="fa-solid fa-receipt"></i> Generate Invoice</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Invoice ID</th>
+                                    <th>MRN</th>
+                                    <th>Patient Name</th>
+                                    <th>Service Rendered</th>
+                                    <th>Amount (BDT)</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="accountsTableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
-            <!-- 11. NOTIFICATION CENTER -->
+            <!-- 11. NOTIFICATIONS CENTER -->
             <section id="view-notifications" class="view-panel">
-                <h3>System Alerts & Logs</h3>
-                <div class="card" style="margin-top: 15px;">
-                    <ul class="notif-list" id="notificationList">
-                        <!-- Injected by JS -->
-                    </ul>
+                <div class="card">
+                    <h4><i class="fa-regular fa-bell"></i> System Logs & Audit Alerts</h4>
+                    <hr class="divider">
+                    <ul class="notif-list" id="notificationList"></ul>
                 </div>
             </section>
 
         </div>
     </main>
 
-    <!-- MODALS SECTION -->
+    <!-- SYSTEM MODALS -->
 
     <!-- Add Doctor Modal -->
     <div class="modal-overlay" id="addDoctorModal">
@@ -364,19 +418,19 @@
             <form id="addDoctorForm" onsubmit="handleAddDoctor(event)">
                 <div class="form-group">
                     <label>Doctor Name</label>
-                    <input type="text" id="docName" required>
+                    <input type="text" id="docName" placeholder="e.g. Dr. Kazi Anisur Rahman" required>
                 </div>
                 <div class="form-group">
                     <label>Department</label>
                     <select id="docDept"></select>
                 </div>
                 <div class="form-group">
-                    <label>Degrees & Specialization</label>
-                    <input type="text" id="docDegrees" required>
+                    <label>Qualifications</label>
+                    <input type="text" id="docDegrees" placeholder="e.g. MBBS, FCPS (Cardiology), MD" required>
                 </div>
                 <div class="form-group">
                     <label>Consultation Fee (৳)</label>
-                    <input type="number" id="docFee" required>
+                    <input type="number" id="docFee" value="1500" required>
                 </div>
                 <div class="form-group">
                     <label>Photo URL</label>
@@ -384,7 +438,48 @@
                 </div>
                 <div class="modal-actions">
                     <button type="button" class="btn btn-outline" onclick="closeModal('addDoctorModal')">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Save Doctor</button>
+                    <button type="submit" class="btn btn-primary">Save Doctor Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Register Patient Modal -->
+    <div class="modal-overlay" id="addPatientModal">
+        <div class="modal">
+            <h3>Register New Patient (EMR)</h3>
+            <form onsubmit="handleAddPatient(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="patName" required>
+                </div>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" id="patAge" required>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select id="patGender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Contact Number</label>
+                    <input type="text" id="patContact" value="+88017" required>
+                </div>
+                <div class="form-group">
+                    <label>Medical History</label>
+                    <input type="text" id="patHistory" placeholder="e.g. Diabetes, Hypertension">
+                </div>
+                <div class="form-group">
+                    <label>Known Allergies</label>
+                    <input type="text" id="patAllergies" placeholder="e.g. Penicillin, Dust">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('addPatientModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Patient Record</button>
                 </div>
             </form>
         </div>
@@ -393,14 +488,14 @@
     <!-- Book Appointment Modal -->
     <div class="modal-overlay" id="bookAppointmentModal">
         <div class="modal">
-            <h3>Book Appointment</h3>
+            <h3>Schedule Patient Appointment</h3>
             <form onsubmit="handleBookAppointment(event)">
                 <div class="form-group">
                     <label>Patient Name</label>
-                    <input type="text" id="appPatientName" required>
+                    <input type="text" id="appPatientName" placeholder="Enter Patient Name" required>
                 </div>
                 <div class="form-group">
-                    <label>Select Doctor</label>
+                    <label>Select Specialist</label>
                     <select id="appDoctorSelect"></select>
                 </div>
                 <div class="form-group">
@@ -418,7 +513,7 @@
     <!-- Generate Bill Modal -->
     <div class="modal-overlay" id="generateBillModal">
         <div class="modal">
-            <h3>Generate Patient Bill</h3>
+            <h3>Generate Invoice & Receipt</h3>
             <form onsubmit="handleGenerateBill(event)">
                 <div class="form-group">
                     <label>Patient MRN</label>
@@ -430,27 +525,27 @@
                 </div>
                 <div class="form-group">
                     <label>Service Description</label>
-                    <input type="text" id="billService" placeholder="e.g. OPD Consultation + Lab" required>
+                    <input type="text" id="billService" placeholder="e.g. Cardiology OPD + ECG Test" required>
                 </div>
                 <div class="form-group">
-                    <label>Amount (৳)</label>
+                    <label>Total Amount (৳ BDT)</label>
                     <input type="number" id="billAmount" required>
                 </div>
                 <div class="modal-actions">
                     <button type="button" class="btn btn-outline" onclick="closeModal('generateBillModal')">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Generate Invoice</button>
+                    <button type="submit" class="btn btn-primary">Generate & Issue Invoice</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Printable Document Modal -->
+    <!-- Printable Official Document Modal -->
     <div class="modal-overlay" id="printDocumentModal">
-        <div class="modal" style="width: 600px;">
+        <div class="modal" style="width: 580px;">
             <div id="printableArea">
                 <!-- Injected via JS -->
             </div>
-            <div class="modal-actions" style="margin-top:20px;">
+            <div class="modal-actions mt-20">
                 <button type="button" class="btn btn-outline" onclick="closeModal('printDocumentModal')">Close</button>
                 <button type="button" class="btn btn-primary" onclick="triggerPrint()"><i class="fa-solid fa-print"></i> Print Document</button>
             </div>
