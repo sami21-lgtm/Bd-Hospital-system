@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarePulse Enterprise HMS - Complete Healthcare Management System</title>
+    <title>CarePulse Enterprise HMS - Healthcare Management System</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Top Master Navigation Bar -->
+    <!-- Header Navigation Bar -->
     <header class="top-nav">
         <div class="nav-brand">
             <button class="mobile-toggle-btn" onclick="toggleSidebar()">
@@ -25,12 +25,12 @@
             </div>
         </div>
 
-        <!-- Master Stakeholder Session Switcher -->
+        <!-- Role Session Switcher -->
         <div class="session-switcher">
             <i class="fa-solid fa-user-lock"></i>
             <span class="switcher-label">Role:</span>
             <select id="roleSelector" onchange="switchStakeholderSession(this.value)">
-                <option value="admin">⚡ Admin Master (Full Access)</option>
+                <option value="admin">⚡ Admin Master (Full Control)</option>
                 <option value="patient">👤 Patient Portal (Self Care)</option>
                 <option value="doctor">🩺 Doctor Workstation (OPD)</option>
                 <option value="nurse">🏥 Nurse Station (Ward)</option>
@@ -50,7 +50,6 @@
     </header>
 
     <div class="app-body">
-        <!-- Mobile Backdrop overlay -->
         <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
         <!-- Sidebar Navigation Menu -->
@@ -59,7 +58,7 @@
                 <span>NAVIGATION MATRIX</span>
             </div>
             <ul class="sidebar-menu" id="sideMenu">
-                <!-- JS Populates Menu per Role -->
+                <!-- Dynamically Populated by Role -->
             </ul>
             <div class="sidebar-footer">
                 <div class="system-health">
@@ -69,21 +68,20 @@
             </div>
         </aside>
 
-        <!-- Main Workspace Viewport -->
+        <!-- Viewport Main Content -->
         <main class="viewport">
             
-            <!-- Context Banner -->
             <div class="context-banner" id="contextBanner">
                 <i class="fa-solid fa-shield-halved"></i>
                 <span id="contextBannerText">Admin Master Privileges Active.</span>
             </div>
 
-            <!-- ================= VIEW 1: ADMIN MASTER PANEL ================= -->
+            <!-- VIEW 1: ADMIN MASTER PANEL -->
             <section id="view-admin" class="view-panel active">
                 <div class="page-title">
                     <div>
-                        <h2>Admin Master Control Panel</h2>
-                        <p>Hospital-wide staff governance, cabins, billing reports & analytics.</p>
+                        <h2>Admin Control Center</h2>
+                        <p>Hospital staff governance, cabin allocation, and central statistics.</p>
                     </div>
                     <div class="title-actions">
                         <button class="btn btn-primary" onclick="openModal('addDoctorModal')"><i class="fa-solid fa-user-doctor"></i> Add Doctor</button>
@@ -97,7 +95,7 @@
                         <div>
                             <h4>Total Doctors</h4>
                             <p class="m-val" id="adminStatDoctors">12</p>
-                            <small>Across 6 Departments</small>
+                            <small>6 Specializations</small>
                         </div>
                     </div>
                     <div class="metric-card">
@@ -105,7 +103,7 @@
                         <div>
                             <h4>Total Nurses</h4>
                             <p class="m-val" id="adminStatNurses">24</p>
-                            <small>On Duty & Shift Roster</small>
+                            <small>Shift Roster Active</small>
                         </div>
                     </div>
                     <div class="metric-card">
@@ -119,7 +117,7 @@
                     <div class="metric-card">
                         <div class="m-icon orange"><i class="fa-solid fa-sack-dollar"></i></div>
                         <div>
-                            <h4>Total Revenue Today</h4>
+                            <h4>Today's Revenue</h4>
                             <p class="m-val">৳ 4,82,500</p>
                             <small>Accounts Consolidated</small>
                         </div>
@@ -150,48 +148,47 @@
 
                 <div class="card-box">
                     <div class="box-header">
-                        <h3><i class="fa-solid fa-hospital-user"></i> Cabin & Suite Allocation Matrix</h3>
+                        <h3><i class="fa-solid fa-hospital-user"></i> Cabin & Ward Allocation</h3>
                     </div>
                     <div class="cabin-grid" id="adminCabinGrid"></div>
                 </div>
             </section>
 
-            <!-- ================= VIEW 2: DEPARTMENT-WISE DOCTORS & NURSES DIRECTORY ================= -->
+            <!-- VIEW 2: SPECIALIST DIRECTORY -->
             <section id="view-doctors-directory" class="view-panel">
                 <div class="page-title">
                     <div>
                         <h2>Departmental Specialist Directory</h2>
-                        <p>Search doctors & nurses filtered by specialized medical departments.</p>
+                        <p>Search doctors and medical staff by department.</p>
                     </div>
                 </div>
 
                 <div class="department-tabs" id="departmentTabs"></div>
 
                 <div class="section-divider">
-                    <span>SPECIALIST PHYSICIANS & CONSULTANTS</span>
+                    <span>SPECIALIST PHYSICIANS</span>
                 </div>
                 <div class="cards-grid" id="doctorsGrid"></div>
 
                 <div class="section-divider mt-4">
-                    <span>DEPARTMENTAL NURSING STAFF</span>
+                    <span>NURSING STAFF</span>
                 </div>
                 <div class="cards-grid" id="nursesGrid"></div>
             </section>
 
-            <!-- ================= VIEW 3: PATIENT PORTAL (ENHANCED WITH DIRECT DOCTOR LIST) ================= -->
+            <!-- VIEW 3: PATIENT PORTAL -->
             <section id="view-patient" class="view-panel">
                 <div class="page-title">
                     <div>
-                        <h2>Patient Care Portal</h2>
-                        <p>Welcome, Rahim Chowdhury (MRN: BD-2026-9901)</p>
+                        <h2>Patient Dashboard</h2>
+                        <p>Patient: Rahim Chowdhury (MRN: BD-2026-9901)</p>
                     </div>
-                    <button class="btn btn-primary" onclick="openModal('bookAppointmentModal')"><i class="fa-solid fa-calendar-plus"></i> Quick Appointment</button>
+                    <button class="btn btn-primary" onclick="openModal('bookAppointmentModal')"><i class="fa-solid fa-calendar-plus"></i> Book Appointment</button>
                 </div>
 
-                <!-- DIRECT DOCTORS LIST INSIDE PATIENT PORTAL -->
                 <div class="card-box mb-4">
                     <div class="box-header">
-                        <h3><i class="fa-solid fa-user-doctor"></i> Find & Book Specialist Doctors</h3>
+                        <h3><i class="fa-solid fa-user-doctor"></i> Available Specialists</h3>
                     </div>
                     <div class="department-tabs" id="patientDeptTabs"></div>
                     <div class="cards-grid mt-4" id="patientDoctorsGrid"></div>
@@ -200,7 +197,7 @@
                 <div class="grid-2col mb-4">
                     <div class="card-box">
                         <div class="box-header">
-                            <h3><i class="fa-solid fa-receipt"></i> My Invoices & Payments</h3>
+                            <h3><i class="fa-solid fa-receipt"></i> Invoices & Billing</h3>
                         </div>
                         <div class="table-responsive">
                             <table class="data-table">
@@ -210,7 +207,7 @@
                                         <th>Service</th>
                                         <th>Amount</th>
                                         <th>Status</th>
-                                        <th>Print</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody id="patientInvoiceTable"></tbody>
@@ -220,7 +217,7 @@
 
                     <div class="card-box">
                         <div class="box-header">
-                            <h3><i class="fa-solid fa-vials"></i> My Diagnostic Lab Reports</h3>
+                            <h3><i class="fa-solid fa-vials"></i> Diagnostic Reports</h3>
                         </div>
                         <div class="table-responsive">
                             <table class="data-table">
@@ -230,7 +227,7 @@
                                         <th>Test Name</th>
                                         <th>Date</th>
                                         <th>Status</th>
-                                        <th>Print</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody id="patientReportTable"></tbody>
@@ -241,13 +238,13 @@
 
                 <div class="card-box">
                     <div class="box-header">
-                        <h3><i class="fa-solid fa-bed"></i> Book Hospital Cabin / Bed</h3>
+                        <h3><i class="fa-solid fa-bed"></i> Cabin & Bed Availability</h3>
                     </div>
                     <div class="cabin-grid" id="patientCabinGrid"></div>
                 </div>
             </section>
 
-            <!-- ================= VIEW 4: DOCTOR WORKSTATION ================= -->
+            <!-- VIEW 4: DOCTOR WORKSTATION -->
             <section id="view-doctor" class="view-panel">
                 <div class="page-title">
                     <div>
@@ -262,7 +259,7 @@
 
                 <div class="card-box">
                     <div class="box-header">
-                        <h3>Today's Patient OPD Queue</h3>
+                        <h3>Today's Patient Queue</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="data-table">
@@ -283,7 +280,7 @@
                                     <td>Rahim Chowdhury</td>
                                     <td>45 / Male</td>
                                     <td>BP: 120/80 | HR: 72 bpm</td>
-                                    <td><button class="btn btn-primary btn-sm">Start Consult</button></td>
+                                    <td><button class="btn btn-primary btn-sm">Start Consultation</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -291,12 +288,12 @@
                 </div>
             </section>
 
-            <!-- ================= VIEW 5: NURSE WORKSTATION ================= -->
+            <!-- VIEW 5: NURSE WORKSTATION -->
             <section id="view-nurse" class="view-panel">
                 <div class="page-title">
                     <div>
                         <h2>Nursing Duty Panel</h2>
-                        <p>Nurse Salma Khatun - ICU Duty</p>
+                        <p>Nurse Salma Khatun - ICU Ward</p>
                     </div>
                     <div class="title-actions">
                         <button class="btn btn-outline" id="nurseCheckInBtn" onclick="toggleNurseAttendance()"><i class="fa-solid fa-clock"></i> Check-In Shift</button>
@@ -306,17 +303,17 @@
 
                 <div class="card-box">
                     <div class="box-header">
-                        <h3>Inpatient Vitals Management</h3>
+                        <h3>Inpatient Ward Status</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="data-table">
                             <thead>
                                 <tr>
-                                    <th>Bed/Cabin</th>
+                                    <th>Bed / Cabin</th>
                                     <th>Patient Name</th>
                                     <th>MRN</th>
-                                    <th>BP / HR</th>
-                                    <th>Next Medication</th>
+                                    <th>Vitals</th>
+                                    <th>Schedule</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -326,7 +323,7 @@
                                     <td>Kabir Hossain</td>
                                     <td>BD-2026-8812</td>
                                     <td>130/85 BP | 78 bpm</td>
-                                    <td>2:00 PM - Antibiotic</td>
+                                    <td>2:00 PM - Antibiotic Dose</td>
                                     <td><button class="btn btn-primary btn-sm">Update Vitals</button></td>
                                 </tr>
                             </tbody>
@@ -335,19 +332,19 @@
                 </div>
             </section>
 
-            <!-- ================= VIEW 6: ACCOUNTS & BILLING ================= -->
+            <!-- VIEW 6: ACCOUNTS & BILLING -->
             <section id="view-accounts" class="view-panel">
                 <div class="page-title">
                     <div>
-                        <h2>Accounts & Billing Ledger</h2>
-                        <p>Generate patient invoices & process reports.</p>
+                        <h2>Accounts Ledger</h2>
+                        <p>Generate invoices and manage patient billing transactions.</p>
                     </div>
-                    <button class="btn btn-primary" onclick="openModal('generateBillModal')"><i class="fa-solid fa-plus-circle"></i> Generate Bill</button>
+                    <button class="btn btn-primary" onclick="openModal('generateBillModal')"><i class="fa-solid fa-plus-circle"></i> Create Invoice</button>
                 </div>
 
                 <div class="card-box">
                     <div class="box-header">
-                        <h3>All Issued Hospital Bills</h3>
+                        <h3>Issued Hospital Invoices</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="data-table">
@@ -356,10 +353,10 @@
                                     <th>Invoice #</th>
                                     <th>Patient Name</th>
                                     <th>MRN</th>
-                                    <th>Total Amount</th>
+                                    <th>Amount</th>
                                     <th>Payment Method</th>
                                     <th>Status</th>
-                                    <th>Print Invoice</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="accountsInvoiceTable"></tbody>
@@ -368,18 +365,18 @@
                 </div>
             </section>
 
-            <!-- ================= VIEW 7: LABORATORY ================= -->
+            <!-- VIEW 7: LABORATORY DIAGNOSTICS -->
             <section id="view-labtech" class="view-panel">
                 <div class="page-title">
                     <div>
                         <h2>Laboratory Diagnostics</h2>
-                        <p>Upload diagnostic lab reports.</p>
+                        <p>Process pending diagnostic orders and upload test results.</p>
                     </div>
                 </div>
 
                 <div class="card-box">
                     <div class="box-header">
-                        <h3>Diagnostic Orders Pending Upload</h3>
+                        <h3>Pending Diagnostic Orders</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="data-table">
@@ -388,9 +385,9 @@
                                     <th>Sample ID</th>
                                     <th>Patient Name</th>
                                     <th>Test Requested</th>
-                                    <th>Ordered By</th>
+                                    <th>Prescribed By</th>
                                     <th>Status</th>
-                                    <th>Upload</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="labTechTable">
@@ -400,7 +397,7 @@
                                     <td>Lipid Profile</td>
                                     <td>Dr. Farhana Ahmed</td>
                                     <td><span class="status-tag warning">Pending</span></td>
-                                    <td><button class="btn btn-primary btn-sm">Upload Result</button></td>
+                                    <td><button class="btn btn-primary btn-sm">Upload Results</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -411,13 +408,13 @@
         </main>
     </div>
 
-    <!-- ================= MODALS SECTION ================= -->
-
+    <!-- MODALS -->
+    
     <!-- Add Doctor Modal -->
     <div class="modal-backdrop" id="addDoctorModal">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>Add New Specialist Doctor</h3>
+                <h3>Add Specialist Doctor</h3>
                 <span class="close-btn" onclick="closeModal('addDoctorModal')">&times;</span>
             </div>
             <form id="addDoctorForm" onsubmit="handleAddDoctor(event)">
@@ -445,7 +442,7 @@
                     <input type="number" id="docFee" required placeholder="1200">
                 </div>
                 <div class="form-group">
-                    <label>Photo URL</label>
+                    <label>Profile Image URL</label>
                     <input type="url" id="docPhoto" required placeholder="https://images.unsplash.com/...">
                 </div>
                 <div class="modal-actions">
@@ -460,7 +457,7 @@
     <div class="modal-backdrop" id="addNurseModal">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>Add New Nurse Profile</h3>
+                <h3>Add Nurse Profile</h3>
                 <span class="close-btn" onclick="closeModal('addNurseModal')">&times;</span>
             </div>
             <form id="addNurseForm" onsubmit="handleAddNurse(event)">
@@ -469,7 +466,7 @@
                     <input type="text" id="nurseName" required placeholder="Nurse Name">
                 </div>
                 <div class="form-group">
-                    <label>Assigned Department</label>
+                    <label>Department</label>
                     <select id="nurseDept" required>
                         <option value="Cardiology">Cardiology</option>
                         <option value="Neurology">Neurology</option>
@@ -487,7 +484,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Photo URL</label>
+                    <label>Profile Image URL</label>
                     <input type="url" id="nursePhoto" required placeholder="https://images.unsplash.com/...">
                 </div>
                 <div class="modal-actions">
@@ -502,16 +499,16 @@
     <div class="modal-backdrop" id="applyLeaveModal">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>Submit Staff Leave Application</h3>
+                <h3>Submit Leave Application</h3>
                 <span class="close-btn" onclick="closeModal('applyLeaveModal')">&times;</span>
             </div>
             <form id="leaveForm" onsubmit="handleLeaveSubmit(event)">
                 <div class="form-group">
-                    <label>Leave Dates (Range)</label>
+                    <label>Leave Period</label>
                     <input type="text" id="leaveDates" required placeholder="e.g. 01 Sept - 05 Sept">
                 </div>
                 <div class="form-group">
-                    <label>Reason for Leave</label>
+                    <label>Reason</label>
                     <textarea id="leaveReason" rows="3" required placeholder="Medical emergency..."></textarea>
                 </div>
                 <div class="modal-actions">
@@ -526,16 +523,16 @@
     <div class="modal-backdrop" id="bookAppointmentModal">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>Book Specialist Appointment</h3>
+                <h3>Book Appointment</h3>
                 <span class="close-btn" onclick="closeModal('bookAppointmentModal')">&times;</span>
             </div>
             <form id="appointmentForm" onsubmit="handleBookAppointment(event)">
                 <div class="form-group">
-                    <label>Select Specialist Doctor</label>
+                    <label>Select Doctor</label>
                     <select id="appDoctorSelect" required></select>
                 </div>
                 <div class="form-group">
-                    <label>Preferred Date</label>
+                    <label>Date</label>
                     <input type="date" id="appDate" required>
                 </div>
                 <div class="modal-actions">
@@ -550,7 +547,7 @@
     <div class="modal-backdrop" id="generateBillModal">
         <div class="modal-box">
             <div class="modal-header">
-                <h3>Generate Patient Invoice</h3>
+                <h3>Generate Invoice</h3>
                 <span class="close-btn" onclick="closeModal('generateBillModal')">&times;</span>
             </div>
             <form id="billForm" onsubmit="handleGenerateBill(event)">
@@ -563,16 +560,16 @@
                     <input type="text" id="billName" required value="Rahim Chowdhury">
                 </div>
                 <div class="form-group">
-                    <label>Service Description</label>
+                    <label>Service</label>
                     <input type="text" id="billService" required placeholder="Consultation + ECG">
                 </div>
                 <div class="form-group">
-                    <label>Total Amount (BDT)</label>
+                    <label>Amount (BDT)</label>
                     <input type="number" id="billAmount" required placeholder="2500">
                 </div>
                 <div class="modal-actions">
                     <button type="button" class="btn btn-secondary" onclick="closeModal('generateBillModal')">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Generate Bill</button>
+                    <button type="submit" class="btn btn-primary">Generate Invoice</button>
                 </div>
             </form>
         </div>
@@ -582,8 +579,8 @@
     <div class="modal-backdrop" id="printDocumentModal">
         <div class="modal-box print-box">
             <div class="modal-header no-print">
-                <h3>Printable Hospital Document</h3>
-                <button class="btn btn-primary btn-sm" onclick="triggerPrint()"><i class="fa-solid fa-print"></i> Print Document</button>
+                <h3>Printable Document</h3>
+                <button class="btn btn-primary btn-sm" onclick="triggerPrint()"><i class="fa-solid fa-print"></i> Print</button>
                 <span class="close-btn" onclick="closeModal('printDocumentModal')">&times;</span>
             </div>
             <div class="printable-area" id="printableArea"></div>
