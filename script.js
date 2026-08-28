@@ -4,7 +4,7 @@
 const DB = {
   users: [
     // Admin
-    { id: "admin@hospital.com", alias: "admin", pass: "admin123", name: "System Administrator", role: "admin", roleTitle: "System Administrator", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" },
+    { id: "admin@hospital.com", alias: "admin", pass: "admin123", name: "Md. Emtiaz Hossian Sami", role: "admin", roleTitle: "System Administrator", avatar: "Md. EmTIAZ hOSSAIN sAMI LOGO.png" },
     
     // Doctor 1
     { id: "doctor@hospital.com", alias: "doctor1", pass: "doctor123", name: "Prof. Dr. Syed Shamsul Huda", role: "doctor", roleTitle: "Specialist Doctor (Cardiology)", avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80" },
