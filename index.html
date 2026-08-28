@@ -3,166 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarePulse Enterprise HMS - BD Specialized Platform</title>
+    <title>CarePulse Enterprise HMS - Complete Healthcare Management System</title>
     <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome Icons & Inter Font -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Top Navigation Bar -->
-    <header class="navbar">
-        <div class="nav-left">
-            <button class="mobile-toggle" id="mobileToggle" onclick="toggleSidebar()">
-                <i class="fa-solid fa-bars"></i>
+    <!-- Top Master Navigation Bar -->
+    <header class="top-nav">
+        <div class="nav-brand">
+            <button class="mobile-toggle-btn" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars-staggered"></i>
             </button>
             <div class="brand-logo">
-                <i class="fa-solid fa-square-h logo-icon"></i>
-                <div class="logo-text">
-                    <span class="brand-name">CAREPULSE</span>
-                    <span class="brand-tag">SPECIALIZED HOSPITAL</span>
+                <i class="fa-solid fa-hospital"></i>
+                <div>
+                    <span class="logo-title">CAREPULSE</span>
+                    <span class="logo-subtitle">SPECIALIZED HMS & RESEARCH</span>
                 </div>
             </div>
         </div>
 
-        <!-- Master Stakeholder Switcher (Simulating Live Session) -->
-        <div class="role-switcher-container">
-            <i class="fa-solid fa-user-gear switch-icon"></i>
-            <select id="masterRoleSelect" onchange="switchStakeholderRole(this.value)">
-                <option value="patient">👤 Patient View (Strict Isolation)</option>
-                <option value="doctor">🩺 Doctor View (OPD & EHR)</option>
-                <option value="nurse">🏥 Nurse View (Ward Matrix)</option>
-                <option value="admin" selected>⚡ Admin Master Control (Full Access)</option>
+        <!-- Master Stakeholder Session Switcher -->
+        <div class="session-switcher">
+            <i class="fa-solid fa-user-lock"></i>
+            <span class="switcher-label">Role:</span>
+            <select id="roleSelector" onchange="switchStakeholderSession(this.value)">
+                <option value="admin">⚡ Admin Master (Full Access)</option>
+                <option value="patient">👤 Patient Portal (Self Care)</option>
+                <option value="doctor">🩺 Doctor Workstation (OPD)</option>
+                <option value="nurse">🏥 Nurse Station (Ward)</option>
+                <option value="accounts">💳 Accounts & Billing</option>
+                <option value="labtech">🔬 Laboratory Technician</option>
+                <option value="pharmacist">💊 Pharmacist & Stock</option>
             </select>
         </div>
 
-        <div class="user-profile-widget">
-            <div class="profile-info">
-                <span id="activeUserName" class="user-title">Md. Emtiaz Hossain</span>
-                <span id="activeUserRole" class="user-role-badge">System Administrator</span>
+        <div class="user-profile">
+            <div class="user-meta">
+                <span id="navUserName" class="user-name">Md. Emtiaz Hossain</span>
+                <span id="navUserRole" class="user-role">System Administrator</span>
             </div>
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="user-avatar" id="userAvatar">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" id="navUserAvatar" class="avatar">
         </div>
     </header>
 
-    <div class="main-layout">
-        <!-- Sidebar Menu Navigation -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <span class="nav-label">MAIN NAVIGATION</span>
-            </div>
-            <ul class="nav-menu" id="dynamicNavMenu">
-                <!-- JS Inject Links based on Role -->
-            </ul>
+    <div class="app-body">
+        <!-- Mobile Backdrop overlay -->
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
+        <!-- Sidebar Navigation Menu -->
+        <aside class="sidebar" id="sidebarNav">
+            <div class="sidebar-header">
+                <span>NAVIGATION MATRIX</span>
+            </div>
+            <ul class="sidebar-menu" id="sideMenu">
+                <!-- JS Populates Menu per Role -->
+            </ul>
             <div class="sidebar-footer">
-                <div class="system-status">
-                    <span class="status-indicator online"></span>
-                    <span>Server: Dhaka-Central-01</span>
+                <div class="system-health">
+                    <span class="pulse-dot"></span>
+                    <span>System Online v4.2</span>
                 </div>
             </div>
         </aside>
 
-        <!-- Main Dynamic Workspace -->
-        <main class="content-workspace">
-
-            <!-- Security & RBAC Status Banner -->
-            <div class="rbac-banner" id="rbacBanner">
+        <!-- Main Workspace Viewport -->
+        <main class="viewport">
+            
+            <!-- Context Banner -->
+            <div class="context-banner" id="contextBanner">
                 <i class="fa-solid fa-shield-halved"></i>
-                <span id="rbacBannerText">Admin Master Override Active: You hold unrestricted system privileges across all modules.</span>
+                <span id="contextBannerText">Admin Master Privileges Active.</span>
             </div>
 
-            <!-- VIEW 1: PATIENT PORTAL (Strict Access Isolation) -->
-            <section id="view-patient" class="portal-section">
-                <div class="section-title">
-                    <h2><i class="fa-solid fa-hospital-user"></i> Patient Health Dashboard</h2>
-                    <span class="mrn-badge">MRN: BD-2026-88910</span>
-                </div>
-
-                <div class="grid-cards">
-                    <div class="glass-card stat-card">
-                        <div class="card-icon cyan"><i class="fa-solid fa-heart-pulse"></i></div>
-                        <div class="card-data">
-                            <h4>Latest Vitals</h4>
-                            <p class="main-val">120/80 <small>mmHg</small></p>
-                            <span class="sub-text">Heart Rate: 74 bpm</span>
-                        </div>
+            <!-- ================= VIEW 1: ADMIN MASTER PANEL ================= -->
+            <section id="view-admin" class="view-panel active">
+                <div class="page-title">
+                    <div>
+                        <h2>Admin Master Control Panel</h2>
+                        <p>Hospital-wide staff governance, cabins, billing reports & analytics.</p>
                     </div>
-                    <div class="glass-card stat-card">
-                        <div class="card-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
-                        <div class="card-data">
-                            <h4>Next Appointment</h4>
-                            <p class="main-val">Tomorrow</p>
-                            <span class="sub-text">Dr. A. Rahman (Cardiology)</span>
-                        </div>
-                    </div>
-                    <div class="glass-card stat-card">
-                        <div class="card-icon orange"><i class="fa-solid fa-file-invoice-dollar"></i></div>
-                        <div class="card-data">
-                            <h4>Pending Invoice</h4>
-                            <p class="main-val">৳ 1,800</p>
-                            <span class="sub-text">Lab Test (CBC & ECG)</span>
-                        </div>
+                    <div class="title-actions">
+                        <button class="btn btn-primary" onclick="openModal('addDoctorModal')"><i class="fa-solid fa-user-doctor"></i> Add Doctor</button>
+                        <button class="btn btn-secondary" onclick="openModal('addNurseModal')"><i class="fa-solid fa-user-nurse"></i> Add Nurse</button>
                     </div>
                 </div>
 
-                <div class="glass-card content-card">
-                    <h3><i class="fa-solid fa-clock-rotate-left"></i> My Personal Medical Records</h3>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="m-icon cyan"><i class="fa-solid fa-user-doctor"></i></div>
+                        <div>
+                            <h4>Total Doctors</h4>
+                            <p class="m-val" id="adminStatDoctors">12</p>
+                            <small>Across 6 Departments</small>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="m-icon blue"><i class="fa-solid fa-user-nurse"></i></div>
+                        <div>
+                            <h4>Total Nurses</h4>
+                            <p class="m-val" id="adminStatNurses">24</p>
+                            <small>On Duty & Shift Roster</small>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="m-icon green"><i class="fa-solid fa-bed"></i></div>
+                        <div>
+                            <h4>Cabin Occupancy</h4>
+                            <p class="m-val" id="adminStatCabins">14 / 20</p>
+                            <small>VIP & Deluxe Units</small>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="m-icon orange"><i class="fa-solid fa-sack-dollar"></i></div>
+                        <div>
+                            <h4>Total Revenue Today</h4>
+                            <p class="m-val">৳ 4,82,500</p>
+                            <small>Accounts Consolidated</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-box mb-4">
+                    <div class="box-header">
+                        <h3><i class="fa-solid fa-envelope-open-text"></i> Pending Staff Leave Requests</h3>
+                    </div>
                     <div class="table-responsive">
-                        <table class="custom-table">
+                        <table class="data-table">
                             <thead>
                                 <tr>
-                                    <th>Date</th>
-                                    <th>Doctor</th>
-                                    <th>Diagnosis</th>
-                                    <th>Prescription</th>
-                                    <th>Lab Result</th>
+                                    <th>Staff ID</th>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Department</th>
+                                    <th>Leave Dates</th>
+                                    <th>Reason</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>28 Aug 2026</td>
-                                    <td>Dr. Farhana Ahmed</td>
-                                    <td>Seasonal Allergy</td>
-                                    <td><button class="btn btn-outline btn-sm"><i class="fa-solid fa-download"></i> Rx.pdf</button></td>
-                                    <td><span class="badge-status success">Ready</span></td>
-                                </tr>
-                            </tbody>
+                            <tbody id="adminLeaveTable"></tbody>
                         </table>
                     </div>
                 </div>
+
+                <div class="card-box">
+                    <div class="box-header">
+                        <h3><i class="fa-solid fa-hospital-user"></i> Cabin & Suite Allocation Matrix</h3>
+                    </div>
+                    <div class="cabin-grid" id="adminCabinGrid"></div>
+                </div>
             </section>
 
-            <!-- VIEW 2: DOCTOR PORTAL -->
-            <section id="view-doctor" class="portal-section">
-                <div class="section-title">
-                    <h2><i class="fa-solid fa-user-md"></i> Physician OPD Console</h2>
-                    <span class="dept-badge">Cardiology OPD</span>
+            <!-- ================= VIEW 2: DEPARTMENT-WISE DOCTORS & NURSES DIRECTORY ================= -->
+            <section id="view-doctors-directory" class="view-panel">
+                <div class="page-title">
+                    <div>
+                        <h2>Departmental Specialist Directory</h2>
+                        <p>Search doctors & nurses filtered by specialized medical departments.</p>
+                    </div>
                 </div>
 
-                <div class="glass-card content-card">
-                    <h3>Today's Patient Queue</h3>
+                <div class="department-tabs" id="departmentTabs"></div>
+
+                <div class="section-divider">
+                    <span>SPECIALIST PHYSICIANS & CONSULTANTS</span>
+                </div>
+                <div class="cards-grid" id="doctorsGrid"></div>
+
+                <div class="section-divider mt-4">
+                    <span>DEPARTMENTAL NURSING STAFF</span>
+                </div>
+                <div class="cards-grid" id="nursesGrid"></div>
+            </section>
+
+            <!-- ================= VIEW 3: PATIENT PORTAL (ENHANCED WITH DIRECT DOCTOR LIST) ================= -->
+            <section id="view-patient" class="view-panel">
+                <div class="page-title">
+                    <div>
+                        <h2>Patient Care Portal</h2>
+                        <p>Welcome, Rahim Chowdhury (MRN: BD-2026-9901)</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('bookAppointmentModal')"><i class="fa-solid fa-calendar-plus"></i> Quick Appointment</button>
+                </div>
+
+                <!-- DIRECT DOCTORS LIST INSIDE PATIENT PORTAL -->
+                <div class="card-box mb-4">
+                    <div class="box-header">
+                        <h3><i class="fa-solid fa-user-doctor"></i> Find & Book Specialist Doctors</h3>
+                    </div>
+                    <div class="department-tabs" id="patientDeptTabs"></div>
+                    <div class="cards-grid mt-4" id="patientDoctorsGrid"></div>
+                </div>
+
+                <div class="grid-2col mb-4">
+                    <div class="card-box">
+                        <div class="box-header">
+                            <h3><i class="fa-solid fa-receipt"></i> My Invoices & Payments</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Invoice #</th>
+                                        <th>Service</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Print</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="patientInvoiceTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card-box">
+                        <div class="box-header">
+                            <h3><i class="fa-solid fa-vials"></i> My Diagnostic Lab Reports</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Report ID</th>
+                                        <th>Test Name</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+                                        <th>Print</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="patientReportTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-box">
+                    <div class="box-header">
+                        <h3><i class="fa-solid fa-bed"></i> Book Hospital Cabin / Bed</h3>
+                    </div>
+                    <div class="cabin-grid" id="patientCabinGrid"></div>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 4: DOCTOR WORKSTATION ================= -->
+            <section id="view-doctor" class="view-panel">
+                <div class="page-title">
+                    <div>
+                        <h2>Doctor Consultation Console</h2>
+                        <p>Dr. Farhana Ahmed - Cardiology OPD</p>
+                    </div>
+                    <div class="title-actions">
+                        <button class="btn btn-outline" id="docCheckInBtn" onclick="toggleDoctorAttendance()"><i class="fa-solid fa-clock"></i> Check-In Duty</button>
+                        <button class="btn btn-secondary" onclick="openModal('applyLeaveModal')"><i class="fa-solid fa-paper-plane"></i> Apply Leave</button>
+                    </div>
+                </div>
+
+                <div class="card-box">
+                    <div class="box-header">
+                        <h3>Today's Patient OPD Queue</h3>
+                    </div>
                     <div class="table-responsive">
-                        <table class="custom-table">
+                        <table class="data-table">
                             <thead>
                                 <tr>
                                     <th>Token</th>
                                     <th>MRN</th>
                                     <th>Patient Name</th>
-                                    <th>Age/Gender</th>
-                                    <th>Status</th>
+                                    <th>Age / Gender</th>
+                                    <th>Vitals</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="doctorQueueTable">
                                 <tr>
-                                    <td>#01</td>
-                                    <td>BD-2026-88910</td>
+                                    <td><strong>#01</strong></td>
+                                    <td>BD-2026-9901</td>
                                     <td>Rahim Chowdhury</td>
-                                    <td>45y / Male</td>
-                                    <td><span class="badge-status warning">Waiting</span></td>
-                                    <td><button class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i> Prescribe</button></td>
+                                    <td>45 / Male</td>
+                                    <td>BP: 120/80 | HR: 72 bpm</td>
+                                    <td><button class="btn btn-primary btn-sm">Start Consult</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -170,107 +291,116 @@
                 </div>
             </section>
 
-            <!-- VIEW 3: NURSE PORTAL (Ward & Bed Matrix) -->
-            <section id="view-nurse" class="portal-section">
-                <div class="section-title">
-                    <h2><i class="fa-solid fa-bed-pulse"></i> Ward & Inpatient Management</h2>
-                    <span class="dept-badge">ICU & CCU Unit</span>
+            <!-- ================= VIEW 5: NURSE WORKSTATION ================= -->
+            <section id="view-nurse" class="view-panel">
+                <div class="page-title">
+                    <div>
+                        <h2>Nursing Duty Panel</h2>
+                        <p>Nurse Salma Khatun - ICU Duty</p>
+                    </div>
+                    <div class="title-actions">
+                        <button class="btn btn-outline" id="nurseCheckInBtn" onclick="toggleNurseAttendance()"><i class="fa-solid fa-clock"></i> Check-In Shift</button>
+                        <button class="btn btn-secondary" onclick="openModal('applyLeaveModal')"><i class="fa-solid fa-paper-plane"></i> Request Leave</button>
+                    </div>
                 </div>
 
-                <div class="bed-matrix">
-                    <div class="bed-card occupied">
-                        <div class="bed-header"><span>Bed 101 (ICU)</span> <i class="fa-solid fa-user"></i></div>
-                        <p class="patient-name">Kamrul Hasan</p>
-                        <small>MRN: BD-9921</small>
+                <div class="card-box">
+                    <div class="box-header">
+                        <h3>Inpatient Vitals Management</h3>
                     </div>
-                    <div class="bed-card vacant">
-                        <div class="bed-header"><span>Bed 102 (ICU)</span> <i class="fa-solid fa-check"></i></div>
-                        <p class="patient-name">Vacant & Cleaned</p>
-                        <button class="btn btn-sm btn-outline">Assign Patient</button>
-                    </div>
-                    <div class="bed-card occupied">
-                        <div class="bed-header"><span>Bed 103 (ICU)</span> <i class="fa-solid fa-user"></i></div>
-                        <p class="patient-name">Nusrat Jahan</p>
-                        <small>MRN: BD-3341</small>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Bed/Cabin</th>
+                                    <th>Patient Name</th>
+                                    <th>MRN</th>
+                                    <th>BP / HR</th>
+                                    <th>Next Medication</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="nurseWardTable">
+                                <tr>
+                                    <td>VIP-Cabin 501</td>
+                                    <td>Kabir Hossain</td>
+                                    <td>BD-2026-8812</td>
+                                    <td>130/85 BP | 78 bpm</td>
+                                    <td>2:00 PM - Antibiotic</td>
+                                    <td><button class="btn btn-primary btn-sm">Update Vitals</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </section>
 
-            <!-- VIEW 4: ADMIN MASTER CONTROL PANEL (Global Override) -->
-            <section id="view-admin" class="portal-section active-section">
-                <div class="section-title">
-                    <h2><i class="fa-solid fa-sliders"></i> Master System Control Center</h2>
-                    <span class="badge-status danger">Full System Control</span>
+            <!-- ================= VIEW 6: ACCOUNTS & BILLING ================= -->
+            <section id="view-accounts" class="view-panel">
+                <div class="page-title">
+                    <div>
+                        <h2>Accounts & Billing Ledger</h2>
+                        <p>Generate patient invoices & process reports.</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="openModal('generateBillModal')"><i class="fa-solid fa-plus-circle"></i> Generate Bill</button>
                 </div>
 
-                <div class="grid-cards">
-                    <div class="glass-card stat-card">
-                        <div class="card-icon cyan"><i class="fa-solid fa-hospital-user"></i></div>
-                        <div class="card-data">
-                            <h4>Total Active Users</h4>
-                            <p class="main-val">2,840</p>
-                            <span class="sub-text">Patients, Staff & Admin</span>
-                        </div>
+                <div class="card-box">
+                    <div class="box-header">
+                        <h3>All Issued Hospital Bills</h3>
                     </div>
-                    <div class="glass-card stat-card">
-                        <div class="card-icon blue"><i class="fa-solid fa-vault"></i></div>
-                        <div class="card-data">
-                            <h4>Daily Revenue</h4>
-                            <p class="main-val">৳ 6,45,000</p>
-                            <span class="sub-text">Integrated Gateways</span>
-                        </div>
-                    </div>
-                    <div class="glass-card stat-card">
-                        <div class="card-icon green"><i class="fa-solid fa-microchip"></i></div>
-                        <div class="card-data">
-                            <h4>System Health</h4>
-                            <p class="main-val">99.98%</p>
-                            <span class="sub-text">All Services Online</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-card content-card">
-                    <h3><i class="fa-solid fa-users-gear"></i> Stakeholder Role & Permission Matrix (Admin Override)</h3>
                     <div class="table-responsive">
-                        <table class="custom-table">
+                        <table class="data-table">
                             <thead>
                                 <tr>
-                                    <th>User Role</th>
-                                    <th>Access Scope</th>
-                                    <th>Patient Data View</th>
-                                    <th>Billing & System Rights</th>
+                                    <th>Invoice #</th>
+                                    <th>Patient Name</th>
+                                    <th>MRN</th>
+                                    <th>Total Amount</th>
+                                    <th>Payment Method</th>
                                     <th>Status</th>
+                                    <th>Print Invoice</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="accountsInvoiceTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= VIEW 7: LABORATORY ================= -->
+            <section id="view-labtech" class="view-panel">
+                <div class="page-title">
+                    <div>
+                        <h2>Laboratory Diagnostics</h2>
+                        <p>Upload diagnostic lab reports.</p>
+                    </div>
+                </div>
+
+                <div class="card-box">
+                    <div class="box-header">
+                        <h3>Diagnostic Orders Pending Upload</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
                                 <tr>
-                                    <td><strong>Patient</strong></td>
-                                    <td>Self Portal Only</td>
-                                    <td><span class="badge-status success">Isolated (Own Record)</span></td>
-                                    <td>Read-only Bills & Payment</td>
-                                    <td><span class="badge-status success">Restricted</span></td>
+                                    <th>Sample ID</th>
+                                    <th>Patient Name</th>
+                                    <th>Test Requested</th>
+                                    <th>Ordered By</th>
+                                    <th>Status</th>
+                                    <th>Upload</th>
                                 </tr>
+                            </thead>
+                            <tbody id="labTechTable">
                                 <tr>
-                                    <td><strong>Doctor / Physician</strong></td>
-                                    <td>OPD, Queue & EHR</td>
-                                    <td>Assigned Patients Only</td>
-                                    <td>Prescription Rights</td>
-                                    <td><span class="badge-status success">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Nurse</strong></td>
-                                    <td>Ward & Vitals Matrix</td>
-                                    <td>Ward Inpatients</td>
-                                    <td>Vitals Log Rights</td>
-                                    <td><span class="badge-status success">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>System Admin</strong></td>
-                                    <td>Global Master Control</td>
-                                    <td><span class="badge-status danger">Unrestricted Master View</span></td>
-                                    <td>Full Finance & User Control</td>
-                                    <td><span class="badge-status danger">Full Access</span></td>
+                                    <td>SPL-9011</td>
+                                    <td>Rahim Chowdhury</td>
+                                    <td>Lipid Profile</td>
+                                    <td>Dr. Farhana Ahmed</td>
+                                    <td><span class="status-tag warning">Pending</span></td>
+                                    <td><button class="btn btn-primary btn-sm">Upload Result</button></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -279,6 +409,185 @@
             </section>
 
         </main>
+    </div>
+
+    <!-- ================= MODALS SECTION ================= -->
+
+    <!-- Add Doctor Modal -->
+    <div class="modal-backdrop" id="addDoctorModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Add New Specialist Doctor</h3>
+                <span class="close-btn" onclick="closeModal('addDoctorModal')">&times;</span>
+            </div>
+            <form id="addDoctorForm" onsubmit="handleAddDoctor(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="docName" required placeholder="Dr. Firstname Lastname">
+                </div>
+                <div class="form-group">
+                    <label>Department</label>
+                    <select id="docDept" required>
+                        <option value="Cardiology">Cardiology</option>
+                        <option value="Neurology">Neurology</option>
+                        <option value="Orthopedics">Orthopedics</option>
+                        <option value="Pediatrics">Pediatrics</option>
+                        <option value="Gynecology">Gynecology</option>
+                        <option value="ICU & Critical Care">ICU & Critical Care</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Qualifications</label>
+                    <input type="text" id="docDegrees" required placeholder="MBBS, FCPS, MD">
+                </div>
+                <div class="form-group">
+                    <label>Consultation Fee (BDT)</label>
+                    <input type="number" id="docFee" required placeholder="1200">
+                </div>
+                <div class="form-group">
+                    <label>Photo URL</label>
+                    <input type="url" id="docPhoto" required placeholder="https://images.unsplash.com/...">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('addDoctorModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Nurse Modal -->
+    <div class="modal-backdrop" id="addNurseModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Add New Nurse Profile</h3>
+                <span class="close-btn" onclick="closeModal('addNurseModal')">&times;</span>
+            </div>
+            <form id="addNurseForm" onsubmit="handleAddNurse(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="nurseName" required placeholder="Nurse Name">
+                </div>
+                <div class="form-group">
+                    <label>Assigned Department</label>
+                    <select id="nurseDept" required>
+                        <option value="Cardiology">Cardiology</option>
+                        <option value="Neurology">Neurology</option>
+                        <option value="Orthopedics">Orthopedics</option>
+                        <option value="Pediatrics">Pediatrics</option>
+                        <option value="ICU & Critical Care">ICU & Critical Care</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Shift Roster</label>
+                    <select id="nurseShift">
+                        <option value="Morning Shift (8AM - 4PM)">Morning Shift (8AM - 4PM)</option>
+                        <option value="Evening Shift (4PM - 12AM)">Evening Shift (4PM - 12AM)</option>
+                        <option value="Night Shift (12AM - 8AM)">Night Shift (12AM - 8AM)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Photo URL</label>
+                    <input type="url" id="nursePhoto" required placeholder="https://images.unsplash.com/...">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('addNurseModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Apply Leave Modal -->
+    <div class="modal-backdrop" id="applyLeaveModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Submit Staff Leave Application</h3>
+                <span class="close-btn" onclick="closeModal('applyLeaveModal')">&times;</span>
+            </div>
+            <form id="leaveForm" onsubmit="handleLeaveSubmit(event)">
+                <div class="form-group">
+                    <label>Leave Dates (Range)</label>
+                    <input type="text" id="leaveDates" required placeholder="e.g. 01 Sept - 05 Sept">
+                </div>
+                <div class="form-group">
+                    <label>Reason for Leave</label>
+                    <textarea id="leaveReason" rows="3" required placeholder="Medical emergency..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('applyLeaveModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Book Appointment Modal -->
+    <div class="modal-backdrop" id="bookAppointmentModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Book Specialist Appointment</h3>
+                <span class="close-btn" onclick="closeModal('bookAppointmentModal')">&times;</span>
+            </div>
+            <form id="appointmentForm" onsubmit="handleBookAppointment(event)">
+                <div class="form-group">
+                    <label>Select Specialist Doctor</label>
+                    <select id="appDoctorSelect" required></select>
+                </div>
+                <div class="form-group">
+                    <label>Preferred Date</label>
+                    <input type="date" id="appDate" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('bookAppointmentModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Generate Bill Modal -->
+    <div class="modal-backdrop" id="generateBillModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>Generate Patient Invoice</h3>
+                <span class="close-btn" onclick="closeModal('generateBillModal')">&times;</span>
+            </div>
+            <form id="billForm" onsubmit="handleGenerateBill(event)">
+                <div class="form-group">
+                    <label>Patient MRN</label>
+                    <input type="text" id="billMrn" required value="BD-2026-9901">
+                </div>
+                <div class="form-group">
+                    <label>Patient Name</label>
+                    <input type="text" id="billName" required value="Rahim Chowdhury">
+                </div>
+                <div class="form-group">
+                    <label>Service Description</label>
+                    <input type="text" id="billService" required placeholder="Consultation + ECG">
+                </div>
+                <div class="form-group">
+                    <label>Total Amount (BDT)</label>
+                    <input type="number" id="billAmount" required placeholder="2500">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('generateBillModal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Generate Bill</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Printable Voucher Modal -->
+    <div class="modal-backdrop" id="printDocumentModal">
+        <div class="modal-box print-box">
+            <div class="modal-header no-print">
+                <h3>Printable Hospital Document</h3>
+                <button class="btn btn-primary btn-sm" onclick="triggerPrint()"><i class="fa-solid fa-print"></i> Print Document</button>
+                <span class="close-btn" onclick="closeModal('printDocumentModal')">&times;</span>
+            </div>
+            <div class="printable-area" id="printableArea"></div>
+        </div>
     </div>
 
     <script src="app.js"></script>
