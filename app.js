@@ -45,7 +45,7 @@ const ROLE_CONFIGS = {
     admin: {
         userName: "Md. Emtiaz Hossain",
         userRole: "System Administrator",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
+        avatar: "Md. EmTIAZ hOSSAIN sAMI LOGO.png",
         viewId: "view-admin",
         banner: "Admin Master Privileges: Unrestricted CRUD & staff control active.",
         navMenu: [
