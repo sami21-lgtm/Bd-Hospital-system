@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePulse Enterprise HMS - BD Specialized Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome Icons & Inter Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-left">
+            <button class="mobile-toggle" id="mobileToggle" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="brand-logo">
+                <i class="fa-solid fa-square-h logo-icon"></i>
+                <div class="logo-text">
+                    <span class="brand-name">CAREPULSE</span>
+                    <span class="brand-tag">SPECIALIZED HOSPITAL</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Master Stakeholder Switcher (Simulating Live Session) -->
+        <div class="role-switcher-container">
+            <i class="fa-solid fa-user-gear switch-icon"></i>
+            <select id="masterRoleSelect" onchange="switchStakeholderRole(this.value)">
+                <option value="patient">👤 Patient View (Strict Isolation)</option>
+                <option value="doctor">🩺 Doctor View (OPD & EHR)</option>
+                <option value="nurse">🏥 Nurse View (Ward Matrix)</option>
+                <option value="admin" selected>⚡ Admin Master Control (Full Access)</option>
+            </select>
+        </div>
+
+        <div class="user-profile-widget">
+            <div class="profile-info">
+                <span id="activeUserName" class="user-title">Md. Emtiaz Hossain</span>
+                <span id="activeUserRole" class="user-role-badge">System Administrator</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Avatar" class="user-avatar" id="userAvatar">
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <!-- Sidebar Menu Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <span class="nav-label">MAIN NAVIGATION</span>
+            </div>
+            <ul class="nav-menu" id="dynamicNavMenu">
+                <!-- JS Inject Links based on Role -->
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="system-status">
+                    <span class="status-indicator online"></span>
+                    <span>Server: Dhaka-Central-01</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dynamic Workspace -->
+        <main class="content-workspace">
+
+            <!-- Security & RBAC Status Banner -->
+            <div class="rbac-banner" id="rbacBanner">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span id="rbacBannerText">Admin Master Override Active: You hold unrestricted system privileges across all modules.</span>
+            </div>
+
+            <!-- VIEW 1: PATIENT PORTAL (Strict Access Isolation) -->
+            <section id="view-patient" class="portal-section">
+                <div class="section-title">
+                    <h2><i class="fa-solid fa-hospital-user"></i> Patient Health Dashboard</h2>
+                    <span class="mrn-badge">MRN: BD-2026-88910</span>
+                </div>
+
+                <div class="grid-cards">
+                    <div class="glass-card stat-card">
+                        <div class="card-icon cyan"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <div class="card-data">
+                            <h4>Latest Vitals</h4>
+                            <p class="main-val">120/80 <small>mmHg</small></p>
+                            <span class="sub-text">Heart Rate: 74 bpm</span>
+                        </div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="card-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
+                        <div class="card-data">
+                            <h4>Next Appointment</h4>
+                            <p class="main-val">Tomorrow</p>
+                            <span class="sub-text">Dr. A. Rahman (Cardiology)</span>
+                        </div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="card-icon orange"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                        <div class="card-data">
+                            <h4>Pending Invoice</h4>
+                            <p class="main-val">৳ 1,800</p>
+                            <span class="sub-text">Lab Test (CBC & ECG)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card content-card">
+                    <h3><i class="fa-solid fa-clock-rotate-left"></i> My Personal Medical Records</h3>
+                    <div class="table-responsive">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Doctor</th>
+                                    <th>Diagnosis</th>
+                                    <th>Prescription</th>
+                                    <th>Lab Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>28 Aug 2026</td>
+                                    <td>Dr. Farhana Ahmed</td>
+                                    <td>Seasonal Allergy</td>
+                                    <td><button class="btn btn-outline btn-sm"><i class="fa-solid fa-download"></i> Rx.pdf</button></td>
+                                    <td><span class="badge-status success">Ready</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 2: DOCTOR PORTAL -->
+            <section id="view-doctor" class="portal-section">
+                <div class="section-title">
+                    <h2><i class="fa-solid fa-user-md"></i> Physician OPD Console</h2>
+                    <span class="dept-badge">Cardiology OPD</span>
+                </div>
+
+                <div class="glass-card content-card">
+                    <h3>Today's Patient Queue</h3>
+                    <div class="table-responsive">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Token</th>
+                                    <th>MRN</th>
+                                    <th>Patient Name</th>
+                                    <th>Age/Gender</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#01</td>
+                                    <td>BD-2026-88910</td>
+                                    <td>Rahim Chowdhury</td>
+                                    <td>45y / Male</td>
+                                    <td><span class="badge-status warning">Waiting</span></td>
+                                    <td><button class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i> Prescribe</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 3: NURSE PORTAL (Ward & Bed Matrix) -->
+            <section id="view-nurse" class="portal-section">
+                <div class="section-title">
+                    <h2><i class="fa-solid fa-bed-pulse"></i> Ward & Inpatient Management</h2>
+                    <span class="dept-badge">ICU & CCU Unit</span>
+                </div>
+
+                <div class="bed-matrix">
+                    <div class="bed-card occupied">
+                        <div class="bed-header"><span>Bed 101 (ICU)</span> <i class="fa-solid fa-user"></i></div>
+                        <p class="patient-name">Kamrul Hasan</p>
+                        <small>MRN: BD-9921</small>
+                    </div>
+                    <div class="bed-card vacant">
+                        <div class="bed-header"><span>Bed 102 (ICU)</span> <i class="fa-solid fa-check"></i></div>
+                        <p class="patient-name">Vacant & Cleaned</p>
+                        <button class="btn btn-sm btn-outline">Assign Patient</button>
+                    </div>
+                    <div class="bed-card occupied">
+                        <div class="bed-header"><span>Bed 103 (ICU)</span> <i class="fa-solid fa-user"></i></div>
+                        <p class="patient-name">Nusrat Jahan</p>
+                        <small>MRN: BD-3341</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 4: ADMIN MASTER CONTROL PANEL (Global Override) -->
+            <section id="view-admin" class="portal-section active-section">
+                <div class="section-title">
+                    <h2><i class="fa-solid fa-sliders"></i> Master System Control Center</h2>
+                    <span class="badge-status danger">Full System Control</span>
+                </div>
+
+                <div class="grid-cards">
+                    <div class="glass-card stat-card">
+                        <div class="card-icon cyan"><i class="fa-solid fa-hospital-user"></i></div>
+                        <div class="card-data">
+                            <h4>Total Active Users</h4>
+                            <p class="main-val">2,840</p>
+                            <span class="sub-text">Patients, Staff & Admin</span>
+                        </div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="card-icon blue"><i class="fa-solid fa-vault"></i></div>
+                        <div class="card-data">
+                            <h4>Daily Revenue</h4>
+                            <p class="main-val">৳ 6,45,000</p>
+                            <span class="sub-text">Integrated Gateways</span>
+                        </div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="card-icon green"><i class="fa-solid fa-microchip"></i></div>
+                        <div class="card-data">
+                            <h4>System Health</h4>
+                            <p class="main-val">99.98%</p>
+                            <span class="sub-text">All Services Online</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card content-card">
+                    <h3><i class="fa-solid fa-users-gear"></i> Stakeholder Role & Permission Matrix (Admin Override)</h3>
+                    <div class="table-responsive">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>User Role</th>
+                                    <th>Access Scope</th>
+                                    <th>Patient Data View</th>
+                                    <th>Billing & System Rights</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Patient</strong></td>
+                                    <td>Self Portal Only</td>
+                                    <td><span class="badge-status success">Isolated (Own Record)</span></td>
+                                    <td>Read-only Bills & Payment</td>
+                                    <td><span class="badge-status success">Restricted</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Doctor / Physician</strong></td>
+                                    <td>OPD, Queue & EHR</td>
+                                    <td>Assigned Patients Only</td>
+                                    <td>Prescription Rights</td>
+                                    <td><span class="badge-status success">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Nurse</strong></td>
+                                    <td>Ward & Vitals Matrix</td>
+                                    <td>Ward Inpatients</td>
+                                    <td>Vitals Log Rights</td>
+                                    <td><span class="badge-status success">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>System Admin</strong></td>
+                                    <td>Global Master Control</td>
+                                    <td><span class="badge-status danger">Unrestricted Master View</span></td>
+                                    <td>Full Finance & User Control</td>
+                                    <td><span class="badge-status danger">Full Access</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
