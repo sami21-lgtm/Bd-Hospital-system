@@ -1,5 +1,5 @@
 # 🏥 Careplus Specialized Hospital
-A modern, responsive, and lightweight Hospital & Clinic Management Dashboard featuring a Glassmorphism UI design and a Node.js/Express.js backend.
+A modern, responsive, and lightweight Hospital & Clinic Management Dashboard featuring a Glassmorphism UI design and server.js backend.
 
 ---
 
