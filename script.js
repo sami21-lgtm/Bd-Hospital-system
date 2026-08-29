@@ -92,80 +92,83 @@ const DB = {
   patients: [
     { mrn: "BD-2026-9901", name: "Tariqul Islam", contact: "01711223344", age: 45, gender: "Male", history: "Hypertension, BP: 130/85, Temp: 98.6°F", allergies: "Penicillin" },
     { mrn: "BD-2026-9902", name: "Selina Begum", contact: "01819887766", age: 38, gender: "Female", history: "Asthma, BP: 120/80, Temp: 99.1°F", allergies: "Dust, Sulfa Drugs" },
-    { mrn: "BD-2026-9903", name: "Abdur Rahim", contact: "01912345678", age: 62, gender: "Male", history: "IHD, Post-PCI, BP: 140/90, Temp: 98.4°F", allergies: "None" },
-    { mrn: "BD-2026-9904", name: "Nasreen Sultana", contact: "01733445566", age: 29, gender: "Female", history: "Pregnancy 2nd Trimester, BP: 110/70", allergies: "None" },
-    { mrn: "BD-2026-9905", name: "Kamrul Hassan", contact: "01555667788", age: 50, gender: "Male", history: "Type-2 Diabetes, BP: 135/88", allergies: "Aspirin" },
-    { mrn: "BD-2026-9906", name: "Aayan Rahman", contact: "01611224455", age: 6, gender: "Male", history: "Acute Tonsillitis, Temp: 101.2°F", allergies: "None" },
-    { mrn: "BD-2026-9907", name: "Farida Yasmin", contact: "01822334455", age: 55, gender: "Female", history: "Osteoarthritis, BP: 125/80", allergies: "NSAIDs" },
-    { mrn: "BD-2026-9908", name: "Rafiqul Islam", contact: "01988776655", age: 41, gender: "Male", history: "CKD Stage 3, BP: 145/95", allergies: "Codeine" }
+    { mrn: "BD-2026-9903", name: "Abdur Rahim", contact: "01912345678", age: 62, gender: "Male", history: "Type 2 Diabetes, BP: 140/90", allergies: "None" },
+    { mrn: "BD-2026-9904", name: "Nasreen Sultana", contact: "01611223344", age: 29, gender: "Female", history: "Migraine, BP: 118/78", allergies: "Aspirin" }
   ],
 
+  // Complete Appointment Queue for All 36 Doctors
   appointments: [
-    { id: "APT-801", patientName: "Tariqul Islam", doctorName: "Prof. Dr. Syed Shamsul Huda", dept: "Cardiology", dateTime: "2026-08-29 10:30 AM", status: "Scheduled" },
-    { id: "APT-802", patientName: "Selina Begum", doctorName: "Dr. Farhana Yasmin", dept: "Neurology", dateTime: "2026-08-29 11:15 AM", status: "Completed" },
-    { id: "APT-803", patientName: "Abdur Rahim", doctorName: "Prof. Dr. Syed Shamsul Huda", dept: "Cardiology", dateTime: "2026-08-29 12:00 PM", status: "Scheduled" },
-    { id: "APT-804", patientName: "Nasreen Sultana", doctorName: "Dr. Nusrat Chowdury", dept: "Obstetrics & Gynecology", dateTime: "2026-08-29 02:00 PM", status: "Scheduled" },
-    { id: "APT-805", patientName: "Kamrul Hassan", doctorName: "Dr. Rehana Parveen", dept: "Diabetes & Endocrinology", dateTime: "2026-08-29 03:30 PM", status: "Scheduled" },
-    { id: "APT-806", patientName: "Aayan Rahman", doctorName: "Dr. Tanvir Mahmud", dept: "Pediatric & Neonatology", dateTime: "2026-08-29 04:15 PM", status: "Scheduled" },
-    { id: "APT-807", patientName: "Farida Yasmin", doctorName: "Dr. Anisur Rahman", dept: "Orthopedics, Arthroscopy & Joint Replacement", dateTime: "2026-08-30 10:00 AM", status: "Scheduled" },
-    { id: "APT-808", patientName: "Rafiqul Islam", doctorName: "Dr. Tariqul Islam", dept: "Nephrology", dateTime: "2026-08-30 11:30 AM", status: "Scheduled" }
+    { id: "APT-801", patientName: "Tariqul Islam", doctorName: "Prof. Dr. Kazi Ashraful Alam", dept: "General & Laparoscopic Surgery", dateTime: "2026-08-29 09:00 AM", status: "Scheduled" },
+    { id: "APT-802", patientName: "Selina Begum", doctorName: "Dr. Ariful Islam", dept: "Urology", dateTime: "2026-08-29 09:30 AM", status: "Scheduled" },
+    { id: "APT-803", patientName: "Abdur Rahim", doctorName: "Dr. Nusrat Chowdury", dept: "Obstetrics & Gynecology", dateTime: "2026-08-29 10:00 AM", status: "Scheduled" },
+    { id: "APT-804", patientName: "Nasreen Sultana", doctorName: "Prof. Dr. Mahbubur Rahman", dept: "Cardiac Surgery", dateTime: "2026-08-29 10:30 AM", status: "Scheduled" },
+    { id: "APT-805", patientName: "Tariqul Islam", doctorName: "Dr. Shahriar Nabi", dept: "Vascular Surgery", dateTime: "2026-08-29 11:00 AM", status: "Scheduled" },
+    { id: "APT-806", patientName: "Selina Begum", doctorName: "Dr. Imran Khan", dept: "Respiratory Medicine", dateTime: "2026-08-29 11:30 AM", status: "Scheduled" },
+    { id: "APT-807", patientName: "Abdur Rahim", doctorName: "Dr. Tariqul Islam", dept: "Colorectal Surgery", dateTime: "2026-08-29 12:00 PM", status: "Scheduled" },
+    { id: "APT-808", patientName: "Nasreen Sultana", doctorName: "Dr. Mehzabin Ahmed", dept: "Dental and Maxillofacial Surgery", dateTime: "2026-08-29 02:00 PM", status: "Scheduled" },
+    { id: "APT-809", patientName: "Tariqul Islam", doctorName: "Dt. Rashida Parveen", dept: "Nutrition & Dietetic Department", dateTime: "2026-08-29 02:30 PM", status: "Scheduled" },
+    { id: "APT-810", patientName: "Selina Begum", doctorName: "Dr. Ayesha Siddiqua", dept: "Rheumatology", dateTime: "2026-08-29 03:00 PM", status: "Scheduled" },
+    { id: "APT-811", patientName: "Abdur Rahim", doctorName: "Dr. Rafiqul Hassan", dept: "Anaesthesia", dateTime: "2026-08-29 03:30 PM", status: "Scheduled" },
+    { id: "APT-812", patientName: "Nasreen Sultana", doctorName: "Prof. Dr. Syed Shamsul Huda", dept: "Cardiology", dateTime: "2026-08-29 04:00 PM", status: "Scheduled" },
+    { id: "APT-813", patientName: "Tariqul Islam", doctorName: "Dr. Tanvir Mahmud", dept: "Pediatric & Neonatology", dateTime: "2026-08-29 04:30 PM", status: "Scheduled" },
+    { id: "APT-814", patientName: "Selina Begum", doctorName: "Dr. Mahbub Alam", dept: "ENT, Head & Neck Surgery", dateTime: "2026-08-29 05:00 PM", status: "Scheduled" },
+    { id: "APT-815", patientName: "Abdur Rahim", doctorName: "Dr. Anisur Rahman", dept: "Orthopedics, Arthroscopy & Joint Replacement", dateTime: "2026-08-29 05:30 PM", status: "Scheduled" },
+    { id: "APT-816", patientName: "Nasreen Sultana", doctorName: "Dr. Bilkis Jahan", dept: "Clinical Hematology", dateTime: "2026-08-29 06:00 PM", status: "Scheduled" },
+    { id: "APT-817", patientName: "Tariqul Islam", doctorName: "Dr. Kamrul Islam", dept: "Surgical Oncology", dateTime: "2026-08-30 09:00 AM", status: "Scheduled" },
+    { id: "APT-818", patientName: "Selina Begum", doctorName: "Dr. Moniruzzaman", dept: "Physical Medicine", dateTime: "2026-08-30 09:30 AM", status: "Scheduled" },
+    { id: "APT-819", patientName: "Abdur Rahim", doctorName: "Dr. Sharmin Akter", dept: "Plastic & Aesthetic Surgery", dateTime: "2026-08-30 10:00 AM", status: "Scheduled" },
+    { id: "APT-820", patientName: "Nasreen Sultana", doctorName: "Prof. Dr. Kamrul Hasan", dept: "Gastroenterology & Hepatology", dateTime: "2026-08-30 10:30 AM", status: "Scheduled" },
+    { id: "APT-821", patientName: "Tariqul Islam", doctorName: "Dr. Sabina Yeasmin", dept: "Dermatology", dateTime: "2026-08-30 11:00 AM", status: "Scheduled" },
+    { id: "APT-822", patientName: "Selina Begum", doctorName: "Dr. Shamsul Alam", dept: "Neurosurgery", dateTime: "2026-08-30 11:30 AM", status: "Scheduled" },
+    { id: "APT-823", patientName: "Abdur Rahim", doctorName: "Dr. Asaduzzaman", dept: "Thoracic Surgery", dateTime: "2026-08-30 12:00 PM", status: "Scheduled" },
+    { id: "APT-824", patientName: "Nasreen Sultana", doctorName: "Dr. Mahmudul Haq", dept: "ICU", dateTime: "2026-08-30 02:00 PM", status: "Scheduled" },
+    { id: "APT-825", patientName: "Tariqul Islam", doctorName: "Dr. Nargis Sultana", dept: "Laboratory Medicine", dateTime: "2026-08-30 02:30 PM", status: "Scheduled" },
+    { id: "APT-826", patientName: "Selina Begum", doctorName: "Dr. Faisal Ahmed", dept: "Pediatric Surgery", dateTime: "2026-08-30 03:00 PM", status: "Scheduled" },
+    { id: "APT-827", patientName: "Abdur Rahim", doctorName: "Prof. Dr. Zahirul Islam", dept: "Hepatobiliary & Pancreatic Surgery", dateTime: "2026-08-30 03:30 PM", status: "Scheduled" },
+    { id: "APT-828", patientName: "Nasreen Sultana", doctorName: "Dr. Sadia Chowdhury", dept: "Pediatric Cardiology", dateTime: "2026-08-30 04:00 PM", status: "Scheduled" },
+    { id: "APT-829", patientName: "Tariqul Islam", doctorName: "Dr. Nahid Sultana", dept: "Oncology", dateTime: "2026-08-30 04:30 PM", status: "Scheduled" },
+    { id: "APT-830", patientName: "Selina Begum", doctorName: "Dr. Tariqul Islam", dept: "Nephrology", dateTime: "2026-08-30 05:00 PM", status: "Scheduled" },
+    { id: "APT-831", patientName: "Abdur Rahim", doctorName: "Dr. Rehana Parveen", dept: "Diabetes & Endocrinology", dateTime: "2026-08-30 05:30 PM", status: "Scheduled" },
+    { id: "APT-832", patientName: "Nasreen Sultana", doctorName: "Dr. Farhana Yasmin", dept: "Neurology", dateTime: "2026-08-30 06:00 PM", status: "Scheduled" },
+    { id: "APT-833", patientName: "Tariqul Islam", doctorName: "Prof. Dr. M. A. Rashid", dept: "Internal Medicine", dateTime: "2026-08-31 09:00 AM", status: "Scheduled" },
+    { id: "APT-834", patientName: "Selina Begum", doctorName: "Dr. Khairul Bashar", dept: "Radiology & Imaging", dateTime: "2026-08-31 09:30 AM", status: "Scheduled" },
+    { id: "APT-835", patientName: "Abdur Rahim", doctorName: "Dr. Sajjad Hossain", dept: "Psychiatry", dateTime: "2026-08-31 10:00 AM", status: "Scheduled" },
+    { id: "APT-836", patientName: "Nasreen Sultana", doctorName: "Dr. Farzana Parveen", dept: "Breast, Colorectal & Laparoscopic Surgery", dateTime: "2026-08-31 10:30 AM", status: "Scheduled" }
   ],
 
   prescriptions: [
-    { rxId: "RX-501", patientName: "Selina Begum", doctorName: "Dr. Farhana Yasmin", diagnosis: "Migraine with Aura", meds: "Tab. Napex 500mg (1+0+1)\nCap. Omeprazole 20mg (1+0+0) Before Meal" },
-    { rxId: "RX-502", patientName: "Tariqul Islam", doctorName: "Prof. Dr. Syed Shamsul Huda", diagnosis: "Essential Hypertension", meds: "Tab. Bisoprolol 5mg (1+0+0)\nTab. Amlodipine 5mg (0+0+1)" },
-    { rxId: "RX-503", patientName: "Nasreen Sultana", doctorName: "Dr. Nusrat Chowdury", diagnosis: "Routine ANC Visit", meds: "Cap. Iron + Folic Acid (0+1+0)\nTab. Calcium 500mg (1+0+1)" },
-    { rxId: "RX-504", patientName: "Kamrul Hassan", doctorName: "Dr. Rehana Parveen", diagnosis: "Uncontrolled Type-2 DM", meds: "Tab. Metformin 850mg (1+0+1)\nTab. Sitagliptin 50mg (1+0+0)" }
+    { id: "RX-501", patientName: "Tariqul Islam", doctorName: "Prof. Dr. Syed Shamsul Huda", date: "2026-08-29", meds: "Tab. Ecospirin 75mg (1-0-0), Tab. Atorvastatin 20mg (0-0-1)", advice: "Low salt diet, walk 30 mins daily" }
   ],
 
   labTests: [
-    { id: "LAB-301", patientName: "Tariqul Islam", test: "Lipid Profile + HbA1c", date: "2026-08-29", status: "Pending" },
-    { id: "LAB-302", patientName: "Abdur Rahim", test: "ECG & Echocardiogram", date: "2026-08-29", status: "Completed" },
-    { id: "LAB-303", patientName: "Nasreen Sultana", test: "USG of Pregnancy Profile", date: "2026-08-29", status: "Completed" },
-    { id: "LAB-304", patientName: "Kamrul Hassan", test: "Fasting Blood Sugar & Serum Creatinine", date: "2026-08-29", status: "Pending" },
-    { id: "LAB-305", patientName: "Rafiqul Islam", test: "24 Hours Urinary Protein", date: "2026-08-30", status: "Pending" }
+    { id: "LAB-301", patientName: "Tariqul Islam", testName: "Lipid Profile & ECG", doctorName: "Prof. Dr. Syed Shamsul Huda", status: "Completed", result: "Total Chol: 210 mg/dL, ECG Normal" },
+    { id: "LAB-302", patientName: "Selina Begum", testName: "Chest X-Ray & Spirometry", doctorName: "Dr. Imran Khan", status: "Pending", result: "Awaiting Lab Technician Input" }
   ],
 
   pharmacy: [
-    { name: "Napa Extra 500mg", category: "Analgesic", stock: 450, price: 2.5, exp: "2028-05" },
-    { name: "Seclo 20mg Capsule", category: "PPI", stock: 22, price: 7.0, exp: "2027-11" },
-    { name: "Sergel 40mg Injection", category: "Injectable", stock: 12, price: 85.0, exp: "2027-02" },
-    { name: "Azithrocin 500mg", category: "Antibiotic", stock: 120, price: 35.0, exp: "2028-01" },
-    { name: "Monas 10mg Tablet", category: "Antiasthmatic", stock: 300, price: 16.0, exp: "2027-09" },
-    { name: "Bizoran 5/20 Tablet", category: "Antihypertensive", stock: 180, price: 12.0, exp: "2028-03" },
-    { name: "Compathic 500mg", category: "Antibiotic", stock: 15, price: 40.0, exp: "2026-12" },
-    { name: "Ceevit 250mg Chewable", category: "Vitamin", stock: 500, price: 2.0, exp: "2028-06" }
+    { name: "Tab. Sergel 20mg", stock: 450, unit: "Pills" },
+    { name: "Tab. Napa Extra 500mg", stock: 1200, unit: "Pills" },
+    { name: "Syp. Tuzid 100ml", stock: 85, unit: "Bottles" },
+    { name: "Inj. Ceftriaxone 1g", stock: 150, unit: "Vials" }
   ],
 
   cabins: [
-    { number: "Cabin 401 (VIP)", type: "Single Deluxe", status: "Occupied", patient: "Abdur Rahim", rate: 8000 },
-    { number: "Cabin 402", type: "Single Standard", status: "Available", patient: "-", rate: 5000 },
-    { number: "Cabin 403", type: "Single Deluxe", status: "Occupied", patient: "Farida Yasmin", rate: 7500 },
-    { number: "Cabin 404", type: "Double Bed", status: "Available", patient: "-", rate: 3500 },
-    { number: "ICU Bed 01", type: "Critical Care", status: "Available", patient: "-", rate: 15000 },
-    { number: "ICU Bed 03", type: "Critical Care", status: "Occupied", patient: "Emergency Ref", rate: 15000 },
-    { number: "CCU Bed 01", type: "Cardiac Care", status: "Available", patient: "-", rate: 12000 },
-    { number: "NICU Bed 02", type: "Neonatal ICU", status: "Occupied", patient: "Baby of Nasreen", rate: 10000 }
+    { number: "Cabin 501 (VIP)", status: "Occupied", patient: "Abdur Rahim" },
+    { number: "Cabin 502 (Deluxe)", status: "Vacant", patient: "N/A" },
+    { number: "ICU Bed 03", status: "Occupied", patient: "Emergency Patient" },
+    { number: "Cabin 504 (Standard)", status: "Vacant", patient: "N/A" }
   ],
 
-  invoices: [
-    { id: "INV-9001", mrn: "BD-2026-9902", patientName: "Selina Begum", service: "Neurology OPD Consultation", amount: 1500, status: "Paid" },
-    { id: "INV-9002", mrn: "BD-2026-9903", patientName: "Abdur Rahim", service: "ECG & Echocardiogram Tests", amount: 3500, status: "Paid" },
-    { id: "INV-9003", mrn: "BD-2026-9904", patientName: "Nasreen Sultana", service: "USG & Gynee OPD Consultation", amount: 3100, status: "Paid" },
-    { id: "INV-9004", mrn: "BD-2026-9905", patientName: "Kamrul Hassan", service: "Endocrinology Consultation", amount: 1500, status: "Unpaid" },
-    { id: "INV-9005", mrn: "BD-2026-9907", patientName: "Farida Yasmin", service: "Cabin Booking & Admission Fee", amount: 10000, status: "Unpaid" }
-  ],
-
-  notifications: [
-    { text: "System Boot: CarePulse HMS Engine running.", time: "08:00 AM" },
-    { text: "Emergency Admission: ICU Bed 03 occupied.", time: "09:15 AM" },
-    { text: "Lab Result Updated: ECG for Abdur Rahim.", time: "11:00 AM" },
-    { text: "Pharmacy Alert: Low stock for Sergel Injection.", time: "11:45 AM" }
-  ]
+  accounts: {
+    totalRevenue: "485,000 BDT",
+    pendingBills: "42,500 BDT",
+    todayIncome: "38,500 BDT"
+  }
 };
 
-// Active Session Tracking
+// Global App State Variables
 let currentUser = null;
+let doctorAttendance = true;
 
 // Initialize System on DOM Ready
 document.addEventListener("DOMContentLoaded", () => {
@@ -174,717 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
   restoreUserSession();
 });
 
-// Restore User Session on Reload
-function restoreUserSession() {
-  const savedSession = localStorage.getItem("carepulse_active_user");
-  if (savedSession) {
-    try {
-      currentUser = JSON.parse(savedSession);
-      const loginModal = document.getElementById("loginModal");
-      if (loginModal) loginModal.style.display = "none";
-
-      updateUIHeader();
-      buildSidebarMenu();
-
-      const lastView = localStorage.getItem("carepulse_active_view") || getDefaultViewForRole(currentUser.role);
-      switchView(lastView);
-    } catch (e) {
-      console.error("Session restore failed:", e);
-      localStorage.removeItem("carepulse_active_user");
-    }
-  }
-}
-
-// Auto-fill Credentials Hint in Login Modal
-function autoFillCredentials(roleKey) {
-  const user = DB.users.find(u => u.role === roleKey);
-  if (user) {
-    const idEl = document.getElementById("loginUserId");
-    const passEl = document.getElementById("loginPassword");
-    const hintEl = document.getElementById("credentialHint");
-
-    if (idEl) idEl.value = user.id;
-    if (passEl) passEl.value = user.pass;
-    if (hintEl) hintEl.innerHTML = `ID: <b>${user.id}</b> | Pass: <b>${user.pass}</b>`;
-  }
-}
-
-// Authentication Engine (Supports 36 Doctors + Admin/Staff/Patients)
-function handleUserLogin(event) {
-  if (event) event.preventDefault();
-  const idEl = document.getElementById("loginUserId");
-  const passEl = document.getElementById("loginPassword");
-  const errorMsg = document.getElementById("loginErrorMsg");
-  const loginModal = document.getElementById("loginModal");
-
-  if (!idEl || !passEl) return;
-
-  const inputId = idEl.value.trim().toLowerCase();
-  const inputPass = passEl.value.trim();
-
-  // Match registered user
-  let matchedUser = DB.users.find(u => 
-    (u.id.toLowerCase() === inputId || u.alias.toLowerCase() === inputId || (u.phone && u.phone === inputId)) && u.pass === inputPass
-  );
-
-  // Dynamic Match for Doctor ID (e.g., DOC-101)
-  if (!matchedUser) {
-    const docMatch = DB.doctors.find(d => 
-      d.id.toLowerCase() === inputId || 
-      d.name.toLowerCase().includes(inputId) ||
-      `${d.id.toLowerCase()}@hospital.com` === inputId
-    );
-
-    if (docMatch && (inputPass === "doctor123" || inputPass === "123456" || inputPass === "doctor")) {
-      matchedUser = {
-        id: `${docMatch.id.toLowerCase()}@hospital.com`,
-        alias: docMatch.id.toLowerCase(),
-        pass: inputPass,
-        name: docMatch.name,
-        role: "doctor",
-        roleTitle: `Specialist Doctor (${docMatch.dept})`,
-        avatar: docMatch.photo
-      };
-    }
-  }
-
-  if (matchedUser) {
-    currentUser = matchedUser;
-    localStorage.setItem("carepulse_active_user", JSON.stringify(currentUser));
-
-    if (errorMsg) errorMsg.style.display = "none";
-    if (loginModal) loginModal.style.display = "none";
-
-    updateUIHeader();
-    buildSidebarMenu();
-
-    const defaultView = getDefaultViewForRole(currentUser.role);
-    switchView(defaultView);
-    addNotification(`User ${currentUser.name} logged in successfully as ${currentUser.roleTitle}.`);
-  } else {
-    if (errorMsg) errorMsg.style.display = "block";
-  }
-}
-
-// Update Top Bar Header UI
-function updateUIHeader() {
-  if (!currentUser) return;
-  if (document.getElementById("navUserAvatar")) document.getElementById("navUserAvatar").src = currentUser.avatar || "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80";
-  if (document.getElementById("navUserName")) document.getElementById("navUserName").textContent = currentUser.name;
-  if (document.getElementById("navUserRole")) document.getElementById("navUserRole").textContent = currentUser.roleTitle;
-  if (document.getElementById("activeRoleDisplay")) document.getElementById("activeRoleDisplay").textContent = currentUser.roleTitle;
-}
-
-// Patient Password Recovery Handler (Matches Name + Contact Phone)
-function handlePatientPasswordRecovery(e) {
-  if (e) e.preventDefault();
-  const nameInput = document.getElementById("recPatientName")?.value.trim().toLowerCase();
-  const phoneInput = document.getElementById("recPatientPhone")?.value.trim().replace(/\D/g, "");
-  const newPassInput = document.getElementById("recNewPassword")?.value.trim();
-  const statusBox = document.getElementById("recoveryStatus");
-
-  if (!statusBox) return;
-  statusBox.style.display = "block";
-
-  const matchedPatient = DB.patients.find(p => 
-    p.name.toLowerCase() === nameInput && p.contact.replace(/\D/g, "") === phoneInput
-  );
-
-  if (matchedPatient) {
-    let userAccount = DB.users.find(u => u.name.toLowerCase() === nameInput || u.role === 'patient');
-
-    if (userAccount) {
-      userAccount.pass = newPassInput;
-      statusBox.className = "info-alert success";
-      statusBox.innerHTML = `✅ পাসওয়ার্ড সফলভাবে পরিবর্তিত হয়েছে!<br>User ID/Email: <b>${userAccount.id}</b><br>নতুন পাসওয়ার্ড: <b>${newPassInput}</b>`;
-      addNotification(`Password reset successfully for Patient: ${matchedPatient.name}.`);
-      
-      setTimeout(() => {
-        closeModal("forgotPasswordModal");
-        statusBox.style.display = "none";
-      }, 3000);
-    } else {
-      statusBox.className = "info-alert error";
-      statusBox.textContent = "❌ কোনো পেশেন্ট ইউজার অ্যাকাউন্ট পাওয়া যায়নি।";
-    }
-  } else {
-    statusBox.className = "info-alert error";
-    statusBox.textContent = "❌ প্রদত্ত নাম এবং মোবাইল নম্বর মিলছে না!";
-  }
-}
-
-function handleUserLogout() {
-  currentUser = null;
-  localStorage.removeItem("carepulse_active_user");
-  localStorage.removeItem("carepulse_active_view");
-  const loginModal = document.getElementById("loginModal");
-  if (loginModal) loginModal.style.display = "flex";
-}
-
-// Default View Selection
-function getDefaultViewForRole(role) {
-  switch (role) {
-    case 'doctor': return 'view-consultation';
-    case 'patient': return 'view-appointments';
-    case 'receptionist': return 'view-appointments';
-    case 'nurse': return 'view-beds';
-    case 'pharmacist': return 'view-pharmacy';
-    default: return 'view-admin';
-  }
-}
-
-function buildSidebarMenu() {
-  const sideMenu = document.getElementById("sideMenu");
-  if (!sideMenu || !currentUser) return;
-  sideMenu.innerHTML = "";
-
-  const menuItems = [
-    { id: "view-admin", label: "Operations Dashboard", icon: "fa-chart-line", roles: ["admin"] },
-    { id: "view-appointments", label: "Appointments", icon: "fa-calendar-days", roles: ["admin", "receptionist", "doctor", "patient"] },
-    { id: "view-patients", label: "Patient Records (EMR)", icon: "fa-address-card", roles: ["admin", "receptionist", "doctor", "nurse"] },
-    { id: "view-doctors", label: "Specialist Directory", icon: "fa-user-doctor", roles: ["admin", "receptionist", "patient"] },
-    { id: "view-consultation", label: "My Doctor Desk", icon: "fa-stethoscope", roles: ["admin", "doctor"] },
-    { id: "view-prescriptions", label: "e-Prescriptions", icon: "fa-file-prescription", roles: ["admin", "doctor", "patient", "pharmacist"] },
-    { id: "view-laboratory", label: "Lab Diagnostics", icon: "fa-microscope", roles: ["admin", "doctor"] },
-    { id: "view-pharmacy", label: "Pharmacy Stock", icon: "fa-capsules", roles: ["admin", "pharmacist"] },
-    { id: "view-beds", label: "Bed & Ward Status", icon: "fa-bed", roles: ["admin", "nurse", "receptionist"] },
-    { id: "view-accounts", label: "Billing & Cashier", icon: "fa-file-invoice-dollar", roles: ["admin", "receptionist", "patient"] },
-    { id: "view-notifications", label: "System Audit Logs", icon: "fa-bell", roles: ["admin", "doctor", "nurse", "receptionist", "pharmacist", "patient"] }
-  ];
-
-  menuItems.forEach(item => {
-    if (item.roles.includes(currentUser.role)) {
-      const li = document.createElement("li");
-      li.className = "sidebar-item";
-      li.id = `nav-item-${item.id}`;
-      li.innerHTML = `<i class="fa-solid ${item.icon}"></i> <span>${item.label}</span>`;
-      li.onclick = () => switchView(item.id);
-      sideMenu.appendChild(li);
-    }
-  });
-}
-
-// Switch Active View Panel
-function switchView(viewId) {
-  document.querySelectorAll(".view-panel").forEach(panel => panel.classList.remove("active"));
-  document.querySelectorAll(".sidebar-item").forEach(item => item.classList.remove("active"));
-
-  const targetPanel = document.getElementById(viewId);
-  const targetNavItem = document.getElementById(`nav-item-${viewId}`);
-
-  if (targetPanel) targetPanel.classList.add("active");
-  if (targetNavItem) targetNavItem.classList.add("active");
-
-  localStorage.setItem("carepulse_active_view", viewId);
-
-  const titles = {
-    'view-admin': 'Executive Operations Dashboard',
-    'view-appointments': currentUser?.role === 'doctor' ? `Appointments for ${currentUser.name}` : 'OPD Appointment Scheduling Center',
-    'view-patients': currentUser?.role === 'doctor' ? `Patients Assigned to ${currentUser.name}` : 'Patient Electronic Medical Records (EMR)',
-    'view-doctors': 'Hospital Specialist Directory',
-    'view-consultation': `Doctor Desk (${currentUser?.name || ''})`,
-    'view-prescriptions': 'Issued e-Prescriptions Archive',
-    'view-laboratory': 'Laboratory Diagnostic Management',
-    'view-pharmacy': 'Pharmacy Inventory & Medicine Dispensing',
-    'view-beds': 'Ward & Cabin Bed Management',
-    'view-accounts': 'Billing & Cashier Ledger',
-    'view-notifications': 'System Audit Logs'
-  };
-
-  const pageTitle = document.getElementById("pageTitle");
-  if (pageTitle) pageTitle.textContent = titles[viewId] || "CarePulse System";
-
-  const banner = document.getElementById("contextBannerText");
-  if (banner && currentUser) {
-    banner.textContent = `Active Session: ${currentUser.roleTitle} (${currentUser.name}) | CarePulse Enterprise Workspace`;
-  }
-
-  closeSidebar();
-  renderViewData(viewId);
-}
-
-// View Renderer Switcher
-function renderViewData(viewId) {
-  switch (viewId) {
-    case 'view-admin': renderAdminDashboard(); break;
-    case 'view-appointments': renderAppointments(); break;
-    case 'view-patients': renderPatients(); break;
-    case 'view-doctors': renderDoctors(); break;
-    case 'view-consultation': renderConsultationDesk(); break;
-    case 'view-prescriptions': renderPrescriptions(); break;
-    case 'view-laboratory': renderLaboratory(); break;
-    case 'view-pharmacy': renderPharmacy(); break;
-    case 'view-beds': renderBeds(); break;
-    case 'view-accounts': renderAccounts(); break;
-    case 'view-notifications': renderNotifications(); break;
-  }
-}
-
-// Admin Dashboard Summary
-function renderAdminDashboard() {
-  const statP = document.getElementById("statPatients");
-  if (statP) statP.textContent = DB.patients.length;
-  
-  const statD = document.getElementById("statDoctors");
-  if (statD) statD.textContent = DB.doctors.length;
-  
-  const statB = document.getElementById("statBeds");
-  if (statB) {
-    const occupiedBeds = DB.cabins.filter(c => c.status === "Occupied").length;
-    statB.textContent = `${occupiedBeds} / ${DB.cabins.length}`;
-  }
-
-  const statR = document.getElementById("statRevenue");
-  if (statR) {
-    const totalRev = DB.invoices.reduce((sum, inv) => sum + Number(inv.amount), 0);
-    statR.textContent = `৳ ${totalRev.toLocaleString()}`;
-  }
-
-  const tbody = document.getElementById("adminQuickQueueTable");
-  if (!tbody) return;
-  tbody.innerHTML = "";
-  DB.appointments.forEach(app => {
-    tbody.innerHTML += `
-      <tr>
-        <td><b>${app.id}</b></td>
-        <td>${app.patientName}</td>
-        <td>${app.doctorName}</td>
-        <td>${app.dept}</td>
-        <td><span class="badge-status status-${app.status.toLowerCase()}">${app.status}</span></td>
-        <td><button class="btn btn-outline btn-sm" onclick="switchView('view-appointments')">Manage</button></td>
-      </tr>
-    `;
-  });
-}
-
-// Appointments Data Render
-function renderAppointments() {
-  const tbody = document.getElementById("appointmentTableBody");
-  const heading = document.getElementById("appointmentTableHeading");
-  if (!tbody) return;
-  tbody.innerHTML = "";
-
-  let apptList = DB.appointments;
-
-  if (currentUser?.role === 'doctor') {
-    apptList = DB.appointments.filter(a => a.doctorName.toLowerCase().includes(currentUser.name.toLowerCase()));
-    if (heading) heading.innerHTML = `<i class="fa-solid fa-calendar-days"></i> Appointments Assigned to ${currentUser.name}`;
-  } else {
-    if (heading) heading.innerHTML = `<i class="fa-solid fa-calendar-days"></i> Appointment Scheduling Center`;
-  }
-
-  if (apptList.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No appointments found.</td></tr>`;
-    return;
-  }
-
-  apptList.forEach(app => {
-    tbody.innerHTML += `
-      <tr>
-        <td><b>${app.id}</b></td>
-        <td>${app.patientName}</td>
-        <td>${app.doctorName}</td>
-        <td>${app.dateTime}</td>
-        <td><span class="badge-status status-${app.status.toLowerCase()}">${app.status}</span></td>
-        <td>
-          ${app.status === 'Scheduled' ? `<button class="btn btn-primary btn-sm" onclick="completeAppointment('${app.id}')">Complete</button>` : '<i class="fa-solid fa-check text-success"></i> Done'}
-        </td>
-      </tr>
-    `;
-  });
-}
-
-function completeAppointment(id) {
-  const app = DB.appointments.find(a => a.id === id);
-  if (app) {
-    app.status = "Completed";
-    addNotification(`Appointment ${id} completed.`);
-    renderAppointments();
-  }
-}
-
-// Patient Directory Render
-function renderPatients() {
-  const tbody = document.getElementById("patientTableBody");
-  const heading = document.getElementById("patientTableHeading");
-  if (!tbody) return;
-  tbody.innerHTML = "";
-
-  let patientList = DB.patients;
-
-  if (currentUser?.role === 'doctor') {
-    const assignedPatientNames = DB.appointments
-      .filter(a => a.doctorName.toLowerCase().includes(currentUser.name.toLowerCase()))
-      .map(a => a.patientName);
-
-    patientList = DB.patients.filter(p => assignedPatientNames.includes(p.name));
-    if (heading) heading.innerHTML = `<i class="fa-solid fa-address-card"></i> Patients Assigned to ${currentUser.name}`;
-  } else {
-    if (heading) heading.innerHTML = `<i class="fa-solid fa-address-card"></i> Patient Electronic Medical Records (EMR)`;
-  }
-
-  if (patientList.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No assigned patients found.</td></tr>`;
-    return;
-  }
-
-  patientList.forEach(pat => {
-    tbody.innerHTML += `
-      <tr>
-        <td><b>${pat.mrn}</b></td>
-        <td>${pat.name}</td>
-        <td>${pat.age} Yrs / ${pat.gender}</td>
-        <td>${pat.contact}</td>
-        <td>${pat.history}</td>
-        <td><span class="text-danger">${pat.allergies}</span></td>
-      </tr>
-    `;
-  });
-}
-
-// Doctor Directory Render with Filtering
-function renderDoctors() {
-  const deptTabs = document.getElementById("departmentTabs");
-  if (deptTabs) {
-    const depts = ["All", ...new Set(DB.doctors.map(d => d.dept))];
-    deptTabs.innerHTML = depts.map(dept => `<button class="tab-btn ${dept==='All'?'active':''}" onclick="filterDoctors('${dept}', this)">${dept}</button>`).join("");
-  }
-  renderDoctorCards(DB.doctors);
-}
-
-function filterDoctors(dept, btnElement) {
-  document.querySelectorAll(".filter-tabs .tab-btn").forEach(b => b.classList.remove("active"));
-  if (btnElement) btnElement.classList.add("active");
-
-  if (dept === "All") {
-    renderDoctorCards(DB.doctors);
-  } else {
-    renderDoctorCards(DB.doctors.filter(d => d.dept === dept));
-  }
-}
-
-function renderDoctorCards(list) {
-  const grid = document.getElementById("doctorsGrid");
-  if (!grid) return;
-  grid.innerHTML = list.map(doc => `
-    <div class="doctor-card">
-      <img src="${doc.photo}" alt="${doc.name}">
-      <h4>${doc.name}</h4>
-      <p><b>${doc.dept}</b><br><small>${doc.degrees}</small></p>
-      <div class="badge-status status-available">Fee: ৳${doc.fee}</div>
-    </div>
-  `).join("");
-}
-
-// Doctor Consultation Desk Queue
-function renderConsultationDesk() {
-  const select = document.getElementById("consultPatientSelect");
-  const title = document.getElementById("doctorDeskTitle");
-  if (!select) return;
-
-  if (title && currentUser) {
-    title.innerHTML = `<i class="fa-solid fa-stethoscope"></i> OPD Patient Queue (${currentUser.name})`;
-  }
-  select.innerHTML = `<option value="">-- Select Patient from Queue --</option>`;
-
-  let doctorAppts = DB.appointments;
-
-  if (currentUser?.role === 'doctor') {
-    doctorAppts = DB.appointments.filter(a => a.doctorName.toLowerCase().includes(currentUser.name.toLowerCase()));
-  }
-
-  doctorAppts.forEach(app => {
-    select.innerHTML += `<option value="${app.patientName}">${app.patientName} (Appt: ${app.id})</option>`;
-  });
-}
-
-function loadConsultationPatient(patientName) {
-  const box = document.getElementById("consultPatientDetails");
-  if (!box) return;
-
-  const patient = DB.patients.find(p => p.name === patientName);
-
-  if (patient) {
-    box.innerHTML = `
-      <p><b>Patient Name:</b> ${patient.name} (${patient.mrn})</p>
-      <p><b>Contact:</b> ${patient.contact}</p>
-      <p><b>Age / Gender:</b> ${patient.age} Yrs / ${patient.gender}</p>
-      <p><b>Vitals & History:</b> ${patient.history}</p>
-      <p><b>Known Allergies:</b> <span style="color:var(--danger)">${patient.allergies}</span></p>
-    `;
-  } else {
-    box.innerHTML = `<p>Select a patient to view EMR details.</p>`;
-  }
-}
-
-function toggleDoctorAttendance() {
-  const btn = document.getElementById("docCheckInBtn");
-  if (!btn || !currentUser) return;
-
-  if (btn.classList.contains("btn-outline")) {
-    btn.className = "btn btn-primary btn-sm";
-    btn.textContent = "On Duty (Active)";
-    addNotification(`${currentUser.name} status: On Duty.`);
-  } else {
-    btn.className = "btn btn-outline btn-sm";
-    btn.textContent = "Duty Check-In";
-    addNotification(`${currentUser.name} status: Offline.`);
-  }
-}
-
-// Save Prescription Handler
-function handleSavePrescription(e) {
-  if (e) e.preventDefault();
-  const select = document.getElementById("consultPatientSelect");
-  const diagInput = document.getElementById("rxDiagnosis");
-  const medsInput = document.getElementById("rxMedicines");
-
-  const patientName = select?.value;
-  if (!patientName) {
-    alert("Please select an assigned patient from the queue first.");
-    return;
-  }
-
-  const rx = {
-    rxId: `RX-${Math.floor(100 + Math.random() * 900)}`,
-    patientName: patientName,
-    doctorName: currentUser ? currentUser.name : "Duty Doctor",
-    diagnosis: diagInput?.value || "N/A",
-    meds: medsInput?.value || "N/A"
-  };
-
-  DB.prescriptions.unshift(rx);
-  addNotification(`Prescription ${rx.rxId} created for ${patientName}.`);
-  alert("Prescription saved and sent to Pharmacy.");
-  if (e?.target) e.target.reset();
-  switchView('view-prescriptions');
-}
-
-// Render Prescriptions List
-function renderPrescriptions() {
-  const tbody = document.getElementById("prescriptionTableBody");
-  if (!tbody) return;
-  tbody.innerHTML = "";
-
-  let rxList = DB.prescriptions;
-
-  if (currentUser?.role === 'doctor') {
-    rxList = DB.prescriptions.filter(r => r.doctorName.toLowerCase().includes(currentUser.name.toLowerCase()));
-  }
-
-  rxList.forEach(rx => {
-    tbody.innerHTML += `
-      <tr>
-        <td><b>${rx.rxId}</b></td>
-        <td>${rx.patientName}</td>
-        <td>${rx.doctorName}</td>
-        <td>${rx.diagnosis}</td>
-        <td><pre style="font-family:inherit; white-space:pre-wrap;">${rx.meds}</pre></td>
-        <td><button class="btn btn-outline btn-sm" onclick="printRx('${rx.rxId}')"><i class="fa-solid fa-print"></i> Print</button></td>
-      </tr>
-    `;
-  });
-}
-
-function printRx(rxId) {
-  const rx = DB.prescriptions.find(r => r.rxId === rxId);
-  if (!rx) return;
-
-  const printable = document.getElementById("printableArea");
-  if (printable) {
-    printable.innerHTML = `
-      <div class="doc-header">
-        <div>
-          <h2>CarePulse Specialized Hospital</h2>
-          <p><small>126 Gulshan Avenue, Dhaka-1212 | Tel: +8802998877</small></p>
-        </div>
-        <div style="text-align:right;">
-          <h3>e-PRESCRIPTION</h3>
-          <p><b>Rx ID:</b> ${rx.rxId}</p>
-        </div>
-      </div>
-      <p><b>Patient Name:</b> ${rx.patientName}</p>
-      <p><b>Prescribed By:</b> ${rx.doctorName}</p>
-      <p><b>Diagnosis:</b> ${rx.diagnosis}</p>
-      <hr class="divider">
-      <h4>Prescribed Medication:</h4>
-      <p style="white-space:pre-wrap; margin-top:10px;">${rx.meds}</p>
-    `;
-  }
-  openModal("printDocumentModal");
-}
-
-// Lab Diagnostics Render
-function renderLaboratory() {
-  const tbody = document.getElementById("labTableBody");
-  if (!tbody) return;
-  tbody.innerHTML = "";
-  DB.labTests.forEach(lab => {
-    tbody.innerHTML += `
-      <tr>
-        <td><b>${lab.id}</b></td>
-        <td>${lab.patientName}</td>
-        <td>${lab.test}</td>
-        <td>${lab.date}</td>
-        <td><span class="badge-status status-${lab.status.toLowerCase()}">${lab.status}</span></td>
-        <td>
-          ${lab.status === 'Pending' ? `<button class="btn btn-primary btn-sm" onclick="completeLab('${lab.id}')">Update Result</button>` : '<i class="fa-solid fa-file-pdf"></i> Report Ready'}
-        </td>
-      </tr>
-    `;
-  });
-}
-
-function completeLab(id) {
-  const item = DB.labTests.find(l => l.id === id);
-  if (item) {
-    item.status = "Completed";
-    addNotification(`Lab Test Report ${id} updated.`);
-    renderLaboratory();
-  }
-}
-
-// Pharmacy Stock Render
-function renderPharmacy() {
-  const itemsEl = document.getElementById("statPharmacyItems");
-  const lowEl = document.getElementById("statPharmacyLow");
-
-  if (itemsEl) itemsEl.textContent = `${DB.pharmacy.length} Items`;
-  if (lowEl) {
-    const lowCount = DB.pharmacy.filter(p => p.stock < 30).length;
-    lowEl.textContent = `${lowCount} Items`;
-  }
-
-  const tbody = document.getElementById("pharmacyTableBody");
-  if (!tbody) return;
-  tbody.innerHTML = "";
-  DB.pharmacy.forEach(item => {
-    tbody.innerHTML += `
-      <tr>
-        <td><b>${item.name}</b></td>
-        <td>${item.category}</td>
-        <td><span style="color:${item.stock<30?'var(--danger)':'var(--text-main)'}; font-weight:bold;">${item.stock}</span></td>
-        <td>৳ ${item.price.toFixed(2)}</td>
-        <td>${item.exp}</td>
-        <td><button class="btn btn-outline btn-sm" onclick="restockMedicine('${item.name}')">Restock +50</button></td>
-      </tr>
-    `;
-  });
-}
-
-function restockMedicine(name) {
-  const item = DB.pharmacy.find(p => p.name === name);
-  if (item) {
-    item.stock += 50;
-    addNotification(`Restocked 50 units for ${name}.`);
-    renderPharmacy();
-  }
-}
-
-// Bed & Cabin Render
-function renderBeds() {
-  const grid = document.getElementById("cabinGrid");
-  if (!grid) return;
-  grid.innerHTML = DB.cabins.map(cabin => `
-    <div class="cabin-card">
-      <h3>${cabin.number}</h3>
-      <p>${cabin.type} | ৳${cabin.rate}/day</p>
-      <p><b>Patient:</b> ${cabin.patient}</p>
-      <div class="badge-status status-${cabin.status.toLowerCase()} mb-20">${cabin.status}</div>
-      <div>
-        <button class="btn btn-outline btn-sm" onclick="toggleCabinStatus('${cabin.number}')">
-          ${cabin.status === 'Occupied' ? 'Discharge Patient' : 'Allocate Bed'}
-        </button>
-      </div>
-    </div>
-  `).join("");
-}
-
-function toggleCabinStatus(number) {
-  const cabin = DB.cabins.find(c => c.number === number);
-  if (cabin) {
-    if (cabin.status === 'Occupied') {
-      cabin.status = 'Available';
-      cabin.patient = '-';
-    } else {
-      cabin.status = 'Occupied';
-      cabin.patient = 'Newly Admitted Patient';
-    }
-    addNotification(`Bed status updated for ${number}.`);
-    renderBeds();
-  }
-}
-
-// Billing & Accounts Render
-function renderAccounts() {
-  const tbody = document.getElementById("accountsTableBody");
-  if (!tbody) return;
-  tbody.innerHTML = "";
-  DB.invoices.forEach(inv => {
-    tbody.innerHTML += `
-      <tr>
-        <td><b>${inv.id}</b></td>
-        <td>${inv.mrn}</td>
-        <td>${inv.patientName}</td>
-        <td>${inv.service}</td>
-        <td>৳ ${Number(inv.amount).toLocaleString()}</td>
-        <td><span class="badge-status status-paid">${inv.status}</span></td>
-        <td><button class="btn btn-outline btn-sm" onclick="printInvoice('${inv.id}')"><i class="fa-solid fa-print"></i> Receipt</button></td>
-      </tr>
-    `;
-  });
-}
-
-function printInvoice(invId) {
-  const inv = DB.invoices.find(i => i.id === invId);
-  if (!inv) return;
-
-  const printable = document.getElementById("printableArea");
-  if (printable) {
-    printable.innerHTML = `
-      <div class="doc-header">
-        <div>
-          <h2>CarePulse Specialized Hospital</h2>
-          <p><small>126 Gulshan Avenue, Dhaka-1212 | Billing Dept</small></p>
-        </div>
-        <div style="text-align:right;">
-          <h3>MONEY RECEIPT</h3>
-          <p><b>Invoice No:</b> ${inv.id}</p>
-        </div>
-      </div>
-      <p><b>Patient MRN:</b> ${inv.mrn}</p>
-      <p><b>Patient Name:</b> ${inv.patientName}</p>
-      <p><b>Service Provided:</b> ${inv.service}</p>
-      <hr class="divider">
-      <h3>Total Paid Amount: ৳ ${Number(inv.amount).toLocaleString()} BDT</h3>
-      <p><small>Status: PAID (Official System Receipt)</small></p>
-    `;
-  }
-  openModal("printDocumentModal");
-}
-
-function renderNotifications() {
-  const list = document.getElementById("notificationList");
-  const count = document.getElementById("notifCount");
-  if (list) {
-    list.innerHTML = DB.notifications.map(n => `
-      <li>
-        <span>${n.text}</span>
-        <small style="color:var(--text-muted)">${n.time}</small>
-      </li>
-    `).join("");
-  }
-  if (count) count.textContent = DB.notifications.length;
-}
-
-function addNotification(text) {
-  const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  DB.notifications.unshift({ text, time: timeStr });
-  const count = document.getElementById("notifCount");
-  if (count) count.textContent = DB.notifications.length;
-}
-
-// Populate Modal Select Options
+// Dynamically Extract & Populate Dropdowns from DB.doctors
 function populateDropdowns() {
   const docSelect = document.getElementById("appDoctorSelect");
   const docDeptSelect = document.getElementById("docDept");
@@ -892,141 +185,493 @@ function populateDropdowns() {
   if (docSelect) {
     docSelect.innerHTML = DB.doctors.map(d => `<option value="${d.name}">${d.name} (${d.dept})</option>`).join("");
   }
+
   if (docDeptSelect) {
-    const depts = ["General & Laparoscopic Surgery", "Urology", "Obstetrics & Gynecology", "Cardiac Surgery", "Cardiology", "Neurology", "Pediatrics", "Orthopedics"];
+    const depts = [...new Set(DB.doctors.map(d => d.dept))];
     docDeptSelect.innerHTML = depts.map(dept => `<option value="${dept}">${dept}</option>`).join("");
   }
 }
 
-// Modal Controllers
-function openModal(modalId) {
-  const modal = document.getElementById(modalId);
-  if (modal) modal.classList.add("active");
+// Session Management
+function restoreUserSession() {
+  const savedUser = localStorage.getItem("carepulse_active_user");
+  if (savedUser) {
+    currentUser = JSON.parse(savedUser);
+    showMainAppUI();
+  } else {
+    showAuthUI();
+  }
 }
 
-function closeModal(modalId) {
-  const modal = document.getElementById(modalId);
-  if (modal) modal.classList.remove("active");
+function autoFillCredentials(roleKey) {
+  const userMap = {
+    admin: { id: "admin@hospital.com", pass: "admin123" },
+    doc101: { id: "doc101@hospital.com", pass: "doctor123" },
+    nurse: { id: "nurse@hospital.com", pass: "nurse123" },
+    patient: { id: "patient@hospital.com", pass: "patient123" },
+    reception: { id: "reception@hospital.com", pass: "reception123" },
+    pharma: { id: "pharma@hospital.com", pass: "pharma123" }
+  };
+  
+  const creds = userMap[roleKey] || userMap['admin'];
+  const emailInput = document.getElementById("loginEmail");
+  const passInput = document.getElementById("loginPassword");
+  
+  if (emailInput && passInput) {
+    emailInput.value = creds.id;
+    passInput.value = creds.pass;
+  }
 }
 
-// Form Handlers
-function handleAddDoctor(e) {
+function handleUserLogin(event) {
+  if (event) event.preventDefault();
+  const inputId = document.getElementById("loginEmail")?.value.trim().toLowerCase();
+  const inputPass = document.getElementById("loginPassword")?.value.trim();
+
+  const user = DB.users.find(u => 
+    (u.id.toLowerCase() === inputId || u.alias.toLowerCase() === inputId) && u.pass === inputPass
+  );
+
+  if (user) {
+    currentUser = user;
+    localStorage.setItem("carepulse_active_user", JSON.stringify(user));
+    showMainAppUI();
+  } else {
+    alert("Invalid credentials! Please verify email/username and password.");
+  }
+}
+
+function handlePatientPasswordRecovery(e) {
+  if(e) e.preventDefault();
+  const phone = document.getElementById("recoverPhone")?.value.trim();
+  const found = DB.users.find(u => u.role === "patient" && u.phone === phone);
+  
+  if(found) {
+    alert(`Account Recovery Success!\n\nPatient Name: ${found.name}\nLogin ID: ${found.id}\nPassword: ${found.pass}`);
+  } else {
+    alert("No registered patient account found with this phone number!");
+  }
+}
+
+function handleUserLogout() {
+  currentUser = null;
+  localStorage.removeItem("carepulse_active_user");
+  showAuthUI();
+}
+
+function showAuthUI() {
+  document.getElementById("authContainer")?.classList.remove("d-none");
+  document.getElementById("mainAppContainer")?.classList.add("d-none");
+}
+
+function showMainAppUI() {
+  document.getElementById("authContainer")?.classList.add("d-none");
+  document.getElementById("mainAppContainer")?.classList.remove("d-none");
+  
+  updateUIHeader();
+  buildSidebarMenu();
+  switchView(getDefaultViewForRole(currentUser.role));
+}
+
+function updateUIHeader() {
+  if (!currentUser) return;
+  const avatarImg = document.getElementById("userAvatarImg");
+  const userNameEl = document.getElementById("userNameDisplay");
+  const userRoleEl = document.getElementById("userRoleDisplay");
+
+  if (avatarImg) avatarImg.src = currentUser.avatar;
+  if (userNameEl) userNameEl.innerText = currentUser.name;
+  if (userRoleEl) userRoleEl.innerText = currentUser.roleTitle || currentUser.role.toUpperCase();
+}
+
+function getDefaultViewForRole(role) {
+  switch(role) {
+    case "admin": return "view-admin-dashboard";
+    case "doctor": return "view-consultation";
+    case "nurse": return "view-beds";
+    case "patient": return "view-appointments";
+    case "receptionist": return "view-appointments";
+    case "pharmacist": return "view-pharmacy";
+    default: return "view-admin-dashboard";
+  }
+}
+
+function buildSidebarMenu() {
+  const menuContainer = document.getElementById("sidebarMenuNav");
+  if (!menuContainer) return;
+
+  const role = currentUser.role;
+  let links = [];
+
+  if (role === "admin") {
+    links = [
+      { id: "view-admin-dashboard", label: "Dashboard", icon: "bi-speedometer2" },
+      { id: "view-appointments", label: "Appointments Queue", icon: "bi-calendar-check" },
+      { id: "view-doctors", label: "Doctor Directory", icon: "bi-person-badge" },
+      { id: "view-patients", label: "Patient Records", icon: "bi-people" },
+      { id: "view-consultation", label: "Doctor's Desk", icon: "bi-stethoscope" },
+      { id: "view-prescriptions", label: "Prescriptions", icon: "bi-file-earmark-medical" },
+      { id: "view-lab", label: "Laboratory", icon: "bi-journal-check" },
+      { id: "view-pharmacy", label: "Pharmacy", icon: "bi-capsule" },
+      { id: "view-beds", label: "Cabin & Wards", icon: "bi-hospital" },
+      { id: "view-accounts", label: "Financial Accounts", icon: "bi-cash-stack" }
+    ];
+  } else if (role === "doctor") {
+    links = [
+      { id: "view-consultation", label: "My Consultation Desk", icon: "bi-stethoscope" },
+      { id: "view-appointments", label: "My Schedule", icon: "bi-calendar-check" },
+      { id: "view-patients", label: "Patient List", icon: "bi-people" },
+      { id: "view-prescriptions", label: "Prescriptions History", icon: "bi-file-earmark-medical" }
+    ];
+  } else if (role === "patient") {
+    links = [
+      { id: "view-appointments", label: "My Appointments", icon: "bi-calendar-check" },
+      { id: "view-prescriptions", label: "My Prescriptions", icon: "bi-file-earmark-medical" },
+      { id: "view-doctors", label: "Find Doctors", icon: "bi-search" }
+    ];
+  } else if (role === "receptionist") {
+    links = [
+      { id: "view-appointments", label: "Appointment Management", icon: "bi-calendar-check" },
+      { id: "view-patients", label: "Patient Admission/Records", icon: "bi-people" },
+      { id: "view-doctors", label: "Doctor Schedule", icon: "bi-person-badge" },
+      { id: "view-beds", label: "Cabin Allocation", icon: "bi-hospital" }
+    ];
+  } else if (role === "nurse") {
+    links = [
+      { id: "view-beds", label: "Ward & Cabin Monitoring", icon: "bi-hospital" },
+      { id: "view-patients", label: "Patient List", icon: "bi-people" },
+      { id: "view-lab", label: "Lab Sample Collector", icon: "bi-journal-check" }
+    ];
+  } else if (role === "pharmacist") {
+    links = [
+      { id: "view-pharmacy", label: "Medicine Inventory", icon: "bi-capsule" },
+      { id: "view-prescriptions", label: "Dispense Orders", icon: "bi-file-earmark-medical" }
+    ];
+  }
+
+  menuContainer.innerHTML = links.map(link => `
+    <li class="nav-item">
+      <a class="nav-link text-white py-2 px-3 mb-1 rounded" href="#" id="link-${link.id}" onclick="switchView('${link.id}')">
+        <i class="${link.icon} me-2"></i> ${link.label}
+      </a>
+    </li>
+  `).join("");
+}
+
+function switchView(viewId) {
+  document.querySelectorAll(".app-view").forEach(el => el.classList.add("d-none"));
+  
+  const target = document.getElementById(viewId);
+  if (target) {
+    target.classList.remove("d-none");
+  }
+
+  document.querySelectorAll("#sidebarMenuNav .nav-link").forEach(el => el.classList.remove("active", "bg-primary"));
+  const activeLink = document.getElementById(`link-${viewId}`);
+  if (activeLink) activeLink.classList.add("active", "bg-primary");
+
+  renderViewData(viewId);
+}
+
+function renderViewData(viewId) {
+  switch(viewId) {
+    case "view-admin-dashboard": renderAdminDashboard(); break;
+    case "view-appointments": renderAppointments(); break;
+    case "view-patients": renderPatients(); break;
+    case "view-doctors": renderDoctors(); break;
+    case "view-consultation": renderConsultationDesk(); break;
+    case "view-prescriptions": renderPrescriptions(); break;
+    case "view-lab": renderLaboratory(); break;
+    case "view-pharmacy": renderPharmacy(); break;
+    case "view-beds": renderBeds(); break;
+    case "view-accounts": renderAccounts(); break;
+  }
+}
+
+// Data Rendering Functions
+function renderAdminDashboard() {
+  const container = document.getElementById("adminDashboardContent");
+  if(!container) return;
+
+  container.innerHTML = `
+    <div class="row g-3 mb-4">
+      <div class="col-md-3">
+        <div class="card bg-primary text-white p-3 rounded shadow-sm">
+          <h5>Total Doctors</h5>
+          <h2>${DB.doctors.length}</h2>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-success text-white p-3 rounded shadow-sm">
+          <h5>Today's Appointments</h5>
+          <h2>${DB.appointments.length}</h2>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-warning text-dark p-3 rounded shadow-sm">
+          <h5>Total Patients</h5>
+          <h2>${DB.patients.length}</h2>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-info text-white p-3 rounded shadow-sm">
+          <h5>Total Revenue</h5>
+          <h2>${DB.accounts.totalRevenue}</h2>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderAppointments() {
+  const tbody = document.getElementById("appointmentsTableBody");
+  if (!tbody) return;
+
+  let list = DB.appointments;
+  if (currentUser.role === "doctor") {
+    list = list.filter(a => a.doctorName.toLowerCase().includes(currentUser.name.toLowerCase()));
+  } else if (currentUser.role === "patient") {
+    list = list.filter(a => a.patientName.toLowerCase() === currentUser.name.toLowerCase());
+  }
+
+  tbody.innerHTML = list.map(a => `
+    <tr>
+      <td>${a.id}</td>
+      <td>${a.patientName}</td>
+      <td>${a.doctorName}</td>
+      <td>${a.dept}</td>
+      <td>${a.dateTime}</td>
+      <td><span class="badge ${a.status === 'Completed' ? 'bg-success' : 'bg-warning text-dark'}">${a.status}</span></td>
+      <td>
+        ${a.status === 'Scheduled' ? `<button class="btn btn-sm btn-outline-success" onclick="completeAppointment('${a.id}')">Complete</button>` : '-'}
+      </td>
+    </tr>
+  `).join("");
+}
+
+function completeAppointment(id) {
+  const apt = DB.appointments.find(a => a.id === id);
+  if (apt) {
+    apt.status = "Completed";
+    renderAppointments();
+  }
+}
+
+function renderPatients() {
+  const tbody = document.getElementById("patientsTableBody");
+  if (!tbody) return;
+
+  tbody.innerHTML = DB.patients.map(p => `
+    <tr>
+      <td>${p.mrn}</td>
+      <td>${p.name}</td>
+      <td>${p.age} / ${p.gender}</td>
+      <td>${p.contact}</td>
+      <td>${p.history}</td>
+      <td><span class="badge bg-danger">${p.allergies}</span></td>
+    </tr>
+  `).join("");
+}
+
+function renderDoctors() {
+  renderDoctorCards(DB.doctors);
+}
+
+function filterDoctors(dept, btnElement) {
+  if (btnElement) {
+    document.querySelectorAll(".dept-filter-btn").forEach(b => b.classList.remove("active", "btn-primary"));
+    btnElement.classList.add("active", "btn-primary");
+  }
+
+  if (dept === 'All') {
+    renderDoctorCards(DB.doctors);
+  } else {
+    const filtered = DB.doctors.filter(d => d.dept === dept);
+    renderDoctorCards(filtered);
+  }
+}
+
+function renderDoctorCards(list) {
+  const container = document.getElementById("doctorsCardsContainer");
+  if (!container) return;
+
+  container.innerHTML = list.map(d => `
+    <div class="col-md-4 mb-3">
+      <div class="card h-100 shadow-sm border-0">
+        <img src="${d.photo}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="${d.name}">
+        <div class="card-body">
+          <h5 class="card-title text-primary">${d.name}</h5>
+          <p class="card-text mb-1"><strong>Dept:</strong> ${d.dept}</p>
+          <p class="card-text mb-1"><small>${d.degrees}</small></p>
+          <p class="card-text text-success"><strong>Fee:</strong> ${d.fee} BDT</p>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderConsultationDesk() {
+  const patientSelect = document.getElementById("consultationPatientSelect");
+  if (patientSelect) {
+    patientSelect.innerHTML = DB.patients.map(p => `<option value="${p.name}">${p.name} (${p.mrn})</option>`).join("");
+  }
+}
+
+function loadConsultationPatient(patientName) {
+  const patient = DB.patients.find(p => p.name === patientName);
+  if (patient) {
+    document.getElementById("patientVitalsDisplay").innerHTML = `
+      <h6>Patient Information: ${patient.name}</h6>
+      <p>Age/Gender: ${patient.age}/${patient.gender} | Contact: ${patient.contact}</p>
+      <p>Vitals History: ${patient.history}</p>
+    `;
+  }
+}
+
+function toggleDoctorAttendance() {
+  doctorAttendance = !doctorAttendance;
+  const statusEl = document.getElementById("doctorAttendanceStatus");
+  if (statusEl) {
+    statusEl.className = doctorAttendance ? "badge bg-success" : "badge bg-secondary";
+    statusEl.innerText = doctorAttendance ? "Available" : "Offline";
+  }
+}
+
+function handleSavePrescription(e) {
   if (e) e.preventDefault();
-  const name = document.getElementById("docName")?.value || "Dr. Unknown";
-  const dept = document.getElementById("docDept")?.value || "General";
-  const newId = `DOC-${Math.floor(100 + Math.random() * 900)}`;
+  const patientName = document.getElementById("consultationPatientSelect")?.value;
+  const meds = document.getElementById("prescriptionMeds")?.value;
+  const advice = document.getElementById("prescriptionAdvice")?.value;
 
-  const newDoc = {
-    id: newId,
-    name: name,
-    dept: dept,
-    degrees: document.getElementById("docDegrees")?.value || "MBBS",
-    fee: Number(document.getElementById("docFee")?.value || 1000),
-    photo: document.getElementById("docPhoto")?.value || "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80"
+  const newRx = {
+    id: `RX-${501 + DB.prescriptions.length}`,
+    patientName,
+    doctorName: currentUser ? currentUser.name : "Consultant Doctor",
+    date: new Date().toISOString().split('T')[0],
+    meds,
+    advice
   };
 
-  DB.doctors.push(newDoc);
-
-  // Register User Account for new doctor
-  const aliasId = newId.toLowerCase().replace("-", "");
-  DB.users.push({
-    id: `${aliasId}@hospital.com`,
-    alias: aliasId,
-    pass: "doctor123",
-    name: name,
-    role: "doctor",
-    roleTitle: `Specialist Doctor (${dept})`,
-    avatar: newDoc.photo
-  });
-
-  addNotification(`Doctor ${newDoc.name} registered (ID: ${newId}).`);
-  closeModal("addDoctorModal");
-  populateDropdowns();
-  renderDoctors();
+  DB.prescriptions.push(newRx);
+  alert("Prescription generated successfully!");
+  switchView("view-prescriptions");
 }
 
-function handleAddPatient(e) {
-  if (e) e.preventDefault();
-  const name = document.getElementById("patName")?.value || "Patient";
-  const contact = document.getElementById("patContact")?.value || "01700000000";
+function renderPrescriptions() {
+  const tbody = document.getElementById("prescriptionsTableBody");
+  if (!tbody) return;
 
-  const newPat = {
-    mrn: `BD-2026-${Math.floor(1000 + Math.random() * 9000)}`,
-    name: name,
-    contact: contact,
-    age: document.getElementById("patAge")?.value || 30,
-    gender: document.getElementById("patGender")?.value || "Male",
-    history: document.getElementById("patHistory")?.value || "N/A",
-    allergies: document.getElementById("patAllergies")?.value || "None"
-  };
+  let list = DB.prescriptions;
+  if (currentUser.role === "patient") {
+    list = list.filter(r => r.patientName.toLowerCase() === currentUser.name.toLowerCase());
+  }
 
-  DB.patients.push(newPat);
-
-  DB.users.push({
-    id: `${name.toLowerCase().replace(/\s+/g, '')}@hospital.com`,
-    alias: name.toLowerCase().replace(/\s+/g, ''),
-    pass: "123456",
-    name: name,
-    phone: contact,
-    role: "patient",
-    roleTitle: "Patient Portal Account",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80"
-  });
-
-  addNotification(`Patient ${newPat.name} registered (MRN: ${newPat.mrn}).`);
-  closeModal("addPatientModal");
-  renderPatients();
+  tbody.innerHTML = list.map(r => `
+    <tr>
+      <td>${r.id}</td>
+      <td>${r.patientName}</td>
+      <td>${r.doctorName}</td>
+      <td>${r.date}</td>
+      <td>${r.meds}</td>
+      <td><button class="btn btn-sm btn-outline-primary" onclick="printRx('${r.id}')"><i class="bi bi-printer"></i> Print</button></td>
+    </tr>
+  `).join("");
 }
 
-function handleBookAppointment(e) {
-  if (e) e.preventDefault();
-  const app = {
-    id: `APT-${Math.floor(100 + Math.random() * 900)}`,
-    patientName: document.getElementById("appPatientName")?.value || "Patient",
-    doctorName: document.getElementById("appDoctorSelect")?.value || "Doctor",
-    dept: "Specialist OPD",
-    dateTime: document.getElementById("appDateTime")?.value.replace("T", " ") || "2026-08-29 10:00 AM",
-    status: "Scheduled"
-  };
-
-  DB.appointments.unshift(app);
-  addNotification(`Appointment ${app.id} booked for ${app.patientName}.`);
-  closeModal("bookAppointmentModal");
-  renderAppointments();
+function printRx(rxId) {
+  alert(`Printing Prescription ID: ${rxId}`);
 }
 
-function handleGenerateBill(e) {
-  if (e) e.preventDefault();
-  const inv = {
-    id: `INV-${Math.floor(1000 + Math.random() * 9000)}`,
-    mrn: document.getElementById("billMrn")?.value || "BD-2026-0000",
-    patientName: document.getElementById("billName")?.value || "Patient",
-    service: document.getElementById("billService")?.value || "OPD Service",
-    amount: document.getElementById("billAmount")?.value || 1000,
-    status: "Paid"
-  };
+function renderLaboratory() {
+  const tbody = document.getElementById("labTableBody");
+  if (!tbody) return;
 
-  DB.invoices.unshift(inv);
-  addNotification(`Invoice ${inv.id} generated for ${inv.patientName}.`);
-  closeModal("generateBillModal");
-  renderAccounts();
+  tbody.innerHTML = DB.labTests.map(l => `
+    <tr>
+      <td>${l.id}</td>
+      <td>${l.patientName}</td>
+      <td>${l.testName}</td>
+      <td>${l.doctorName}</td>
+      <td><span class="badge ${l.status === 'Completed' ? 'bg-success' : 'bg-warning text-dark'}">${l.status}</span></td>
+      <td>${l.result}</td>
+      <td>${l.status === 'Pending' ? `<button class="btn btn-sm btn-success" onclick="completeLab('${l.id}')">Upload Result</button>` : '-'}</td>
+    </tr>
+  `).join("");
 }
 
-function triggerPrint() {
-  window.print();
+function completeLab(id) {
+  const test = DB.labTests.find(l => l.id === id);
+  if (test) {
+    test.status = "Completed";
+    test.result = "Sample Examined: Parameters within normal limits.";
+    renderLaboratory();
+  }
 }
 
-// Navigation & Sidebar Handlers
-function toggleSidebar() {
-  const nav = document.getElementById("sidebarNav");
-  const overlay = document.getElementById("sidebarOverlay");
-  if (nav) nav.classList.toggle("active");
-  if (overlay) overlay.classList.toggle("active");
+function renderPharmacy() {
+  const tbody = document.getElementById("pharmacyTableBody");
+  if (!tbody) return;
+
+  tbody.innerHTML = DB.pharmacy.map(p => `
+    <tr>
+      <td>${p.name}</td>
+      <td>${p.stock} ${p.unit}</td>
+      <td><button class="btn btn-sm btn-outline-success" onclick="restockMedicine('${p.name}')">+ Restock</button></td>
+    </tr>
+  `).join("");
 }
 
-function closeSidebar() {
-  const nav = document.getElementById("sidebarNav");
-  const overlay = document.getElementById("sidebarOverlay");
-  if (nav) nav.classList.remove("active");
-  if (overlay) overlay.classList.remove("active");
+function restockMedicine(name) {
+  const item = DB.pharmacy.find(p => p.name === name);
+  if (item) {
+    item.stock += 50;
+    renderPharmacy();
+  }
+}
+
+function renderBeds() {
+  const container = document.getElementById("bedsContainer");
+  if (!container) return;
+
+  container.innerHTML = DB.cabins.map((c, idx) => `
+    <div class="col-md-3 mb-3">
+      <div class="card border-0 shadow-sm ${c.status === 'Occupied' ? 'bg-light-danger border-start border-danger border-4' : 'bg-light-success border-start border-success border-4'}">
+        <div class="card-body">
+          <h5>${c.number}</h5>
+          <p class="mb-1">Status: <strong>${c.status}</strong></p>
+          <p class="mb-2"><small>Patient: ${c.patient}</small></p>
+          <button class="btn btn-sm ${c.status === 'Occupied' ? 'btn-outline-danger' : 'btn-outline-success'}" onclick="toggleCabinStatus(${idx})">
+            ${c.status === 'Occupied' ? 'Release Cabin' : 'Allocate Patient'}
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function toggleCabinStatus(index) {
+  const cabin = DB.cabins[index];
+  if (cabin) {
+    if (cabin.status === "Occupied") {
+      cabin.status = "Vacant";
+      cabin.patient = "N/A";
+    } else {
+      cabin.status = "Occupied";
+      cabin.patient = "Admitted Patient";
+    }
+    renderBeds();
+  }
+}
+
+function renderAccounts() {
+  const el = document.getElementById("accountsSummaryContent");
+  if (!el) return;
+
+  el.innerHTML = `
+    <div class="row g-3">
+      <div class="col-md-4"><div class="p-3 bg-white shadow-sm rounded"><h5>Total Revenue</h5><h4>${DB.accounts.totalRevenue}</h4></div></div>
+      <div class="col-md-4"><div class="p-3 bg-white shadow-sm rounded"><h5>Pending Invoices</h5><h4>${DB.accounts.pendingBills}</h4></div></div>
+      <div class="col-md-4"><div class="p-3 bg-white shadow-sm rounded"><h5>Today's Collection</h5><h4>${DB.accounts.todayIncome}</h4></div></div>
+    </div>
+  `;
 }
