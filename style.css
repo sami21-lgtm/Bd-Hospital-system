@@ -28,7 +28,7 @@ body {
     min-height: 100vh;
 }
 
-/* Auth Login Modal Overlay Background */
+/* Auth Login Modal Overlay */
 .login-modal-overlay {
     position: fixed;
     top: 0;
@@ -40,13 +40,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 15px;
     z-index: 1000;
 }
 
 .login-card {
     background: white;
     width: 420px;
-    padding: 35px;
+    max-width: 100%;
+    padding: 35px 25px;
     border-radius: 16px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
 }
