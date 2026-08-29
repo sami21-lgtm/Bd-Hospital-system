@@ -1,4 +1,4 @@
-/* CarePulse HMS Core Application Engine */
+/* CarePulse HMS Core Application Engine - Fixed & Complete */
 
 // Database Setup with Specific Credentials & Patient Phone Recovery
 const DB = {
@@ -9,7 +9,7 @@ const DB = {
     // Doctor 1
     { id: "doctor@hospital.com", alias: "doctor1", pass: "doctor123", name: "Prof. Dr. Syed Shamsul Huda", role: "doctor", roleTitle: "Specialist Doctor (Cardiology)", avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80" },
 
-    // Doctor 2 (Additional Doctor to test Doctor-wise Filtering)
+    // Doctor 2
     { id: "doctor2@hospital.com", alias: "doctor2", pass: "doctor123", name: "Dr. Farhana Yasmin", role: "doctor", roleTitle: "Specialist Doctor (Neurology)", avatar: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=100&auto=format&fit=crop&q=80" },
 
     // Nurse
@@ -25,298 +25,46 @@ const DB = {
     { id: "pharma@hospital.com", alias: "pharma", pass: "pharma123", name: "Mahmudur Rahman", role: "pharmacist", roleTitle: "Lead Pharmacist", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop&q=80" }
   ],
 
-const doctors = [
-    { 
-        id: "DOC-101", 
-        name: "Prof. Dr. Kazi Ashraful Alam", 
-        dept: "General & Laparoscopic Surgery", 
-        degrees: "MBBS, FCPS (Surgery), MS", 
-        fee: 1500, 
-        photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-102", 
-        name: "Dr. Ariful Islam", 
-        dept: "Urology", 
-        degrees: "MBBS, MS (Urology)", 
-        fee: 1500, 
-        photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-103", 
-        name: "Dr. Nusrat Chowdury", 
-        dept: "Obstetrics & Gynecology", 
-        degrees: "MBBS, FCPS (OBGYN)", 
-        fee: 1600, 
-        photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-104", 
-        name: "Prof. Dr. Mahbubur Rahman", 
-        dept: "Cardiac Surgery", 
-        degrees: "MBBS, MS (Cardiothoracic Surgery)", 
-        fee: 2000, 
-        photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-105", 
-        name: "Dr. Shahriar Nabi", 
-        dept: "Vascular Surgery", 
-        degrees: "MBBS, MS (Vascular Surgery)", 
-        fee: 1500, 
-        photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-106", 
-        name: "Dr. Imran Khan", 
-        dept: "Respiratory Medicine", 
-        degrees: "MBBS, MD (Chest Medicine)", 
-        fee: 1500, 
-        photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-107", 
-        name: "Dr. Tariqul Islam", 
-        dept: "Colorectal Surgery", 
-        degrees: "MBBS, FCPS (Surgery), MS (Colorectal)", 
-        fee: 1600, 
-        photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-108", 
-        name: "Dr. Mehzabin Ahmed", 
-        dept: "Dental and Maxillofacial Surgery", 
-        degrees: "BDS, FCPS (Oral & Maxillofacial)", 
-        fee: 1200, 
-        photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-109", 
-        name: "Dt. Rashida Parveen", 
-        dept: "Nutrition & Dietetic Department", 
-        degrees: "BSc & MSc in Food & Nutrition", 
-        fee: 1000, 
-        photo: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-110", 
-        name: "Dr. Ayesha Siddiqua", 
-        dept: "Rheumatology", 
-        degrees: "MBBS, MD (Rheumatology)", 
-        fee: 1600, 
-        photo: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-111", 
-        name: "Dr. Rafiqul Hassan", 
-        dept: "Anaesthesia", 
-        degrees: "MBBS, DA, FCPS (Anaesthesiology)", 
-        fee: 1200, 
-        photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-112", 
-        name: "Prof. Dr. Syed Shamsul Huda", 
-        dept: "Cardiology", 
-        degrees: "MBBS, FCPS, FACC (USA)", 
-        fee: 1800, 
-        photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-113", 
-        name: "Dr. Tanvir Mahmud", 
-        dept: "Pediatric & Neonatology", 
-        degrees: "MBBS, DCH, FCPS (Pediatrics)", 
-        fee: 1300, 
-        photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-114", 
-        name: "Dr. Mahbub Alam", 
-        dept: "ENT, Head & Neck Surgery", 
-        degrees: "MBBS, MS (ENT)", 
-        fee: 1400, 
-        photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-115", 
-        name: "Dr. Anisur Rahman", 
-        dept: "Orthopedics, Arthroscopy & Joint Replacement", 
-        degrees: "MBBS, MS (Ortho)", 
-        fee: 1500, 
-        photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-116", 
-        name: "Dr. Bilkis Jahan", 
-        dept: "Clinical Hematology", 
-        degrees: "MBBS, MD (Hematology)", 
-        fee: 1600, 
-        photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-117", 
-        name: "Dr. Kamrul Islam", 
-        dept: "Surgical Oncology", 
-        degrees: "MBBS, MS (Surgical Oncology)", 
-        fee: 1800, 
-        photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-118", 
-        name: "Dr. Moniruzzaman", 
-        dept: "Physical Medicine", 
-        degrees: "MBBS, FCPS (Physical Medicine)", 
-        fee: 1300, 
-        photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-119", 
-        name: "Dr. Sharmin Akter", 
-        dept: "Plastic & Aesthetic Surgery", 
-        degrees: "MBBS, FCPS (Plastic Surgery)", 
-        fee: 1700, 
-        photo: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-120", 
-        name: "Prof. Dr. Kamrul Hasan", 
-        dept: "Gastroenterology & Hepatology", 
-        degrees: "MBBS, MD (Gastroenterology)", 
-        fee: 1800, 
-        photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-121", 
-        name: "Dr. Sabina Yeasmin", 
-        dept: "Dermatology", 
-        degrees: "MBBS, DDV, FCPS (Skin & VD)", 
-        fee: 1400, 
-        photo: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-122", 
-        name: "Dr. Shamsul Alam", 
-        dept: "Neurosurgery", 
-        degrees: "MBBS, MS (Neurosurgery)", 
-        fee: 1800, 
-        photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-123", 
-        name: "Dr. Asaduzzaman", 
-        dept: "Thoracic Surgery", 
-        degrees: "MBBS, MS (Thoracic Surgery)", 
-        fee: 1700, 
-        photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-124", 
-        name: "Dr. Mahmudul Haq", 
-        dept: "ICU", 
-        degrees: "MBBS, MD (Critical Care Medicine)", 
-        fee: 1500, 
-        photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-125", 
-        name: "Dr. Nargis Sultana", 
-        dept: "Laboratory Medicine", 
-        degrees: "MBBS, MD (Pathology)", 
-        fee: 1200, 
-        photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-126", 
-        name: "Dr. Faisal Ahmed", 
-        dept: "Pediatric Surgery", 
-        degrees: "MBBS, MS (Pediatric Surgery)", 
-        fee: 1500, 
-        photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-127", 
-        name: "Prof. Dr. Zahirul Islam", 
-        dept: "Hepatobiliary & Pancreatic Surgery", 
-        degrees: "MBBS, FCPS, MS (HBP Surgery)", 
-        fee: 2000, 
-        photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-128", 
-        name: "Dr. Sadia Chowdhury", 
-        dept: "Pediatric Cardiology", 
-        degrees: "MBBS, MD (Pediatric Cardiology)", 
-        fee: 1600, 
-        photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-129", 
-        name: "Dr. Nahid Sultana", 
-        dept: "Oncology", 
-        degrees: "MBBS, FCPS (Oncology)", 
-        fee: 1700, 
-        photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-130", 
-        name: "Dr. Tariqul Islam", 
-        dept: "Nephrology", 
-        degrees: "MBBS, MD (Nephrology)", 
-        fee: 1600, 
-        photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-131", 
-        name: "Dr. Rehana Parveen", 
-        dept: "Diabetes & Endocrinology", 
-        degrees: "MBBS, MD (Endocrinology)", 
-        fee: 1500, 
-        photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-132", 
-        name: "Dr. Farhana Yasmin", 
-        dept: "Neurology", 
-        degrees: "MBBS, MD (Neurology)", 
-        fee: 1500, 
-        photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-133", 
-        name: "Prof. Dr. M. A. Rashid", 
-        dept: "Internal Medicine", 
-        degrees: "MBBS, FCPS (Medicine)", 
-        fee: 2000, 
-        photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-134", 
-        name: "Dr. Khairul Bashar", 
-        dept: "Radiology & Imaging", 
-        degrees: "MBBS, MD (Radiology)", 
-        fee: 1300, 
-        photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-135", 
-        name: "Dr. Sajjad Hossain", 
-        dept: "Psychiatry", 
-        degrees: "MBBS, FCPS (Psychiatry)", 
-        fee: 1400, 
-        photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" 
-    },
-    { 
-        id: "DOC-136", 
-        name: "Dr. Farzana Parveen", 
-        dept: "Breast, Colorectal & Laparoscopic Surgery", 
-        degrees: "MBBS, FCPS (Surgery), MS", 
-        fee: 1600, 
-        photo: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&auto=format&fit=crop&q=80" 
-    }
-];
- 
-patients: [
+  doctors: [
+    { id: "DOC-101", name: "Prof. Dr. Kazi Ashraful Alam", dept: "General & Laparoscopic Surgery", degrees: "MBBS, FCPS (Surgery), MS", fee: 1500, photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-102", name: "Dr. Ariful Islam", dept: "Urology", degrees: "MBBS, MS (Urology)", fee: 1500, photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-103", name: "Dr. Nusrat Chowdury", dept: "Obstetrics & Gynecology", degrees: "MBBS, FCPS (OBGYN)", fee: 1600, photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-104", name: "Prof. Dr. Mahbubur Rahman", dept: "Cardiac Surgery", degrees: "MBBS, MS (Cardiothoracic Surgery)", fee: 2000, photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-105", name: "Dr. Shahriar Nabi", dept: "Vascular Surgery", degrees: "MBBS, MS (Vascular Surgery)", fee: 1500, photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-106", name: "Dr. Imran Khan", dept: "Respiratory Medicine", degrees: "MBBS, MD (Chest Medicine)", fee: 1500, photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-107", name: "Dr. Tariqul Islam", dept: "Colorectal Surgery", degrees: "MBBS, FCPS (Surgery), MS (Colorectal)", fee: 1600, photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-108", name: "Dr. Mehzabin Ahmed", dept: "Dental and Maxillofacial Surgery", degrees: "BDS, FCPS (Oral & Maxillofacial)", fee: 1200, photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-109", name: "Dt. Rashida Parveen", dept: "Nutrition & Dietetic Department", degrees: "BSc & MSc in Food & Nutrition", fee: 1000, photo: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-110", name: "Dr. Ayesha Siddiqua", dept: "Rheumatology", degrees: "MBBS, MD (Rheumatology)", fee: 1600, photo: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-111", name: "Dr. Rafiqul Hassan", dept: "Anaesthesia", degrees: "MBBS, DA, FCPS (Anaesthesiology)", fee: 1200, photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-112", name: "Prof. Dr. Syed Shamsul Huda", dept: "Cardiology", degrees: "MBBS, FCPS, FACC (USA)", fee: 1800, photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-113", name: "Dr. Tanvir Mahmud", dept: "Pediatric & Neonatology", degrees: "MBBS, DCH, FCPS (Pediatrics)", fee: 1300, photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-114", name: "Dr. Mahbub Alam", dept: "ENT, Head & Neck Surgery", degrees: "MBBS, MS (ENT)", fee: 1400, photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-115", name: "Dr. Anisur Rahman", dept: "Orthopedics, Arthroscopy & Joint Replacement", degrees: "MBBS, MS (Ortho)", fee: 1500, photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-116", name: "Dr. Bilkis Jahan", dept: "Clinical Hematology", degrees: "MBBS, MD (Hematology)", fee: 1600, photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-117", name: "Dr. Kamrul Islam", dept: "Surgical Oncology", degrees: "MBBS, MS (Surgical Oncology)", fee: 1800, photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-118", name: "Dr. Moniruzzaman", dept: "Physical Medicine", degrees: "MBBS, FCPS (Physical Medicine)", fee: 1300, photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-119", name: "Dr. Sharmin Akter", dept: "Plastic & Aesthetic Surgery", degrees: "MBBS, FCPS (Plastic Surgery)", fee: 1700, photo: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-120", name: "Prof. Dr. Kamrul Hasan", dept: "Gastroenterology & Hepatology", degrees: "MBBS, MD (Gastroenterology)", fee: 1800, photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-121", name: "Dr. Sabina Yeasmin", dept: "Dermatology", degrees: "MBBS, DDV, FCPS (Skin & VD)", fee: 1400, photo: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-122", name: "Dr. Shamsul Alam", dept: "Neurosurgery", degrees: "MBBS, MS (Neurosurgery)", fee: 1800, photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-123", name: "Dr. Asaduzzaman", dept: "Thoracic Surgery", degrees: "MBBS, MS (Thoracic Surgery)", fee: 1700, photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-124", name: "Dr. Mahmudul Haq", dept: "ICU", degrees: "MBBS, MD (Critical Care Medicine)", fee: 1500, photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-125", name: "Dr. Nargis Sultana", dept: "Laboratory Medicine", degrees: "MBBS, MD (Pathology)", fee: 1200, photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-126", name: "Dr. Faisal Ahmed", dept: "Pediatric Surgery", degrees: "MBBS, MS (Pediatric Surgery)", fee: 1500, photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-127", name: "Prof. Dr. Zahirul Islam", dept: "Hepatobiliary & Pancreatic Surgery", degrees: "MBBS, FCPS, MS (HBP Surgery)", fee: 2000, photo: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-128", name: "Dr. Sadia Chowdhury", dept: "Pediatric Cardiology", degrees: "MBBS, MD (Pediatric Cardiology)", fee: 1600, photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-129", name: "Dr. Nahid Sultana", dept: "Oncology", degrees: "MBBS, FCPS (Oncology)", fee: 1700, photo: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-130", name: "Dr. Tariqul Islam", dept: "Nephrology", degrees: "MBBS, MD (Nephrology)", fee: 1600, photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-131", name: "Dr. Rehana Parveen", dept: "Diabetes & Endocrinology", degrees: "MBBS, MD (Endocrinology)", fee: 1500, photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-132", name: "Dr. Farhana Yasmin", dept: "Neurology", degrees: "MBBS, MD (Neurology)", fee: 1500, photo: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-133", name: "Prof. Dr. M. A. Rashid", dept: "Internal Medicine", degrees: "MBBS, FCPS (Medicine)", fee: 2000, photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-134", name: "Dr. Khairul Bashar", dept: "Radiology & Imaging", degrees: "MBBS, MD (Radiology)", fee: 1300, photo: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-135", name: "Dr. Sajjad Hossain", dept: "Psychiatry", degrees: "MBBS, FCPS (Psychiatry)", fee: 1400, photo: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=400&auto=format&fit=crop&q=80" },
+    { id: "DOC-136", name: "Dr. Farzana Parveen", dept: "Breast, Colorectal & Laparoscopic Surgery", degrees: "MBBS, FCPS (Surgery), MS", fee: 1600, photo: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=400&auto=format&fit=crop&q=80" }
+  ],
+
+  patients: [
     { mrn: "BD-2026-9901", name: "Tariqul Islam", contact: "01711223344", age: 45, gender: "Male", history: "Hypertension, BP: 130/85, Temp: 98.6°F", allergies: "Penicillin" },
     { mrn: "BD-2026-9902", name: "Selina Begum", contact: "01819887766", age: 38, gender: "Female", history: "Asthma, BP: 120/80, Temp: 99.1°F", allergies: "Dust, Sulfa Drugs" },
     { mrn: "BD-2026-9903", name: "Abdur Rahim", contact: "01912345678", age: 62, gender: "Male", history: "IHD, Post-PCI, BP: 140/90, Temp: 98.4°F", allergies: "None" },
@@ -404,34 +152,44 @@ document.addEventListener("DOMContentLoaded", () => {
 function autoFillCredentials(roleKey) {
   const user = DB.users.find(u => u.role === roleKey);
   if (user) {
-    document.getElementById("loginUserId").value = user.id;
-    document.getElementById("loginPassword").value = user.pass;
-    document.getElementById("credentialHint").innerHTML = `ID: <b>${user.id}</b> | Pass: <b>${user.pass}</b>`;
+    const idEl = document.getElementById("loginUserId");
+    const passEl = document.getElementById("loginPassword");
+    const hintEl = document.getElementById("credentialHint");
+
+    if (idEl) idEl.value = user.id;
+    if (passEl) passEl.value = user.pass;
+    if (hintEl) hintEl.innerHTML = `ID: <b>${user.id}</b> | Pass: <b>${user.pass}</b>`;
   }
 }
 
 // User Authentication Handler
 function handleUserLogin(event) {
-  event.preventDefault();
-  const inputId = document.getElementById("loginUserId").value.trim().toLowerCase();
-  const inputPass = document.getElementById("loginPassword").value.trim();
+  if (event) event.preventDefault();
+  const idEl = document.getElementById("loginUserId");
+  const passEl = document.getElementById("loginPassword");
   const errorMsg = document.getElementById("loginErrorMsg");
+  const loginModal = document.getElementById("loginModal");
+
+  if (!idEl || !passEl) return;
+
+  const inputId = idEl.value.trim().toLowerCase();
+  const inputPass = passEl.value.trim();
 
   // Validate ID/Email/Alias and Password
   const matchedUser = DB.users.find(u => 
-    (u.id.toLowerCase() === inputId || u.alias.toLowerCase() === inputId) && u.pass === inputPass
+    (u.id.toLowerCase() === inputId || u.alias.toLowerCase() === inputId || (u.phone && u.phone === inputId)) && u.pass === inputPass
   );
 
   if (matchedUser) {
     currentUser = matchedUser;
-    errorMsg.style.display = "none";
-    document.getElementById("loginModal").style.display = "none";
+    if (errorMsg) errorMsg.style.display = "none";
+    if (loginModal) loginModal.style.display = "none";
     
     // Update Header Profile
-    document.getElementById("navUserAvatar").src = currentUser.avatar;
-    document.getElementById("navUserName").textContent = currentUser.name;
-    document.getElementById("navUserRole").textContent = currentUser.roleTitle;
-    document.getElementById("activeRoleDisplay").textContent = currentUser.roleTitle;
+    if (document.getElementById("navUserAvatar")) document.getElementById("navUserAvatar").src = currentUser.avatar;
+    if (document.getElementById("navUserName")) document.getElementById("navUserName").textContent = currentUser.name;
+    if (document.getElementById("navUserRole")) document.getElementById("navUserRole").textContent = currentUser.roleTitle;
+    if (document.getElementById("activeRoleDisplay")) document.getElementById("activeRoleDisplay").textContent = currentUser.roleTitle;
 
     buildSidebarMenu();
     
@@ -440,18 +198,19 @@ function handleUserLogin(event) {
     switchView(defaultView);
     addNotification(`User ${currentUser.name} authenticated successfully as ${currentUser.roleTitle}.`);
   } else {
-    errorMsg.style.display = "block";
+    if (errorMsg) errorMsg.style.display = "block";
   }
 }
 
 // Patient Password Recovery Handler (Name & Phone Match)
 function handlePatientPasswordRecovery(e) {
-  e.preventDefault();
-  const nameInput = document.getElementById("recPatientName").value.trim().toLowerCase();
-  const phoneInput = document.getElementById("recPatientPhone").value.trim().replace(/\D/g, "");
-  const newPassInput = document.getElementById("recNewPassword").value.trim();
+  if (e) e.preventDefault();
+  const nameInput = document.getElementById("recPatientName")?.value.trim().toLowerCase();
+  const phoneInput = document.getElementById("recPatientPhone")?.value.trim().replace(/\D/g, "");
+  const newPassInput = document.getElementById("recNewPassword")?.value.trim();
   const statusBox = document.getElementById("recoveryStatus");
 
+  if (!statusBox) return;
   statusBox.style.display = "block";
 
   // Find matching patient by name and phone
@@ -485,7 +244,8 @@ function handlePatientPasswordRecovery(e) {
 
 function handleUserLogout() {
   currentUser = null;
-  document.getElementById("loginModal").style.display = "flex";
+  const loginModal = document.getElementById("loginModal");
+  if (loginModal) loginModal.style.display = "flex";
 }
 
 // Workspace Navigation Mapping per Role
@@ -502,6 +262,7 @@ function getDefaultViewForRole(role) {
 
 function buildSidebarMenu() {
   const sideMenu = document.getElementById("sideMenu");
+  if (!sideMenu || !currentUser) return;
   sideMenu.innerHTML = "";
 
   const menuItems = [
@@ -554,10 +315,14 @@ function switchView(viewId) {
     'view-accounts': 'Billing & Cashier Ledger',
     'view-notifications': 'System Audit Logs'
   };
-  document.getElementById("pageTitle").textContent = titles[viewId] || "CarePulse System";
 
-  document.getElementById("contextBannerText").textContent = 
-    `Active Session: ${currentUser.roleTitle} (${currentUser.name}) | CarePulse Enterprise Workspace`;
+  const pageTitle = document.getElementById("pageTitle");
+  if (pageTitle) pageTitle.textContent = titles[viewId] || "CarePulse System";
+
+  const banner = document.getElementById("contextBannerText");
+  if (banner && currentUser) {
+    banner.textContent = `Active Session: ${currentUser.roleTitle} (${currentUser.name}) | CarePulse Enterprise Workspace`;
+  }
 
   closeSidebar();
   renderViewData(viewId);
@@ -582,16 +347,26 @@ function renderViewData(viewId) {
 
 // Admin Dashboard Render
 function renderAdminDashboard() {
-  document.getElementById("statPatients").textContent = DB.patients.length;
-  document.getElementById("statDoctors").textContent = DB.doctors.length;
+  const statP = document.getElementById("statPatients");
+  if (statP) statP.textContent = DB.patients.length;
   
-  const occupiedBeds = DB.cabins.filter(c => c.status === "Occupied").length;
-  document.getElementById("statBeds").textContent = `${occupiedBeds} / ${DB.cabins.length}`;
+  const statD = document.getElementById("statDoctors");
+  if (statD) statD.textContent = DB.doctors.length;
+  
+  const statB = document.getElementById("statBeds");
+  if (statB) {
+    const occupiedBeds = DB.cabins.filter(c => c.status === "Occupied").length;
+    statB.textContent = `${occupiedBeds} / ${DB.cabins.length}`;
+  }
 
-  const totalRev = DB.invoices.reduce((sum, inv) => sum + Number(inv.amount), 0);
-  document.getElementById("statRevenue").textContent = `৳ ${totalRev.toLocaleString()}`;
+  const statR = document.getElementById("statRevenue");
+  if (statR) {
+    const totalRev = DB.invoices.reduce((sum, inv) => sum + Number(inv.amount), 0);
+    statR.textContent = `৳ ${totalRev.toLocaleString()}`;
+  }
 
   const tbody = document.getElementById("adminQuickQueueTable");
+  if (!tbody) return;
   tbody.innerHTML = "";
   DB.appointments.forEach(app => {
     tbody.innerHTML += `
@@ -607,24 +382,24 @@ function renderAdminDashboard() {
   });
 }
 
-// Appointments List Render (Filtered specifically if DOCTOR is logged in)
+// Appointments List Render
 function renderAppointments() {
   const tbody = document.getElementById("appointmentTableBody");
   const heading = document.getElementById("appointmentTableHeading");
+  if (!tbody) return;
   tbody.innerHTML = "";
 
   let apptList = DB.appointments;
 
-  // DOCTOR FILTER: Shows ONLY appointments belonging to the logged-in doctor
-  if (currentUser.role === 'doctor') {
+  if (currentUser?.role === 'doctor') {
     apptList = DB.appointments.filter(a => a.doctorName.toLowerCase().includes(currentUser.name.toLowerCase()));
-    heading.innerHTML = `<i class="fa-solid fa-calendar-days"></i> Appointments Assigned to ${currentUser.name}`;
+    if (heading) heading.innerHTML = `<i class="fa-solid fa-calendar-days"></i> Appointments Assigned to ${currentUser.name}`;
   } else {
-    heading.innerHTML = `<i class="fa-solid fa-calendar-days"></i> Appointment Scheduling Center`;
+    if (heading) heading.innerHTML = `<i class="fa-solid fa-calendar-days"></i> Appointment Scheduling Center`;
   }
 
   if (apptList.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No appointments found for ${currentUser.name}.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--text-muted);">No appointments found.</td></tr>`;
     return;
   }
 
@@ -653,24 +428,24 @@ function completeAppointment(id) {
   }
 }
 
-// Patient Directory Render (Filtered if Doctor is logged in)
+// Patient Directory Render
 function renderPatients() {
   const tbody = document.getElementById("patientTableBody");
   const heading = document.getElementById("patientTableHeading");
+  if (!tbody) return;
   tbody.innerHTML = "";
 
   let patientList = DB.patients;
 
-  // DOCTOR FILTER: Shows ONLY patients who have appointments with this doctor
-  if (currentUser.role === 'doctor') {
+  if (currentUser?.role === 'doctor') {
     const assignedPatientNames = DB.appointments
       .filter(a => a.doctorName.toLowerCase().includes(currentUser.name.toLowerCase()))
       .map(a => a.patientName);
 
     patientList = DB.patients.filter(p => assignedPatientNames.includes(p.name));
-    heading.innerHTML = `<i class="fa-solid fa-address-card"></i> Patients Assigned to ${currentUser.name}`;
+    if (heading) heading.innerHTML = `<i class="fa-solid fa-address-card"></i> Patients Assigned to ${currentUser.name}`;
   } else {
-    heading.innerHTML = `<i class="fa-solid fa-address-card"></i> Patient Electronic Medical Records (EMR)`;
+    if (heading) heading.innerHTML = `<i class="fa-solid fa-address-card"></i> Patient Electronic Medical Records (EMR)`;
   }
 
   if (patientList.length === 0) {
@@ -694,15 +469,16 @@ function renderPatients() {
 
 function renderDoctors() {
   const deptTabs = document.getElementById("departmentTabs");
-  const depts = ["All", ...new Set(DB.doctors.map(d => d.dept))];
-  deptTabs.innerHTML = depts.map(dept => `<button class="tab-btn ${dept==='All'?'active':''}" onclick="filterDoctors('${dept}', this)">${dept}</button>`).join("");
-
+  if (deptTabs) {
+    const depts = ["All", ...new Set(DB.doctors.map(d => d.dept))];
+    deptTabs.innerHTML = depts.map(dept => `<button class="tab-btn ${dept==='All'?'active':''}" onclick="filterDoctors('${dept}', this)">${dept}</button>`).join("");
+  }
   renderDoctorCards(DB.doctors);
 }
 
 function filterDoctors(dept, btnElement) {
   document.querySelectorAll(".filter-tabs .tab-btn").forEach(b => b.classList.remove("active"));
-  btnElement.classList.add("active");
+  if (btnElement) btnElement.classList.add("active");
 
   if (dept === "All") {
     renderDoctorCards(DB.doctors);
@@ -713,6 +489,7 @@ function filterDoctors(dept, btnElement) {
 
 function renderDoctorCards(list) {
   const grid = document.getElementById("doctorsGrid");
+  if (!grid) return;
   grid.innerHTML = list.map(doc => `
     <div class="doctor-card">
       <img src="${doc.photo}" alt="${doc.name}">
@@ -723,16 +500,20 @@ function renderDoctorCards(list) {
   `).join("");
 }
 
-// Doctor Desk Workstation Render (Doctor Specific Patient Select)
+// Doctor Desk Workstation Render
 function renderConsultationDesk() {
   const select = document.getElementById("consultPatientSelect");
-  document.getElementById("doctorDeskTitle").innerHTML = `<i class="fa-solid fa-stethoscope"></i> OPD Patient Queue (${currentUser.name})`;
+  const title = document.getElementById("doctorDeskTitle");
+  if (!select) return;
+
+  if (title && currentUser) {
+    title.innerHTML = `<i class="fa-solid fa-stethoscope"></i> OPD Patient Queue (${currentUser.name})`;
+  }
   select.innerHTML = `<option value="">-- Select Patient from Queue --</option>`;
 
   let doctorAppts = DB.appointments;
 
-  // Filter queue specifically for the logged-in doctor
-  if (currentUser.role === 'doctor') {
+  if (currentUser?.role === 'doctor') {
     doctorAppts = DB.appointments.filter(a => a.doctorName.toLowerCase().includes(currentUser.name.toLowerCase()));
   }
 
@@ -743,6 +524,8 @@ function renderConsultationDesk() {
 
 function loadConsultationPatient(patientName) {
   const box = document.getElementById("consultPatientDetails");
+  if (!box) return;
+
   const patient = DB.patients.find(p => p.name === patientName);
 
   if (patient) {
@@ -760,6 +543,8 @@ function loadConsultationPatient(patientName) {
 
 function toggleDoctorAttendance() {
   const btn = document.getElementById("docCheckInBtn");
+  if (!btn || !currentUser) return;
+
   if (btn.classList.contains("btn-outline")) {
     btn.className = "btn btn-primary btn-sm";
     btn.textContent = "On Duty (Active)";
@@ -772,8 +557,12 @@ function toggleDoctorAttendance() {
 }
 
 function handleSavePrescription(e) {
-  e.preventDefault();
-  const patientName = document.getElementById("consultPatientSelect").value;
+  if (e) e.preventDefault();
+  const select = document.getElementById("consultPatientSelect");
+  const diagInput = document.getElementById("rxDiagnosis");
+  const medsInput = document.getElementById("rxMedicines");
+
+  const patientName = select?.value;
   if (!patientName) {
     alert("Please select an assigned patient from the queue first.");
     return;
@@ -782,26 +571,26 @@ function handleSavePrescription(e) {
   const rx = {
     rxId: `RX-${Math.floor(100 + Math.random() * 900)}`,
     patientName: patientName,
-    doctorName: currentUser.name,
-    diagnosis: document.getElementById("rxDiagnosis").value,
-    meds: document.getElementById("rxMedicines").value
+    doctorName: currentUser ? currentUser.name : "Duty Doctor",
+    diagnosis: diagInput?.value || "N/A",
+    meds: medsInput?.value || "N/A"
   };
 
   DB.prescriptions.unshift(rx);
-  addNotification(`Prescription ${rx.rxId} created for ${patientName} by ${currentUser.name}.`);
+  addNotification(`Prescription ${rx.rxId} created for ${patientName}.`);
   alert("Prescription saved and sent to Pharmacy.");
-  e.target.reset();
+  if (e?.target) e.target.reset();
   switchView('view-prescriptions');
 }
 
 function renderPrescriptions() {
   const tbody = document.getElementById("prescriptionTableBody");
+  if (!tbody) return;
   tbody.innerHTML = "";
 
   let rxList = DB.prescriptions;
 
-  // Filter prescriptions if DOCTOR is logged in
-  if (currentUser.role === 'doctor') {
+  if (currentUser?.role === 'doctor') {
     rxList = DB.prescriptions.filter(r => r.doctorName.toLowerCase().includes(currentUser.name.toLowerCase()));
   }
 
@@ -824,29 +613,32 @@ function printRx(rxId) {
   if (!rx) return;
 
   const printable = document.getElementById("printableArea");
-  printable.innerHTML = `
-    <div class="doc-header">
-      <div>
-        <h2>CarePulse Specialized Hospital</h2>
-        <p><small>126 Gulshan Avenue, Dhaka-1212 | Tel: +8802998877</small></p>
+  if (printable) {
+    printable.innerHTML = `
+      <div class="doc-header">
+        <div>
+          <h2>CarePulse Specialized Hospital</h2>
+          <p><small>126 Gulshan Avenue, Dhaka-1212 | Tel: +8802998877</small></p>
+        </div>
+        <div style="text-align:right;">
+          <h3>e-PRESCRIPTION</h3>
+          <p><b>Rx ID:</b> ${rx.rxId}</p>
+        </div>
       </div>
-      <div style="text-align:right;">
-        <h3>e-PRESCRIPTION</h3>
-        <p><b>Rx ID:</b> ${rx.rxId}</p>
-      </div>
-    </div>
-    <p><b>Patient Name:</b> ${rx.patientName}</p>
-    <p><b>Prescribed By:</b> ${rx.doctorName}</p>
-    <p><b>Diagnosis:</b> ${rx.diagnosis}</p>
-    <hr class="divider">
-    <h4>Prescribed Medication:</h4>
-    <p style="white-space:pre-wrap; margin-top:10px;">${rx.meds}</p>
-  `;
+      <p><b>Patient Name:</b> ${rx.patientName}</p>
+      <p><b>Prescribed By:</b> ${rx.doctorName}</p>
+      <p><b>Diagnosis:</b> ${rx.diagnosis}</p>
+      <hr class="divider">
+      <h4>Prescribed Medication:</h4>
+      <p style="white-space:pre-wrap; margin-top:10px;">${rx.meds}</p>
+    `;
+  }
   openModal("printDocumentModal");
 }
 
 function renderLaboratory() {
   const tbody = document.getElementById("labTableBody");
+  if (!tbody) return;
   tbody.innerHTML = "";
   DB.labTests.forEach(lab => {
     tbody.innerHTML += `
@@ -874,11 +666,17 @@ function completeLab(id) {
 }
 
 function renderPharmacy() {
-  document.getElementById("statPharmacyItems").textContent = `${DB.pharmacy.length} Items`;
-  const lowCount = DB.pharmacy.filter(p => p.stock < 30).length;
-  document.getElementById("statPharmacyLow").textContent = `${lowCount} Items`;
+  const itemsEl = document.getElementById("statPharmacyItems");
+  const lowEl = document.getElementById("statPharmacyLow");
+
+  if (itemsEl) itemsEl.textContent = `${DB.pharmacy.length} Items`;
+  if (lowEl) {
+    const lowCount = DB.pharmacy.filter(p => p.stock < 30).length;
+    lowEl.textContent = `${lowCount} Items`;
+  }
 
   const tbody = document.getElementById("pharmacyTableBody");
+  if (!tbody) return;
   tbody.innerHTML = "";
   DB.pharmacy.forEach(item => {
     tbody.innerHTML += `
@@ -905,6 +703,7 @@ function restockMedicine(name) {
 
 function renderBeds() {
   const grid = document.getElementById("cabinGrid");
+  if (!grid) return;
   grid.innerHTML = DB.cabins.map(cabin => `
     <div class="cabin-card">
       <h3>${cabin.number}</h3>
@@ -937,6 +736,7 @@ function toggleCabinStatus(number) {
 
 function renderAccounts() {
   const tbody = document.getElementById("accountsTableBody");
+  if (!tbody) return;
   tbody.innerHTML = "";
   DB.invoices.forEach(inv => {
     tbody.innerHTML += `
@@ -958,42 +758,48 @@ function printInvoice(invId) {
   if (!inv) return;
 
   const printable = document.getElementById("printableArea");
-  printable.innerHTML = `
-    <div class="doc-header">
-      <div>
-        <h2>CarePulse Specialized Hospital</h2>
-        <p><small>126 Gulshan Avenue, Dhaka-1212 | Billing Dept</small></p>
+  if (printable) {
+    printable.innerHTML = `
+      <div class="doc-header">
+        <div>
+          <h2>CarePulse Specialized Hospital</h2>
+          <p><small>126 Gulshan Avenue, Dhaka-1212 | Billing Dept</small></p>
+        </div>
+        <div style="text-align:right;">
+          <h3>MONEY RECEIPT</h3>
+          <p><b>Invoice No:</b> ${inv.id}</p>
+        </div>
       </div>
-      <div style="text-align:right;">
-        <h3>MONEY RECEIPT</h3>
-        <p><b>Invoice No:</b> ${inv.id}</p>
-      </div>
-    </div>
-    <p><b>Patient MRN:</b> ${inv.mrn}</p>
-    <p><b>Patient Name:</b> ${inv.patientName}</p>
-    <p><b>Service Provided:</b> ${inv.service}</p>
-    <hr class="divider">
-    <h3>Total Paid Amount: ৳ ${Number(inv.amount).toLocaleString()} BDT</h3>
-    <p><small>Status: PAID (Official System Receipt)</small></p>
-  `;
+      <p><b>Patient MRN:</b> ${inv.mrn}</p>
+      <p><b>Patient Name:</b> ${inv.patientName}</p>
+      <p><b>Service Provided:</b> ${inv.service}</p>
+      <hr class="divider">
+      <h3>Total Paid Amount: ৳ ${Number(inv.amount).toLocaleString()} BDT</h3>
+      <p><small>Status: PAID (Official System Receipt)</small></p>
+    `;
+  }
   openModal("printDocumentModal");
 }
 
 function renderNotifications() {
   const list = document.getElementById("notificationList");
-  list.innerHTML = DB.notifications.map(n => `
-    <li>
-      <span>${n.text}</span>
-      <small style="color:var(--text-muted)">${n.time}</small>
-    </li>
-  `).join("");
-  document.getElementById("notifCount").textContent = DB.notifications.length;
+  const count = document.getElementById("notifCount");
+  if (list) {
+    list.innerHTML = DB.notifications.map(n => `
+      <li>
+        <span>${n.text}</span>
+        <small style="color:var(--text-muted)">${n.time}</small>
+      </li>
+    `).join("");
+  }
+  if (count) count.textContent = DB.notifications.length;
 }
 
 function addNotification(text) {
   const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   DB.notifications.unshift({ text, time: timeStr });
-  document.getElementById("notifCount").textContent = DB.notifications.length;
+  const count = document.getElementById("notifCount");
+  if (count) count.textContent = DB.notifications.length;
 }
 
 // Populate Modal Select Dropdowns
@@ -1012,23 +818,25 @@ function populateDropdowns() {
 
 // Modal Controllers
 function openModal(modalId) {
-  document.getElementById(modalId).classList.add("active");
+  const modal = document.getElementById(modalId);
+  if (modal) modal.classList.add("active");
 }
 
 function closeModal(modalId) {
-  document.getElementById(modalId).classList.remove("active");
+  const modal = document.getElementById(modalId);
+  if (modal) modal.classList.remove("active");
 }
 
 // Form Handlers
 function handleAddDoctor(e) {
-  e.preventDefault();
+  if (e) e.preventDefault();
   const newDoc = {
     id: `DOC-${Math.floor(100 + Math.random() * 900)}`,
-    name: document.getElementById("docName").value,
-    dept: document.getElementById("docDept").value,
-    degrees: document.getElementById("docDegrees").value,
-    fee: Number(document.getElementById("docFee").value),
-    photo: document.getElementById("docPhoto").value
+    name: document.getElementById("docName")?.value || "Dr. Unknown",
+    dept: document.getElementById("docDept")?.value || "General",
+    degrees: document.getElementById("docDegrees")?.value || "MBBS",
+    fee: Number(document.getElementById("docFee")?.value || 1000),
+    photo: document.getElementById("docPhoto")?.value || "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80"
   };
 
   DB.doctors.push(newDoc);
@@ -1039,18 +847,18 @@ function handleAddDoctor(e) {
 }
 
 function handleAddPatient(e) {
-  e.preventDefault();
-  const name = document.getElementById("patName").value;
-  const contact = document.getElementById("patContact").value;
+  if (e) e.preventDefault();
+  const name = document.getElementById("patName")?.value || "Patient";
+  const contact = document.getElementById("patContact")?.value || "01700000000";
 
   const newPat = {
     mrn: `BD-2026-${Math.floor(1000 + Math.random() * 9000)}`,
     name: name,
     contact: contact,
-    age: document.getElementById("patAge").value,
-    gender: document.getElementById("patGender").value,
-    history: document.getElementById("patHistory").value || "N/A",
-    allergies: document.getElementById("patAllergies").value || "None"
+    age: document.getElementById("patAge")?.value || 30,
+    gender: document.getElementById("patGender")?.value || "Male",
+    history: document.getElementById("patHistory")?.value || "N/A",
+    allergies: document.getElementById("patAllergies")?.value || "None"
   };
 
   DB.patients.push(newPat);
@@ -1073,13 +881,13 @@ function handleAddPatient(e) {
 }
 
 function handleBookAppointment(e) {
-  e.preventDefault();
+  if (e) e.preventDefault();
   const app = {
     id: `APT-${Math.floor(100 + Math.random() * 900)}`,
-    patientName: document.getElementById("appPatientName").value,
-    doctorName: document.getElementById("appDoctorSelect").value,
+    patientName: document.getElementById("appPatientName")?.value || "Patient",
+    doctorName: document.getElementById("appDoctorSelect")?.value || "Doctor",
     dept: "Specialist OPD",
-    dateTime: document.getElementById("appDateTime").value.replace("T", " "),
+    dateTime: document.getElementById("appDateTime")?.value.replace("T", " ") || "2026-08-29 10:00 AM",
     status: "Scheduled"
   };
 
@@ -1090,13 +898,13 @@ function handleBookAppointment(e) {
 }
 
 function handleGenerateBill(e) {
-  e.preventDefault();
+  if (e) e.preventDefault();
   const inv = {
     id: `INV-${Math.floor(1000 + Math.random() * 9000)}`,
-    mrn: document.getElementById("billMrn").value,
-    patientName: document.getElementById("billName").value,
-    service: document.getElementById("billService").value,
-    amount: document.getElementById("billAmount").value,
+    mrn: document.getElementById("billMrn")?.value || "BD-2026-0000",
+    patientName: document.getElementById("billName")?.value || "Patient",
+    service: document.getElementById("billService")?.value || "OPD Service",
+    amount: document.getElementById("billAmount")?.value || 1000,
     status: "Paid"
   };
 
@@ -1112,11 +920,15 @@ function triggerPrint() {
 
 // Mobile Responsive Handlers
 function toggleSidebar() {
-  document.getElementById("sidebarNav").classList.toggle("active");
-  document.getElementById("sidebarOverlay").classList.toggle("active");
+  const nav = document.getElementById("sidebarNav");
+  const overlay = document.getElementById("sidebarOverlay");
+  if (nav) nav.classList.toggle("active");
+  if (overlay) overlay.classList.toggle("active");
 }
 
 function closeSidebar() {
-  document.getElementById("sidebarNav").classList.remove("active");
-  document.getElementById("sidebarOverlay").classList.remove("active");
+  const nav = document.getElementById("sidebarNav");
+  const overlay = document.getElementById("sidebarOverlay");
+  if (nav) nav.classList.remove("active");
+  if (overlay) overlay.classList.remove("active");
 }
