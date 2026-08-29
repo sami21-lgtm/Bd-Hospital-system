@@ -1,28 +1,53 @@
-/* CarePulse HMS Core Application Engine - Fixed & Complete */
+/* CarePulse HMS Core Application Engine - Complete JS with All 36 Doctor Credentials */
 
-// Database Setup with Specific Credentials & Patient Phone Recovery
 const DB = {
   users: [
     // Admin
     { id: "admin@hospital.com", alias: "admin", pass: "admin123", name: "Md. Emtiaz Hossian Sami", role: "admin", roleTitle: "System Administrator", avatar: "Md. EmTIAZ hOSSAIN sAMI LOGO.png" },
     
-    // Doctor 1
-    { id: "doctor@hospital.com", alias: "doctor1", pass: "doctor123", name: "Prof. Dr. Syed Shamsul Huda", role: "doctor", roleTitle: "Specialist Doctor (Cardiology)", avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80" },
-
-    // Doctor 2
-    { id: "doctor2@hospital.com", alias: "doctor2", pass: "doctor123", name: "Dr. Farhana Yasmin", role: "doctor", roleTitle: "Specialist Doctor (Neurology)", avatar: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=100&auto=format&fit=crop&q=80" },
-
-    // Nurse
+    // Other Staff & Patients
     { id: "nurse@hospital.com", alias: "nurse1", pass: "nurse123", name: "Sr. Sabina Yasmin", role: "nurse", roleTitle: "Ward Nurse Station", avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&auto=format&fit=crop&q=80" },
-    
-    // Patient
     { id: "patient@hospital.com", alias: "patient1", pass: "patient123", name: "Tariqul Islam", phone: "01711223344", role: "patient", roleTitle: "Patient Portal Account", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" },
-    
-    // Receptionist
     { id: "reception@hospital.com", alias: "reception", pass: "reception123", name: "Nusrat Jahan", role: "receptionist", roleTitle: "Front Desk Officer", avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80" },
-    
-    // Pharmacist
-    { id: "pharma@hospital.com", alias: "pharma", pass: "pharma123", name: "Mahmudur Rahman", role: "pharmacist", roleTitle: "Lead Pharmacist", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop&q=80" }
+    { id: "pharma@hospital.com", alias: "pharma", pass: "pharma123", name: "Mahmudur Rahman", role: "pharmacist", roleTitle: "Lead Pharmacist", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format&fit=crop&q=80" },
+
+    // All 36 Doctors Registered Accounts (Pass: doctor123)
+    { id: "doc101@hospital.com", alias: "doc101", pass: "doctor123", name: "Prof. Dr. Kazi Ashraful Alam", role: "doctor", roleTitle: "Specialist Doctor (General & Laparoscopic Surgery)", avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc102@hospital.com", alias: "doc102", pass: "doctor123", name: "Dr. Ariful Islam", role: "doctor", roleTitle: "Specialist Doctor (Urology)", avatar: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc103@hospital.com", alias: "doc103", pass: "doctor123", name: "Dr. Nusrat Chowdury", role: "doctor", roleTitle: "Specialist Doctor (Obstetrics & Gynecology)", avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc104@hospital.com", alias: "doc104", pass: "doctor123", name: "Prof. Dr. Mahbubur Rahman", role: "doctor", roleTitle: "Specialist Doctor (Cardiac Surgery)", avatar: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc105@hospital.com", alias: "doc105", pass: "doctor123", name: "Dr. Shahriar Nabi", role: "doctor", roleTitle: "Specialist Doctor (Vascular Surgery)", avatar: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc106@hospital.com", alias: "doc106", pass: "doctor123", name: "Dr. Imran Khan", role: "doctor", roleTitle: "Specialist Doctor (Respiratory Medicine)", avatar: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc107@hospital.com", alias: "doc107", pass: "doctor123", name: "Dr. Tariqul Islam", role: "doctor", roleTitle: "Specialist Doctor (Colorectal Surgery)", avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc108@hospital.com", alias: "doc108", pass: "doctor123", name: "Dr. Mehzabin Ahmed", role: "doctor", roleTitle: "Specialist Doctor (Dental and Maxillofacial Surgery)", avatar: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc109@hospital.com", alias: "doc109", pass: "doctor123", name: "Dt. Rashida Parveen", role: "doctor", roleTitle: "Specialist Nutritionist (Nutrition & Dietetic Department)", avatar: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc110@hospital.com", alias: "doc110", pass: "doctor123", name: "Dr. Ayesha Siddiqua", role: "doctor", roleTitle: "Specialist Doctor (Rheumatology)", avatar: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc111@hospital.com", alias: "doc111", pass: "doctor123", name: "Dr. Rafiqul Hassan", role: "doctor", roleTitle: "Specialist Doctor (Anaesthesia)", avatar: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc112@hospital.com", alias: "doc112", pass: "doctor123", name: "Prof. Dr. Syed Shamsul Huda", role: "doctor", roleTitle: "Specialist Doctor (Cardiology)", avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc113@hospital.com", alias: "doc113", pass: "doctor123", name: "Dr. Tanvir Mahmud", role: "doctor", roleTitle: "Specialist Doctor (Pediatric & Neonatology)", avatar: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc114@hospital.com", alias: "doc114", pass: "doctor123", name: "Dr. Mahbub Alam", role: "doctor", roleTitle: "Specialist Doctor (ENT, Head & Neck Surgery)", avatar: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc115@hospital.com", alias: "doc115", pass: "doctor123", name: "Dr. Anisur Rahman", role: "doctor", roleTitle: "Specialist Doctor (Orthopedics, Arthroscopy & Joint Replacement)", avatar: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc116@hospital.com", alias: "doc116", pass: "doctor123", name: "Dr. Bilkis Jahan", role: "doctor", roleTitle: "Specialist Doctor (Clinical Hematology)", avatar: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc117@hospital.com", alias: "doc117", pass: "doctor123", name: "Dr. Kamrul Islam", role: "doctor", roleTitle: "Specialist Doctor (Surgical Oncology)", avatar: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc118@hospital.com", alias: "doc118", pass: "doctor123", name: "Dr. Moniruzzaman", role: "doctor", roleTitle: "Specialist Doctor (Physical Medicine)", avatar: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc119@hospital.com", alias: "doc119", pass: "doctor123", name: "Dr. Sharmin Akter", role: "doctor", roleTitle: "Specialist Doctor (Plastic & Aesthetic Surgery)", avatar: "https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc120@hospital.com", alias: "doc120", pass: "doctor123", name: "Prof. Dr. Kamrul Hasan", role: "doctor", roleTitle: "Specialist Doctor (Gastroenterology & Hepatology)", avatar: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc121@hospital.com", alias: "doc121", pass: "doctor123", name: "Dr. Sabina Yeasmin", role: "doctor", roleTitle: "Specialist Doctor (Dermatology)", avatar: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc122@hospital.com", alias: "doc122", pass: "doctor123", name: "Dr. Shamsul Alam", role: "doctor", roleTitle: "Specialist Doctor (Neurosurgery)", avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc123@hospital.com", alias: "doc123", pass: "doctor123", name: "Dr. Asaduzzaman", role: "doctor", roleTitle: "Specialist Doctor (Thoracic Surgery)", avatar: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc124@hospital.com", alias: "doc124", pass: "doctor123", name: "Dr. Mahmudul Haq", role: "doctor", roleTitle: "Specialist Doctor (ICU)", avatar: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc125@hospital.com", alias: "doc125", pass: "doctor123", name: "Dr. Nargis Sultana", role: "doctor", roleTitle: "Specialist Doctor (Laboratory Medicine)", avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc126@hospital.com", alias: "doc126", pass: "doctor123", name: "Dr. Faisal Ahmed", role: "doctor", roleTitle: "Specialist Doctor (Pediatric Surgery)", avatar: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc127@hospital.com", alias: "doc127", pass: "doctor123", name: "Prof. Dr. Zahirul Islam", role: "doctor", roleTitle: "Specialist Doctor (Hepatobiliary & Pancreatic Surgery)", avatar: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc128@hospital.com", alias: "doc128", pass: "doctor123", name: "Dr. Sadia Chowdhury", role: "doctor", roleTitle: "Specialist Doctor (Pediatric Cardiology)", avatar: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc129@hospital.com", alias: "doc129", pass: "doctor123", name: "Dr. Nahid Sultana", role: "doctor", roleTitle: "Specialist Doctor (Oncology)", avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc130@hospital.com", alias: "doc130", pass: "doctor123", name: "Dr. Tariqul Islam", role: "doctor", roleTitle: "Specialist Doctor (Nephrology)", avatar: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc131@hospital.com", alias: "doc131", pass: "doctor123", name: "Dr. Rehana Parveen", role: "doctor", roleTitle: "Specialist Doctor (Diabetes & Endocrinology)", avatar: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc132@hospital.com", alias: "doc132", pass: "doctor123", name: "Dr. Farhana Yasmin", role: "doctor", roleTitle: "Specialist Doctor (Neurology)", avatar: "https://images.unsplash.com/photo-1594824813566-88855ce78c00?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc133@hospital.com", alias: "doc133", pass: "doctor123", name: "Prof. Dr. M. A. Rashid", role: "doctor", roleTitle: "Specialist Doctor (Internal Medicine)", avatar: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc134@hospital.com", alias: "doc134", pass: "doctor123", name: "Dr. Khairul Bashar", role: "doctor", roleTitle: "Specialist Doctor (Radiology & Imaging)", avatar: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc135@hospital.com", alias: "doc135", pass: "doctor123", name: "Dr. Sajjad Hossain", role: "doctor", roleTitle: "Specialist Doctor (Psychiatry)", avatar: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?w=100&auto=format&fit=crop&q=80" },
+    { id: "doc136@hospital.com", alias: "doc136", pass: "doctor123", name: "Dr. Farzana Parveen", role: "doctor", roleTitle: "Specialist Doctor (Breast, Colorectal & Laparoscopic Surgery)", avatar: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?w=100&auto=format&fit=crop&q=80" }
   ],
 
   doctors: [
@@ -139,17 +164,17 @@ const DB = {
   ]
 };
 
-// Current Active User State
+// Active Session Tracking
 let currentUser = null;
 
-// Initialize System on DOM Ready & Restore Active Session
+// Initialize System on DOM Ready
 document.addEventListener("DOMContentLoaded", () => {
   autoFillCredentials('admin');
   populateDropdowns();
-  restoreUserSession(); // Reload প্রতিরোধ ও লগইন সেশন পুনরুদ্ধার
+  restoreUserSession();
 });
 
-// Restore User Session on Page Reload
+// Restore User Session on Reload
 function restoreUserSession() {
   const savedSession = localStorage.getItem("carepulse_active_user");
   if (savedSession) {
@@ -170,7 +195,7 @@ function restoreUserSession() {
   }
 }
 
-// Auto-fill Credentials Helper in Login Modal
+// Auto-fill Credentials Hint in Login Modal
 function autoFillCredentials(roleKey) {
   const user = DB.users.find(u => u.role === roleKey);
   if (user) {
@@ -184,7 +209,7 @@ function autoFillCredentials(roleKey) {
   }
 }
 
-// Flexible User Authentication Handler (Any Doctor / Any Nurse / Admin / Patient)
+// Authentication Engine (Supports 36 Doctors + Admin/Staff/Patients)
 function handleUserLogin(event) {
   if (event) event.preventDefault();
   const idEl = document.getElementById("loginUserId");
@@ -197,12 +222,12 @@ function handleUserLogin(event) {
   const inputId = idEl.value.trim().toLowerCase();
   const inputPass = passEl.value.trim();
 
-  // 1. Check Primary Users List
+  // Match registered user
   let matchedUser = DB.users.find(u => 
     (u.id.toLowerCase() === inputId || u.alias.toLowerCase() === inputId || (u.phone && u.phone === inputId)) && u.pass === inputPass
   );
 
-  // 2. Allow ANY Doctor from Doctor Directory (General or Specialist)
+  // Dynamic Match for Doctor ID (e.g., DOC-101)
   if (!matchedUser) {
     const docMatch = DB.doctors.find(d => 
       d.id.toLowerCase() === inputId || 
@@ -217,31 +242,14 @@ function handleUserLogin(event) {
         pass: inputPass,
         name: docMatch.name,
         role: "doctor",
-        roleTitle: `Doctor (${docMatch.dept})`,
+        roleTitle: `Specialist Doctor (${docMatch.dept})`,
         avatar: docMatch.photo
-      };
-    }
-  }
-
-  // 3. Allow ANY Nurse Login
-  if (!matchedUser && (inputId.includes("nurse") || inputId.includes("sr."))) {
-    if (inputPass === "nurse123" || inputPass === "123456" || inputPass === "nurse") {
-      matchedUser = {
-        id: inputId.includes("@") ? inputId : `${inputId}@hospital.com`,
-        alias: inputId,
-        pass: inputPass,
-        name: inputId.startsWith("sr.") ? inputId : "Senior Ward Nurse",
-        role: "nurse",
-        roleTitle: "Ward Nurse Station",
-        avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&auto=format&fit=crop&q=80"
       };
     }
   }
 
   if (matchedUser) {
     currentUser = matchedUser;
-    
-    // Save to LocalStorage to prevent logout on reload
     localStorage.setItem("carepulse_active_user", JSON.stringify(currentUser));
 
     if (errorMsg) errorMsg.style.display = "none";
@@ -252,13 +260,13 @@ function handleUserLogin(event) {
 
     const defaultView = getDefaultViewForRole(currentUser.role);
     switchView(defaultView);
-    addNotification(`User ${currentUser.name} authenticated successfully as ${currentUser.roleTitle}.`);
+    addNotification(`User ${currentUser.name} logged in successfully as ${currentUser.roleTitle}.`);
   } else {
     if (errorMsg) errorMsg.style.display = "block";
   }
 }
 
-// Update Top Navigation Bar User Info
+// Update Top Bar Header UI
 function updateUIHeader() {
   if (!currentUser) return;
   if (document.getElementById("navUserAvatar")) document.getElementById("navUserAvatar").src = currentUser.avatar || "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80";
@@ -267,7 +275,7 @@ function updateUIHeader() {
   if (document.getElementById("activeRoleDisplay")) document.getElementById("activeRoleDisplay").textContent = currentUser.roleTitle;
 }
 
-// Patient Password Recovery Handler (Name & Phone Match)
+// Patient Password Recovery Handler (Matches Name + Contact Phone)
 function handlePatientPasswordRecovery(e) {
   if (e) e.preventDefault();
   const nameInput = document.getElementById("recPatientName")?.value.trim().toLowerCase();
@@ -297,11 +305,11 @@ function handlePatientPasswordRecovery(e) {
       }, 3000);
     } else {
       statusBox.className = "info-alert error";
-      statusBox.textContent = "❌ কোনো ম্যাচিং পেশেন্ট ইউজার অ্যাকাউন্ট পাওয়া যায়নি।";
+      statusBox.textContent = "❌ কোনো পেশেন্ট ইউজার অ্যাকাউন্ট পাওয়া যায়নি।";
     }
   } else {
     statusBox.className = "info-alert error";
-    statusBox.textContent = "❌ নাম এবং মোবাইল নম্বর মিলছে না! সঠিক তথ্য দিন।";
+    statusBox.textContent = "❌ প্রদত্ত নাম এবং মোবাইল নম্বর মিলছে না!";
   }
 }
 
@@ -313,7 +321,7 @@ function handleUserLogout() {
   if (loginModal) loginModal.style.display = "flex";
 }
 
-// Workspace Navigation Mapping per Role
+// Default View Selection
 function getDefaultViewForRole(role) {
   switch (role) {
     case 'doctor': return 'view-consultation';
@@ -356,7 +364,7 @@ function buildSidebarMenu() {
   });
 }
 
-// Workspace Switcher
+// Switch Active View Panel
 function switchView(viewId) {
   document.querySelectorAll(".view-panel").forEach(panel => panel.classList.remove("active"));
   document.querySelectorAll(".sidebar-item").forEach(item => item.classList.remove("active"));
@@ -395,7 +403,7 @@ function switchView(viewId) {
   renderViewData(viewId);
 }
 
-// Data Renderer Router
+// View Renderer Switcher
 function renderViewData(viewId) {
   switch (viewId) {
     case 'view-admin': renderAdminDashboard(); break;
@@ -412,7 +420,7 @@ function renderViewData(viewId) {
   }
 }
 
-// Admin Dashboard Render
+// Admin Dashboard Summary
 function renderAdminDashboard() {
   const statP = document.getElementById("statPatients");
   if (statP) statP.textContent = DB.patients.length;
@@ -449,7 +457,7 @@ function renderAdminDashboard() {
   });
 }
 
-// Appointments List Render
+// Appointments Data Render
 function renderAppointments() {
   const tbody = document.getElementById("appointmentTableBody");
   const heading = document.getElementById("appointmentTableHeading");
@@ -534,6 +542,7 @@ function renderPatients() {
   });
 }
 
+// Doctor Directory Render with Filtering
 function renderDoctors() {
   const deptTabs = document.getElementById("departmentTabs");
   if (deptTabs) {
@@ -567,7 +576,7 @@ function renderDoctorCards(list) {
   `).join("");
 }
 
-// Doctor Desk Workstation Render
+// Doctor Consultation Desk Queue
 function renderConsultationDesk() {
   const select = document.getElementById("consultPatientSelect");
   const title = document.getElementById("doctorDeskTitle");
@@ -623,6 +632,7 @@ function toggleDoctorAttendance() {
   }
 }
 
+// Save Prescription Handler
 function handleSavePrescription(e) {
   if (e) e.preventDefault();
   const select = document.getElementById("consultPatientSelect");
@@ -650,6 +660,7 @@ function handleSavePrescription(e) {
   switchView('view-prescriptions');
 }
 
+// Render Prescriptions List
 function renderPrescriptions() {
   const tbody = document.getElementById("prescriptionTableBody");
   if (!tbody) return;
@@ -703,6 +714,7 @@ function printRx(rxId) {
   openModal("printDocumentModal");
 }
 
+// Lab Diagnostics Render
 function renderLaboratory() {
   const tbody = document.getElementById("labTableBody");
   if (!tbody) return;
@@ -732,6 +744,7 @@ function completeLab(id) {
   }
 }
 
+// Pharmacy Stock Render
 function renderPharmacy() {
   const itemsEl = document.getElementById("statPharmacyItems");
   const lowEl = document.getElementById("statPharmacyLow");
@@ -768,6 +781,7 @@ function restockMedicine(name) {
   }
 }
 
+// Bed & Cabin Render
 function renderBeds() {
   const grid = document.getElementById("cabinGrid");
   if (!grid) return;
@@ -801,6 +815,7 @@ function toggleCabinStatus(number) {
   }
 }
 
+// Billing & Accounts Render
 function renderAccounts() {
   const tbody = document.getElementById("accountsTableBody");
   if (!tbody) return;
@@ -869,7 +884,7 @@ function addNotification(text) {
   if (count) count.textContent = DB.notifications.length;
 }
 
-// Populate Modal Select Dropdowns
+// Populate Modal Select Options
 function populateDropdowns() {
   const docSelect = document.getElementById("appDoctorSelect");
   const docDeptSelect = document.getElementById("docDept");
@@ -878,7 +893,7 @@ function populateDropdowns() {
     docSelect.innerHTML = DB.doctors.map(d => `<option value="${d.name}">${d.name} (${d.dept})</option>`).join("");
   }
   if (docDeptSelect) {
-    const depts = ["Cardiology", "Neurology", "Orthopedics", "Gynaecology", "Pediatrics", "Gastroenterology"];
+    const depts = ["General & Laparoscopic Surgery", "Urology", "Obstetrics & Gynecology", "Cardiac Surgery", "Cardiology", "Neurology", "Pediatrics", "Orthopedics"];
     docDeptSelect.innerHTML = depts.map(dept => `<option value="${dept}">${dept}</option>`).join("");
   }
 }
@@ -897,17 +912,34 @@ function closeModal(modalId) {
 // Form Handlers
 function handleAddDoctor(e) {
   if (e) e.preventDefault();
+  const name = document.getElementById("docName")?.value || "Dr. Unknown";
+  const dept = document.getElementById("docDept")?.value || "General";
+  const newId = `DOC-${Math.floor(100 + Math.random() * 900)}`;
+
   const newDoc = {
-    id: `DOC-${Math.floor(100 + Math.random() * 900)}`,
-    name: document.getElementById("docName")?.value || "Dr. Unknown",
-    dept: document.getElementById("docDept")?.value || "General",
+    id: newId,
+    name: name,
+    dept: dept,
     degrees: document.getElementById("docDegrees")?.value || "MBBS",
     fee: Number(document.getElementById("docFee")?.value || 1000),
     photo: document.getElementById("docPhoto")?.value || "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=400&auto=format&fit=crop&q=80"
   };
 
   DB.doctors.push(newDoc);
-  addNotification(`Doctor ${newDoc.name} registered.`);
+
+  // Register User Account for new doctor
+  const aliasId = newId.toLowerCase().replace("-", "");
+  DB.users.push({
+    id: `${aliasId}@hospital.com`,
+    alias: aliasId,
+    pass: "doctor123",
+    name: name,
+    role: "doctor",
+    roleTitle: `Specialist Doctor (${dept})`,
+    avatar: newDoc.photo
+  });
+
+  addNotification(`Doctor ${newDoc.name} registered (ID: ${newId}).`);
   closeModal("addDoctorModal");
   populateDropdowns();
   renderDoctors();
@@ -984,7 +1016,7 @@ function triggerPrint() {
   window.print();
 }
 
-// Mobile Responsive Handlers
+// Navigation & Sidebar Handlers
 function toggleSidebar() {
   const nav = document.getElementById("sidebarNav");
   const overlay = document.getElementById("sidebarOverlay");
