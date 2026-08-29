@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏥 MediFlow — Modern Hospital & Clinic Management Dashboard
+# 🏥 CarePlus Sepcialized Hospital
 
 [![Node.js](https://img.shields.io/badge/Node.js-v18%2B-green?style=for-the-badge&logo=nodedotjs)](https://nodejs.org/)
 [![Express.js](https://img.shields.io/badge/Express.js-v4.19-blue?style=for-the-badge&logo=express)](https://expressjs.com/)
