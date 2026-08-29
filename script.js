@@ -142,11 +142,33 @@ const DB = {
 // Current Active User State
 let currentUser = null;
 
-// Initialize System on DOM Ready
+// Initialize System on DOM Ready & Restore Active Session
 document.addEventListener("DOMContentLoaded", () => {
   autoFillCredentials('admin');
   populateDropdowns();
+  restoreUserSession(); // Reload প্রতিরোধ ও লগইন সেশন পুনরুদ্ধার
 });
+
+// Restore User Session on Page Reload
+function restoreUserSession() {
+  const savedSession = localStorage.getItem("carepulse_active_user");
+  if (savedSession) {
+    try {
+      currentUser = JSON.parse(savedSession);
+      const loginModal = document.getElementById("loginModal");
+      if (loginModal) loginModal.style.display = "none";
+
+      updateUIHeader();
+      buildSidebarMenu();
+
+      const lastView = localStorage.getItem("carepulse_active_view") || getDefaultViewForRole(currentUser.role);
+      switchView(lastView);
+    } catch (e) {
+      console.error("Session restore failed:", e);
+      localStorage.removeItem("carepulse_active_user");
+    }
+  }
+}
 
 // Auto-fill Credentials Helper in Login Modal
 function autoFillCredentials(roleKey) {
@@ -162,7 +184,7 @@ function autoFillCredentials(roleKey) {
   }
 }
 
-// User Authentication Handler
+// Flexible User Authentication Handler (Any Doctor / Any Nurse / Admin / Patient)
 function handleUserLogin(event) {
   if (event) event.preventDefault();
   const idEl = document.getElementById("loginUserId");
@@ -175,31 +197,74 @@ function handleUserLogin(event) {
   const inputId = idEl.value.trim().toLowerCase();
   const inputPass = passEl.value.trim();
 
-  // Validate ID/Email/Alias and Password
-  const matchedUser = DB.users.find(u => 
+  // 1. Check Primary Users List
+  let matchedUser = DB.users.find(u => 
     (u.id.toLowerCase() === inputId || u.alias.toLowerCase() === inputId || (u.phone && u.phone === inputId)) && u.pass === inputPass
   );
 
+  // 2. Allow ANY Doctor from Doctor Directory (General or Specialist)
+  if (!matchedUser) {
+    const docMatch = DB.doctors.find(d => 
+      d.id.toLowerCase() === inputId || 
+      d.name.toLowerCase().includes(inputId) ||
+      `${d.id.toLowerCase()}@hospital.com` === inputId
+    );
+
+    if (docMatch && (inputPass === "doctor123" || inputPass === "123456" || inputPass === "doctor")) {
+      matchedUser = {
+        id: `${docMatch.id.toLowerCase()}@hospital.com`,
+        alias: docMatch.id.toLowerCase(),
+        pass: inputPass,
+        name: docMatch.name,
+        role: "doctor",
+        roleTitle: `Doctor (${docMatch.dept})`,
+        avatar: docMatch.photo
+      };
+    }
+  }
+
+  // 3. Allow ANY Nurse Login
+  if (!matchedUser && (inputId.includes("nurse") || inputId.includes("sr."))) {
+    if (inputPass === "nurse123" || inputPass === "123456" || inputPass === "nurse") {
+      matchedUser = {
+        id: inputId.includes("@") ? inputId : `${inputId}@hospital.com`,
+        alias: inputId,
+        pass: inputPass,
+        name: inputId.startsWith("sr.") ? inputId : "Senior Ward Nurse",
+        role: "nurse",
+        roleTitle: "Ward Nurse Station",
+        avatar: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&auto=format&fit=crop&q=80"
+      };
+    }
+  }
+
   if (matchedUser) {
     currentUser = matchedUser;
+    
+    // Save to LocalStorage to prevent logout on reload
+    localStorage.setItem("carepulse_active_user", JSON.stringify(currentUser));
+
     if (errorMsg) errorMsg.style.display = "none";
     if (loginModal) loginModal.style.display = "none";
-    
-    // Update Header Profile
-    if (document.getElementById("navUserAvatar")) document.getElementById("navUserAvatar").src = currentUser.avatar;
-    if (document.getElementById("navUserName")) document.getElementById("navUserName").textContent = currentUser.name;
-    if (document.getElementById("navUserRole")) document.getElementById("navUserRole").textContent = currentUser.roleTitle;
-    if (document.getElementById("activeRoleDisplay")) document.getElementById("activeRoleDisplay").textContent = currentUser.roleTitle;
 
+    updateUIHeader();
     buildSidebarMenu();
-    
-    // Direct user to default role workstation panel
+
     const defaultView = getDefaultViewForRole(currentUser.role);
     switchView(defaultView);
     addNotification(`User ${currentUser.name} authenticated successfully as ${currentUser.roleTitle}.`);
   } else {
     if (errorMsg) errorMsg.style.display = "block";
   }
+}
+
+// Update Top Navigation Bar User Info
+function updateUIHeader() {
+  if (!currentUser) return;
+  if (document.getElementById("navUserAvatar")) document.getElementById("navUserAvatar").src = currentUser.avatar || "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80";
+  if (document.getElementById("navUserName")) document.getElementById("navUserName").textContent = currentUser.name;
+  if (document.getElementById("navUserRole")) document.getElementById("navUserRole").textContent = currentUser.roleTitle;
+  if (document.getElementById("activeRoleDisplay")) document.getElementById("activeRoleDisplay").textContent = currentUser.roleTitle;
 }
 
 // Patient Password Recovery Handler (Name & Phone Match)
@@ -213,17 +278,15 @@ function handlePatientPasswordRecovery(e) {
   if (!statusBox) return;
   statusBox.style.display = "block";
 
-  // Find matching patient by name and phone
   const matchedPatient = DB.patients.find(p => 
     p.name.toLowerCase() === nameInput && p.contact.replace(/\D/g, "") === phoneInput
   );
 
   if (matchedPatient) {
-    // Find associated user account in DB
     let userAccount = DB.users.find(u => u.name.toLowerCase() === nameInput || u.role === 'patient');
 
     if (userAccount) {
-      userAccount.pass = newPassInput; // Update password
+      userAccount.pass = newPassInput;
       statusBox.className = "info-alert success";
       statusBox.innerHTML = `✅ পাসওয়ার্ড সফলভাবে পরিবর্তিত হয়েছে!<br>User ID/Email: <b>${userAccount.id}</b><br>নতুন পাসওয়ার্ড: <b>${newPassInput}</b>`;
       addNotification(`Password reset successfully for Patient: ${matchedPatient.name}.`);
@@ -244,6 +307,8 @@ function handlePatientPasswordRecovery(e) {
 
 function handleUserLogout() {
   currentUser = null;
+  localStorage.removeItem("carepulse_active_user");
+  localStorage.removeItem("carepulse_active_view");
   const loginModal = document.getElementById("loginModal");
   if (loginModal) loginModal.style.display = "flex";
 }
@@ -301,6 +366,8 @@ function switchView(viewId) {
 
   if (targetPanel) targetPanel.classList.add("active");
   if (targetNavItem) targetNavItem.classList.add("active");
+
+  localStorage.setItem("carepulse_active_view", viewId);
 
   const titles = {
     'view-admin': 'Executive Operations Dashboard',
@@ -863,7 +930,6 @@ function handleAddPatient(e) {
 
   DB.patients.push(newPat);
 
-  // Auto create Patient user credential for login
   DB.users.push({
     id: `${name.toLowerCase().replace(/\s+/g, '')}@hospital.com`,
     alias: name.toLowerCase().replace(/\s+/g, ''),
